@@ -17,7 +17,7 @@ import model.User;
 //Quarantine for errors
 
 
-public class EventServlet extends HttpServlet {
+public class NewEventServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -47,12 +47,12 @@ public class EventServlet extends HttpServlet {
           String businessName = getStringFromParameter(req.getParameter("Business"));	//May not work
           String location = getStringFromParameter(req.getParameter("Location"));
           
-          if(req.getSession().getAttribute("username") != null){
+          /*if(req.getSession().getAttribute("username") != null){
   			String username = (String) req.getSession().getAttribute("username");
   		  }
           else{
           		//req.getSession().setAttribute("username", "guest");
-          }
+          }*/
 
 
           if (name == null || location == null || start < 1010001 || end < 1010001) { // (01-01-0001) the first day.
@@ -91,7 +91,7 @@ public class EventServlet extends HttpServlet {
             }//end saves properly
             else{
             	//TODO: goto catch
-            	errorMessage = "Something went worng in the EventServlet :(";
+            	errorMessage = "Something went worng in the NewEventServlet :(";
                 //set new attributes to display
                 req.setAttribute("errorMessage", errorMessage);
                 
@@ -103,7 +103,7 @@ public class EventServlet extends HttpServlet {
           
         }//end try
         catch(Exception e) {
-          errorMessage = "Something went worng in the EventServlet :(";
+          errorMessage = "Something went worng in the NewEventServlet :(";
           //set new attributes to display
           req.setAttribute("errorMessage", errorMessage);
           
