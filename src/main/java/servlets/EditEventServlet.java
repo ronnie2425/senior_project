@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import controllers.EventController;
 import model.Business;
+import model.Event;
 import model.User;
 
 
@@ -26,9 +27,42 @@ public class EditEventServlet extends HttpServlet {
 		throws ServletException, IOException {
 		req.getRequestDispatcher("/_view/editEvent.jsp").forward(req, resp);
 	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+	
+	
+	protected void doPostGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		
+		int id = getIntFromParameter(req.getParameter("ID"));
+		
+		EventController controller = new EventController();
+		Event oldInfo = findByID(id);
+		
+		String name = oldInfo.getName();
+        String description = oldInfo.getDescription();
+        int start = oldInfo.getStartDate();
+        int end = oldInfo.getEndDate();
+        int time = oldInfo.getTime();
+        String businessName = oldInfo.getBusiness();
+        String location = oldInfo.getLocation();
+        String errorMessage = "";
+        
+        req.setAttribute("Event name", name);
+        req.setAttribute("Event details", description);
+        req.setAttribute("Start date", start);
+        req.setAttribute("End date", end);
+        req.setAttribute("Business", businessName);
+        req.setAttribute("Location", location);
+        req.setAttribute("errorMessage", errorMessage);
+        req.setAttribute("ID", id);
+        
+    	//display the event
+    	req.getRequestDispatcher("/_view/event.jsp").forward(req, resp);
+		
+		
+	}//end get event info
+	
+	
+	protected void doPostSet(HttpServletRequest req, HttpServletResponse resp)
 		throws ServletException, IOException {
 	
 		/*if(req.getParameter("Username") != null){
@@ -46,6 +80,7 @@ public class EditEventServlet extends HttpServlet {
           int time = getIntFromParameter(req.getParameter("Time"));
           String businessName = getStringFromParameter(req.getParameter("Business"));	//May not work
           String location = getStringFromParameter(req.getParameter("Location"));
+          int id = getIntFromParameter(req.getParameter("ID"));
           
           /*if(req.getSession().getAttribute("username") != null){
   			String username = (String) req.getSession().getAttribute("username");
@@ -66,6 +101,7 @@ public class EditEventServlet extends HttpServlet {
             req.setAttribute("Business", businessName);
             req.setAttribute("Location", location);
             req.setAttribute("errorMessage", errorMessage);
+            req.setAttribute("ID", id);
             
             //reload
             req.getRequestDispatcher("/_view/editEvent.jsp").forward(req, resp);
@@ -73,7 +109,7 @@ public class EditEventServlet extends HttpServlet {
           
           else { //fields filled
             EventController controller = new EventController();
-            if(controller.AddEvent(name, description, start, end, time, businessName, location)){
+            if(controller.EditEvent(id, name, description, start, end, time, businessName, location)){
             	//set new attributes to display
             	req.setAttribute("Event name", name);
                 req.setAttribute("Event details", description);
@@ -82,8 +118,7 @@ public class EditEventServlet extends HttpServlet {
                 req.setAttribute("Business", businessName);
                 req.setAttribute("Location", location);
                 req.setAttribute("errorMessage", errorMessage);
-            
-            	//TODO Make sure the event is saved before displaying to the user
+                req.setAttribute("ID", id);
                 
             	//display the event
             	req.getRequestDispatcher("/_view/event.jsp").forward(req, resp);
@@ -91,28 +126,28 @@ public class EditEventServlet extends HttpServlet {
             }//end saves properly
             else{
             	//TODO: goto catch
-            	errorMessage = "Something went worng in the NewEventServlet :(";
+            	errorMessage = "Something went worng in the EditEventServlet :(";
                 //set new attributes to display
                 req.setAttribute("errorMessage", errorMessage);
                 
                 //display the event
-                req.getRequestDispatcher("/_view/event.jsp").forward(req, resp);
+                req.getRequestDispatcher("/_view/event.jsp").forward(req, resp);	//update
             }
             
           }//end else
           
         }//end try
         catch(Exception e) {
-          errorMessage = "Something went worng in the NewEventServlet :(";
+          errorMessage = "Something went worng in the EditEventServlet :(";
           //set new attributes to display
           req.setAttribute("errorMessage", errorMessage);
           
           //display the event
-          req.getRequestDispatcher("/_view/event.jsp").forward(req, resp);
+          req.getRequestDispatcher("/_view/event.jsp").forward(req, resp);		//update
         }
         
 
-	}//end doPost
+	}//end modify event info
 	
 	
 	private String getStringFromParameter(String s) {
