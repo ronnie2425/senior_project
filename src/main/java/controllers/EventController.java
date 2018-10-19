@@ -47,9 +47,21 @@ public class EventController {
 		tmp.setTime(7);
 		return tmp;
 	}
-	public boolean editEvent(String name, String description, int start_date, int end_date,int time,String business,String location){
+	
+	public Event findByID(int id){
+		Event tmp = new Event();
+		tmp.setBusiness("fake");
+		tmp.setDescription("testing purposes only");
+		tmp.setEndDate(2);
+		tmp.setLocation("place");
+		tmp.setName("something");
+		tmp.setStartDate(1);
+		tmp.setTime(7);
+		return tmp;
+	}
+	public boolean editEvent(int id, String name, String description, int start_date, int end_date,int time,String business,String location){
 		try{
-			//TODO: Lookup Bussiness_ID by business name string (business)
+			//TODO: update existing event with new information
 			//db.editEvent("info");
 		}//end try
 		catch (Exception e) {
