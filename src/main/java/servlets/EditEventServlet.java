@@ -35,7 +35,7 @@ public class EditEventServlet extends HttpServlet {
 		int id = getIntFromParameter(req.getParameter("ID"));
 		
 		EventController controller = new EventController();
-		Event oldInfo = findByID(id);
+		Event oldInfo = controller.findByID(id);
 		
 		String name = oldInfo.getName();
         String description = oldInfo.getDescription();
@@ -109,7 +109,7 @@ public class EditEventServlet extends HttpServlet {
           
           else { //fields filled
             EventController controller = new EventController();
-            if(controller.EditEvent(id, name, description, start, end, time, businessName, location)){
+            if(controller.editEvent(id, name, description, start, end, time, businessName, location)){
             	//set new attributes to display
             	req.setAttribute("Event name", name);
                 req.setAttribute("Event details", description);
