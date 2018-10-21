@@ -1,4 +1,6 @@
 <!doctype html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -11,6 +13,9 @@
     <title>Login</title>
   </head>
   <body>
+  	<c:if test="${! empty errorMessage}">
+			<div class="error">${errorMessage}</div>
+	</c:if>
     <form action="${pageContext.servletContext.contextPath}/login.jsp" method="post">
   		<div class="form-group">
     		<label for="InputUsername">Username</label>
