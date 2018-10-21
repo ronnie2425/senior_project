@@ -18,12 +18,12 @@
 	</c:if>
     <form action="${pageContext.servletContext.contextPath}/login.jsp" method="post">
   		<div class="form-group">
-    		<label for="InputUsername">Username</label>
-    		<input type="text" class="form-control" id="InputUsername" placeholder="Enter Username">
+    		<label for="Username">Username</label>
+    		<input type="text" class="form-control" id="Username" placeholder="Enter Username">
   		</div>
  		 <div class="form-group">
-    		<label for="InputPassword">Password</label>
-    		<input type="password" class="form-control" id="InputPassword" placeholder="Password">
+    		<label for="Password">Password</label>
+    		<input type="password" class="form-control" id="Password" placeholder="Password">
   		</div>
   		<button type="submit" class="btn btn-primary" onclick="redirect()">Login</button>
 	</form>
