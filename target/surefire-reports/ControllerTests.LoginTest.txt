@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: ControllerTests.LoginTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0 sec <<< FAILURE!
+ControllerTests.LoginTest.testVerify()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at ControllerTests.LoginTest.testVerify(LoginTest.java:36)
+
+ControllerTests.LoginTest.testSetandGetUser()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at ControllerTests.LoginTest.testSetandGetUser(LoginTest.java:27)
+
+ControllerTests.LoginTest.testgetAccountByUsername()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at ControllerTests.LoginTest.testgetAccountByUsername(LoginTest.java:32)
+

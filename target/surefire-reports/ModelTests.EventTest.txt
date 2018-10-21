@@ -1,0 +1,32 @@
+-------------------------------------------------------------------------------
+Test set: ModelTests.EventTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 7, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec <<< FAILURE!
+ModelTests.EventTest.testSetandGetDescription()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at ModelTests.EventTest.testSetandGetDescription(EventTest.java:23)
+
+ModelTests.EventTest.testSetandGetUsername()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at ModelTests.EventTest.testSetandGetUsername(EventTest.java:18)
+
+ModelTests.EventTest.testSetandGetEndDate()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at ModelTests.EventTest.testSetandGetEndDate(EventTest.java:32)
+
+ModelTests.EventTest.testSetandGetStartDate()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at ModelTests.EventTest.testSetandGetStartDate(EventTest.java:28)
+
+ModelTests.EventTest.testSetandGetTime()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at ModelTests.EventTest.testSetandGetTime(EventTest.java:36)
+
+ModelTests.EventTest.testSetandGetLocation()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at ModelTests.EventTest.testSetandGetLocation(EventTest.java:44)
+
+ModelTests.EventTest.testSetandGetBusiness()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at ModelTests.EventTest.testSetandGetBusiness(EventTest.java:40)
+

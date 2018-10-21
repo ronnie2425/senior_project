@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: ControllerTests.EventTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0 sec <<< FAILURE!
+ControllerTests.EventTest.testSetandGet()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at ControllerTests.EventTest.testSetandGet(EventTest.java:20)
+
+ControllerTests.EventTest.testgetByEnd()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at ControllerTests.EventTest.testgetByEnd(EventTest.java:30)
+
+ControllerTests.EventTest.testgetByStart()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at ControllerTests.EventTest.testgetByStart(EventTest.java:26)
+
