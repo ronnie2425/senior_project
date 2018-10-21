@@ -5,47 +5,29 @@
 //import org.junit.Test;
 //
 //import model.Event;
-//
+//import controllers.EventController;
 //public class EventTest {
 //	private Event event;
+//	private EventController con;
 //	@Before
 //	public void setUp() throws Exception {
 //		event=new Event();
+//		con = new EventController();
 //	}
 //
 //	@Test
-//	public void testSetandGetUsername() {		
+//	public void testSetandGet() {		
 //		event.setName("Event of Funness");
-//		assertEquals("Event of Funness",event.getName());
-//	}
-//	public void testSetandGetDescription() {		
-//		event.setDescription("This is not tedious at all");
-//		assertEquals("This is not tedious at all",event.getDescription());
+//		con.setEvent(event);
+//		assertEquals("Event of Funness",con.getEvent().getName());
 //	}
 //	@Test
-//	public void testSetandGetStartDate() {		
-//		event.setStartDate(12819);
-//		assertEquals(12819,event.getStartDate());
+//	public void testgetByStart() {		
+//		assertEquals("fake",con.findEventByStartDate(1).getBusiness());
 //	}
-//	public void testSetandGetEndDate() {		
-//		event.setEndDate(12819);
-//		assertEquals(12819,event.getEndDate());
+//	@Test
+//	public void testgetByEnd() {		
+//		assertEquals("fake",con.findEventByEndDate(2).getBusiness());
 //	}
-//	public void testSetandGetTime() {		
-//		event.setTime(1030);
-//		assertEquals(1030,event.getTime());
-//	}
-//	public void testSetandGetBusiness() {		
-//		event.setBusiness("The Fun Business");
-//		assertEquals("The Fun Business",event.getBusiness());
-//	}
-//	public void testSetandGetLocation() {		
-//		event.setLocation("Middle of Nowhere");
-//		assertEquals("Middle of Nowhere",event.getLocation());
-//	}
-//
-//
-//
-//
-//
+//	
 //}
