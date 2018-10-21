@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
             LoginController controller = new LoginController();
             
             if(controller.verifyAccount(user, pass)){
-            	resp.sendRedirect(req.getContextPath() + "/UserHome");
+            	resp.sendRedirect(req.getContextPath() + "/businessList.jsp");
             }//end good login
             else {//bad creds
             	errorMessage = "Invalid login.";
