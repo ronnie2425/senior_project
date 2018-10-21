@@ -1,71 +1,75 @@
 package servlets;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
+
+import controllers.LoginController;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controllers.*;
-import model.*;
 
 
-public class LoginServlet extends HttpServlet{
-	
+/*Quarantine for errors*/
+
+public class LoginServlet extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
-	
+
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 	}
-	
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String username = req.getParameter("Username");
-		String password = req.getParameter("Password");
-		boolean login=false;
-		
-		LoginController controller = new LoginController();
-		//controller.setModel(user);
-		
-		
-		
-		//check if input username and password exist
-		if (req.getParameter("Username") != null && req.getParameter("Password") != null){
-			System.out.println("username and password fields found " + username +" " + password);
-				 try {
-					login = controller.verifyAccount(username, password);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			
-		}
-			
-			//if the username and password match credentials in the database then login
-			if (login){
-//				System.out.println("the database returned the password:" + user.getPassword());
-//				System.out.println("the database returned the username:" + user.getUsername());
-//			
-//				req.getSession().setAttribute("user", user);	
-				req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
-			}
-//			else if (!login){
-//				//login failed
-//				req.setAttribute("error", "Invalid username/password");
-//				req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
-//			}
-//		}
-		
-		else{
-			System.out.println("Invalid username and/or password");
-			//return to login if login fails
-			req.setAttribute("error", "Invalid username/password");
-			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
-		}		
-	}
-	}
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+		throws ServletException, IOException {
+		
+		// Decode form parameters and dispatch to controller
+        String errorMessage = null;
+        Double result = null;
+        try {
+          String user = req.getParameter("Username");
+          String pass = req.getParameter("Password");
+
+
+          if (user == null || pass == null) {
+            errorMessage = "Please fill in all fields.";
+          }
+          
+          else { //fields filled
+            LoginController controller = new LoginController();
+            
+            if(controller.verifyAccount(user, pass)){
+            	resp.sendRedirect(req.getContextPath() + "/businessList.jsp");
+            }//end good login
+            else {//bad creds
+            	errorMessage = "Invalid login.";
+            	req.setAttribute("errorMessage", errorMessage);
+            }//end bad creds else
+            
+          }//end fields filled else
+          
+        } catch(Exception e) {
+          errorMessage = "Something went worng in the LoginServlet :(";
+        }
+        
+        //display
+        req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
+        
+	}//end doPost
+	
+	
+	private String getStringFromParameter(String s) {
+		if (s == null || s.equals("")) {
+			return null;
+		} else {
+			return s;
+		}
+	}//end parse string args
+	
+}//end class
