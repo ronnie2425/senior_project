@@ -18,7 +18,6 @@
 //		event.setName("Event of Funness");
 //		assertEquals("Event of Funness",event.getName());
 //	}
-//	@Test
 //	public void testSetandGetDescription() {		
 //		event.setDescription("This is not tedious at all");
 //		assertEquals("This is not tedious at all",event.getDescription());
