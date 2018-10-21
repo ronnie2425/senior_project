@@ -29,17 +29,29 @@
     		<label for="InputPassword2">Confirm Password</label>
     		<input type="password" class="form-control" id="InputPassword2" placeholder="Confirm Password">
   		</div>
-  		<div class="form-group form-check">
-    		<input type="checkbox" class="form-check-input" id="BusinessCheck">
-    		<label class="form-check-label" for="BusinessCheck">Creating a Business Account</label>
+  		<div class="form-group form-check ative">
+    		<input type="checkbox" class="form-check-input" id="BusinessCheck" checked="checked">
+    		<label class="form-check-label active" onclick="businessHide()" for="BusinessCheck">Creating a Business Account</label>
   		</div>
-  		<div class="form-group">
+  		<div id="business" class="form-group">
     		<label for="InputBusiness">Business Name</label>
     		<input type="text" class="form-control" id="InputBusiness" placeholder="Enter Business Name">
   		</div>
-  		<button type="submit" class="btn btn-primary">Sign Up</button>
+  		<button type="submit" class="btn btn-primary" onclick="redirect()">Sign Up</button>
 	</form>
-
+	<script>
+		function businessHide() {
+			var x = document.getElementById("business");
+    		if (x.style.display === "none") {
+        		x.style.display = "form-group";
+   	 		} else {
+        		x.style.display = "none";
+    		}
+		}
+		function redirect() {
+    		window.location.href = "/businessList.jsp";
+		}
+	</script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

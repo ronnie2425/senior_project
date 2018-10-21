@@ -20,9 +20,13 @@
     		<label for="InputPassword">Password</label>
     		<input type="password" class="form-control" id="InputPassword" placeholder="Password">
   		</div>
-  		<button type="submit" class="btn btn-primary">Login</button>
+  		<button type="submit" class="btn btn-primary" onclick="redirect()">Login</button>
 	</form>
-
+	<script>
+		function redirect() {
+    		window.location.href = "/businessList.jsp";
+		}
+	</script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
