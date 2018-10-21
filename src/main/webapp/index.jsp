@@ -12,7 +12,7 @@
 			<ul>
 		
 				<li><a href="${pageContext.servletContext.contextPath}/index">Home</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/login">Log in</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Log in</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/register">Register</a></li>
 			
 				<li><a href="${pageContext.servletContext.contextPath}/logout">Logout</a></li>
