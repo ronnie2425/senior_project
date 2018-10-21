@@ -33,8 +33,8 @@ public class LoginServlet extends HttpServlet {
         String errorMessage = null;
         Double result = null;
         try {
-          String user = getStringFromParameter(req.getParameter("Username"));
-          String pass = getStringFromParameter(req.getParameter("Password"));
+          String user = req.getParameter("Username");
+          String pass = req.getParameter("Password");
 
 
           if (user == null || pass == null) {
