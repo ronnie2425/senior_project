@@ -1,38 +1,45 @@
-<!doctype html>
+<!DOCTYPE HTML>
 
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html>
+	<head>
+		<title>Login</title>
+		<link href="loginstyle.css" rel="stylesheet" type="text/css" ></link>
+	</head>
+	
+<body>
+	<div id ="background">
+	<div class="navbar">
+		<ul>
+		
+			<li><a href="${pageContext.servletContext.contextPath}/index">Home</a></li>
+			<li><a href="${pageContext.servletContext.contextPath}/login">Log in</a></li>
+			<li><a href="${pageContext.servletContext.contextPath}/register">Register</a></li>
+			<li><a href="${pageContext.servletContext.contextPath}/listings">Trade</a></li>
+			<li><a href="${pageContext.servletContext.contextPath}/logout">Logout</a></li>
+			<li><a href="${pageContext.servletContext.contextPath}/userInfo">User Info</a></li>
+	
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <title>Login</title>
-  </head>
-  <body>
- 
-    <form action="${pageContext.servletContext.contextPath}/login.jsp" method="post">
-  		<div class="form-group">
-    		<label for="Username">Username</label>
-    		<input type="text" class="form-control" id="Username" placeholder="Enter Username">
-  		</div>
- 		 <div class="form-group">
-    		<label for="Password">Password</label>
-    		<input type="password" class="form-control" id="Password" placeholder="Password">
-  		</div>
-  		<button type="submit" class="btn btn-primary" onclick="redirect()">Login</button>
-	</form>
-	<script>
-		function redirect() {
-    		window.location.href = "/businessList.jsp";
-		}
-	</script>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  </body>
-</html>
+		</ul>
+	</div>	
+		<form action="${pageContext.servletContext.contextPath}/login" method="post">
+		
+		Please enter valid MSM credentials:
+		<table>
+			<tr>
+				<td class="username">Username:</td>
+				<td><input type="text" name="Username" value="" /></td>
+			</tr>
+			
+			<tr>
+				<td class="password">Password:</td>
+				<td><input type="password" name="Password" value="" /></td>
+			</tr>
+		</table>
+		
+		<input name ="submit" type ="submit" value="Log in"/>
+		</form>		
+		
+		${error}
+	</div>
+</body>
+</html> 
