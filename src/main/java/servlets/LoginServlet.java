@@ -26,6 +26,7 @@ public class LoginServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String username = req.getParameter("Username");
 		String password = req.getParameter("Password");
+		boolean login=false;
 		
 		LoginController controller = new LoginController();
 		//controller.setModel(user);
@@ -35,22 +36,23 @@ public class LoginServlet extends HttpServlet{
 		//check if input username and password exist
 		if (req.getParameter("Username") != null && req.getParameter("Password") != null){
 			System.out.println("username and password fields found " + username +" " + password);
-			try {
-				boolean login = controller.verifyAccount(username, password);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				 try {
+					login = controller.verifyAccount(username, password);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
 		}
 			
 			//if the username and password match credentials in the database then login
-//			//if (login){
+			if (login){
 //				System.out.println("the database returned the password:" + user.getPassword());
 //				System.out.println("the database returned the username:" + user.getUsername());
 //			
 //				req.getSession().setAttribute("user", user);	
-//				req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
-//			}
+				req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
+			}
 //			else if (!login){
 //				//login failed
 //				req.setAttribute("error", "Invalid username/password");
