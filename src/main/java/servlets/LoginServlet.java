@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -34,7 +35,13 @@ public class LoginServlet extends HttpServlet{
 		//check if input username and password exist
 		if (req.getParameter("Username") != null && req.getParameter("Password") != null){
 			System.out.println("username and password fields found " + username +" " + password);
-			boolean login = controller.verifyAccount(username, password);
+			try {
+				boolean login = controller.verifyAccount(username, password);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 			
 			//if the username and password match credentials in the database then login
 //			//if (login){
@@ -57,5 +64,6 @@ public class LoginServlet extends HttpServlet{
 			req.setAttribute("error", "Invalid username/password");
 			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 		}		
+	}
 	}
 
