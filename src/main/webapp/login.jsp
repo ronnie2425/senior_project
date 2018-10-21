@@ -19,13 +19,13 @@
     <form action="${pageContext.servletContext.contextPath}/login.jsp" method="post">
   		<div class="form-group">
     		<label for="Username">Username</label>
-    		<input type="text" class="form-control" id="Username" placeholder="Enter Username">
+    		<input type="text" class="form-control" name="Username" id="Username" placeholder="Enter Username">
   		</div>
  		 <div class="form-group">
     		<label for="Password">Password</label>
-    		<input type="password" class="form-control" id="Password" placeholder="Password">
+    		<input type="password" class="form-control" name="Username" id="Password" placeholder="Password">
   		</div>
-  		<button type="submit" class="btn btn-primary" onclick="redirect()">Login</button>
+  		<button type="submit" class="submit">Login</button>
 	</form>
 	<script>
 		function redirect() {
