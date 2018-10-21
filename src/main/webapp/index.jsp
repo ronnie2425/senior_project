@@ -15,8 +15,11 @@
 				<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Log in</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
 			
-				<li><a href="${pageContext.servletContext.contextPath}/logout">Logout</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/userInfo">User Info</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/logout.jsp">Logout</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/businessEventList.jsp">Business Event list</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/businessList.jsp">Business List</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/editEvent.jsp">Edit Event</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/newEvent.jsp">New Event</a></li>
 				
 			</ul>
 			</div>
