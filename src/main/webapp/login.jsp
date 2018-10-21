@@ -11,7 +11,7 @@
     <title>Login</title>
   </head>
   <body>
-    <form>
+    <form action="${pageContext.servletContext.contextPath}/login" method="post">
   		<div class="form-group">
     		<label for="InputUsername">Username</label>
     		<input type="text" class="form-control" id="InputUsername" placeholder="Enter Username">
