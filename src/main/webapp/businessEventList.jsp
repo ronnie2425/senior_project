@@ -23,7 +23,8 @@
 		  </div>
 		  <div class="col-8">
 		    <div class="tab-content" id="nav-tabContent">
-		      <div class="tab-pane fade show active" id="list-${event.name}" role="tabpanel" aria-labelledby="list-${event.name}-list">${event.details}</div>
+		      <div class="tab-pane fade show active" id="list-${event.name}" role="tabpanel" aria-labelledby="list-${event.name}-list">${event.date} from ${event.startTime} to ${event.endTime} at ${event.location}<br/> 
+		      	${event.details}</div>
 		      </div>
 		  </div>
 		</div>
