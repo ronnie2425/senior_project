@@ -43,7 +43,7 @@
 		function businessHide() {
 			var x = document.getElementById("business");
     		if (x.style.display === "none") {
-        		x.style.display = "form-group";
+        		x.style.display = "";
    	 		} else {
         		x.style.display = "none";
     		}
