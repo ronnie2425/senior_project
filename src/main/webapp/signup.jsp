@@ -1,4 +1,6 @@
 <!doctype html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -37,6 +39,9 @@
     		<label for="InputBusiness">Business Name</label>
     		<input type="text" class="form-control" id="InputBusiness" placeholder="Enter Business Name">
   		</div>
+  		<div class="alert alert-warning" role="alert">
+		  ${errorMessage}
+		</div>
   		<button type="submit" class="btn btn-primary" onclick="redirect()">Sign Up</button>
 	</form>
 	<script>
