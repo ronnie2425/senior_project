@@ -44,7 +44,7 @@ public class SignUpServlet extends HttpServlet {
 
           if (user == null || email == null || pass == null || cpass == null /*|| (hasBusiness && business == null)*/) {//TODO repopulate fields and redisplay
             errorMessage = "Please fill in all fields.";
-            req.setAttribute("errorMessage", errorMessage);
+            req.setAttribute("errorMessage", hasBusiness);
             req.setAttribute("Username", user);
             req.setAttribute("Email address", email);
             req.setAttribute("Business Name", business);
