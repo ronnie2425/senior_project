@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 /*Quarantine for errors*/
+//TODO update with business variables
 
 public class SignUpServlet extends HttpServlet {
 
@@ -38,9 +39,12 @@ public class SignUpServlet extends HttpServlet {
           String cpass = getStringFromParameter(req.getParameter("Confirm Password"));
 
 
-          if (user == null || email == null || pass == null || cpass == null) {
+          if (user == null || email == null || pass == null || cpass == null || (hasBusiness && business == null)) {//TODO repopulate fields and redisplay
             errorMessage = "Please fill in all fields.";
             req.setAttribute("errorMessage", errorMessage);
+            req.setAttribute("Username", user);
+            req.setAttribute("Email address", email);
+            req.getRequestDispatcher("/_view/signUp.jsp").forward(req, resp);
           }
           
           if(!pass.equals(cpass)){

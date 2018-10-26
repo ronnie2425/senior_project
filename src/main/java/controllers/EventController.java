@@ -3,6 +3,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import database.DatabaseConnector;
 import model.Event;
 import model.User;
 
@@ -10,7 +11,7 @@ import model.User;
 
 public class EventController {
 	private Event event;
-	//DerbyDatabase db= new DerbyDatabase();
+	DatabaseConnector db= new DatabaseConnector();
 
 	public void setEvent(Event x){
 		event = x;
@@ -23,29 +24,39 @@ public class EventController {
 	
 
 	public Event findEventByStartDate(int date){
-		//return db.findEventByStartDate(date);
-		Event tmp = new Event();
-		tmp.setBusiness("fake");
-		tmp.setDescription("testing purposes only");
-		tmp.setEndDate(2);
-		tmp.setLocation("place");
-		tmp.setName("something");
-		tmp.setStartDate(1);
-		tmp.setTime(7);
-		return tmp;
+		try{
+			return db.findEventByStartDate(date);
+		}
+		catch (Exception e) {
+			Event tmp = new Event();
+			tmp.setBusiness("fake");
+			tmp.setDescription("testing purposes only");
+			tmp.setEndDate(2);
+			tmp.setLocation("place");
+			tmp.setName("something");
+			tmp.setStartDate(1);
+			tmp.setTime(7);
+			return tmp;
+		}
+		
 	}
 	
 	public Event findEventByEndDate(int date){
-		//return db.findEventByEndDate(date);
-		Event tmp = new Event();
-		tmp.setBusiness("fake");
-		tmp.setDescription("testing purposes only");
-		tmp.setEndDate(2);
-		tmp.setLocation("place");
-		tmp.setName("something");
-		tmp.setStartDate(1);
-		tmp.setTime(7);
-		return tmp;
+		try{
+			return db.findEventByEndDate(date);
+		}
+		catch (Exception e) {
+			Event tmp = new Event();
+			tmp.setBusiness("fake");
+			tmp.setDescription("testing purposes only");
+			tmp.setEndDate(2);
+			tmp.setLocation("place");
+			tmp.setName("something");
+			tmp.setStartDate(1);
+			tmp.setTime(7);
+			return tmp;
+		}
+
 	}
 	
 	public Event findByID(int id){

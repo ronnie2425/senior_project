@@ -1,6 +1,7 @@
 package controllers;
 import java.sql.SQLException;
 
+import database.DatabaseConnector;
 import model.Business;
 
 //import persist.DerbyDatabase;
@@ -8,7 +9,7 @@ import model.Business;
 
 public class BusinessController {
 	private Business business;
-	//DerbyDatabase db= new DerbyDatabase();
+	DatabaseConnector db= new DatabaseConnector();
 	
 	public void setBusiness(Business x){
 		business = x;
