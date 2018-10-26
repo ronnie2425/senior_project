@@ -25,7 +25,8 @@ public class EventController {
 
 	public Event findEventByStartDate(int date){
 		try{
-			return db.findEventByStartDate(date);
+			//TODO make this
+			return null;//db.findEventByStartDate(date);
 		}
 		catch (Exception e) {
 			Event tmp = new Event();
@@ -43,7 +44,8 @@ public class EventController {
 	
 	public Event findEventByEndDate(int date){
 		try{
-			return db.findEventByEndDate(date);
+			//TODO make this
+			return null;//db.findEventByEndDate(date);
 		}
 		catch (Exception e) {
 			Event tmp = new Event();
