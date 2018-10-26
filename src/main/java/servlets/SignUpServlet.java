@@ -37,13 +37,17 @@ public class SignUpServlet extends HttpServlet {
           String email = getStringFromParameter(req.getParameter("Email address"));
           String pass = getStringFromParameter(req.getParameter("Password"));
           String cpass = getStringFromParameter(req.getParameter("Confirm Password"));
+          String business = getStringFromParameter(req.getParameter("Business Name"));
+          String hasBusiness = req.getParameter("BusinessCheck");
 
 
-          if (user == null || email == null || pass == null || cpass == null || (hasBusiness && business == null)) {//TODO repopulate fields and redisplay
+
+          if (user == null || email == null || pass == null || cpass == null /*|| (hasBusiness && business == null)*/) {//TODO repopulate fields and redisplay
             errorMessage = "Please fill in all fields.";
             req.setAttribute("errorMessage", errorMessage);
             req.setAttribute("Username", user);
             req.setAttribute("Email address", email);
+            req.setAttribute("Business Name", business);
             req.getRequestDispatcher("/_view/signUp.jsp").forward(req, resp);
           }
           
