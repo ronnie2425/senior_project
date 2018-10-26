@@ -42,7 +42,7 @@
   		<div class="alert alert-warning" role="alert">
 		  ${errorMessage}
 		</div>
-  		<button type="submit" class="btn btn-primary" onclick="redirect()">Sign Up</button>
+  		<button type="submit" class="btn btn-primary" >Sign Up</button>
 	</form>
 	<script>
 		function businessHide() {
@@ -52,9 +52,6 @@
    	 		} else {
         		x.style.display = "none";
     		}
-		}
-		function redirect() {
-    		window.location.href = "/businessList.jsp";
 		}
 	</script>
     <!-- Optional JavaScript -->
