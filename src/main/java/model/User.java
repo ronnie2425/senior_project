@@ -49,5 +49,8 @@ public class User
 	public void setBusinesses(String[] businesses) {
 		this.businesses=businesses;
 	}
+	public void setUserId(int id) {
+		this.userID=id;
+	}
 
 } 

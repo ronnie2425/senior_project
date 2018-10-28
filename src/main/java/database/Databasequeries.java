@@ -96,7 +96,7 @@ public class Databasequeries {
 		result.setPassword(resultSet.getString(index++));
 		result.setEmail(resultSet.getString(index++));
 		//result.setBusinesses(resultSet.getString(index++));
-		result.setUserID(resultSet.getInt(index++));
+		result.setUserId(resultSet.getInt(index++));
 	}
 	
 	private void LoadBusiness(Business result, ResultSet resultSet, int index) throws SQLException{

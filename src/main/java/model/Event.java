@@ -10,9 +10,10 @@ public class Event
 	private int time;
 	private String business;
 	private String location;
+	private int id;
 	
 	public Event(String name, String description, int start_date,
-			int end_date,int time,String business,String location) {
+			int end_date,int time,String business,String location,int id) {
 		
 		this.name=name;
 		this.description=description;
@@ -21,6 +22,7 @@ public class Event
 		this.time=time;
 		this.business=business;
 		this.location=location;
+		this.id=id;
 	
 	}
 	
@@ -48,6 +50,9 @@ public class Event
 	public void setLocation(String loc){
 		this.location=loc;
 	}
+	public void setId(int id){
+		this.id=id;
+	}
 	
 	public String getName(){
 		return name;
@@ -69,6 +74,9 @@ public class Event
 	}
 	public String getLocation(){
 		return location;
+	}
+	public int getId(){
+		return id;
 	}
 	
 	

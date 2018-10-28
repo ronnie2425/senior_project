@@ -1,20 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: ModelTests.UserTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0 sec <<< FAILURE!
-ModelTests.UserTest.testSetandGetPassword()  Time elapsed: 0 sec  <<< FAILURE!
-java.lang.NullPointerException
-	at ModelTests.UserTest.testSetandGetPassword(UserTest.java:25)
-
-ModelTests.UserTest.testSetandGetEmail()  Time elapsed: 0 sec  <<< FAILURE!
-java.lang.NullPointerException
-	at ModelTests.UserTest.testSetandGetEmail(UserTest.java:30)
-
-ModelTests.UserTest.testSetandGetUsername()  Time elapsed: 0 sec  <<< FAILURE!
-java.lang.NullPointerException
-	at ModelTests.UserTest.testSetandGetUsername(UserTest.java:20)
-
-ModelTests.UserTest.testSetandGetBusinesses()  Time elapsed: 0 sec  <<< FAILURE!
-java.lang.NullPointerException
-	at ModelTests.UserTest.testSetandGetBusinesses(UserTest.java:35)
-
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
