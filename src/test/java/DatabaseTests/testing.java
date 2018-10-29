@@ -55,7 +55,7 @@ List<User> users = null;
 		String pass = "kelly";
 		String email = "iam@tired.rn";
 		
-		users = db.insertUser(user,pass,email,7);
+		users = db.insertUser(user,pass,email,8);
 		if (!users.isEmpty())
 		{
 			System.out.println("Failed to insert User");
@@ -63,7 +63,7 @@ List<User> users = null;
 		}
 		else
 		{
-			db.insertUser(user, pass, email,5);
+			db.insertUser(user, pass, email,8);
 			System.out.println("User successfully inserted");
 		}
 	}
