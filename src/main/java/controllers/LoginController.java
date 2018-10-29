@@ -81,7 +81,7 @@ public class LoginController {
 		public boolean addNewAccount(String name, String password, String email, String business) throws SQLException{
 			try{
 				//TODO make this
-				info.insertUser(name, password, email, business);
+				//info.insertUser(name, password, email, business);
 				return true;//db.addAccountIntoAccountsTable(name, password, email);
 			}
 			catch (Exception e) {

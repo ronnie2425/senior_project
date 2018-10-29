@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: ControllerTests.LoginTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 0 sec <<< FAILURE!
-testgetAccountByUsername(ControllerTests.LoginTest)  Time elapsed: 0 sec  <<< ERROR!
+Tests run: 3, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 0.004 sec <<< FAILURE!
+testgetAccountByUsername(ControllerTests.LoginTest)  Time elapsed: 0.004 sec  <<< ERROR!
 java.lang.NullPointerException
 	at ControllerTests.LoginTest.testgetAccountByUsername(LoginTest.java:32)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)

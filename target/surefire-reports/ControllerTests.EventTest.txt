@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: ControllerTests.EventTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0 sec <<< FAILURE!
-testgetByEnd(ControllerTests.EventTest)  Time elapsed: 0 sec  <<< ERROR!
+Tests run: 3, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.004 sec <<< FAILURE!
+testgetByEnd(ControllerTests.EventTest)  Time elapsed: 0.004 sec  <<< ERROR!
 java.lang.NullPointerException
 	at ControllerTests.EventTest.testgetByEnd(EventTest.java:30)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
