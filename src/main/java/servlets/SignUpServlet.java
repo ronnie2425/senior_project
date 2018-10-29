@@ -59,8 +59,9 @@ public class SignUpServlet extends HttpServlet {
         	  req.getRequestDispatcher("/_view/signUp.jsp").forward(req, resp);
           }
           else { //creds acceptable, submit and redirect to login
-            LoginController controller = new LoginController();
-            result = controller.addNewAccount(user, pass, email);
+            LoginController Lcontroller = new LoginController();
+            //hash & salt
+            result = Lcontroller.addNewAccount(user, pass, email, business);
             req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
           }
         } catch(Exception e) {
