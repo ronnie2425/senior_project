@@ -38,11 +38,11 @@ public class SignUpServlet extends HttpServlet {
           String pass = getStringFromParameter(req.getParameter("Password"));
           String cpass = getStringFromParameter(req.getParameter("Confirm Password"));
           String business = getStringFromParameter(req.getParameter("Business Name"));
-          String hasBusiness = req.getParameter("BusinessCheck");
+          Boolean hasBusiness = getBooleanFromParameter(req.getParameter("BusinessCheck"));
 
 
 
-          if (user == null || email == null || pass == null || cpass == null /*|| (hasBusiness && business == null)*/) {//TODO repopulate fields and redisplay
+          if (user == null || email == null || pass == null || cpass == null || (hasBusiness && business == null)) {
             errorMessage = "Please fill in all fields.";
             req.setAttribute("errorMessage", hasBusiness);
             req.setAttribute("Username", user);
@@ -59,9 +59,10 @@ public class SignUpServlet extends HttpServlet {
         	  req.getRequestDispatcher("/_view/signUp.jsp").forward(req, resp);
           }
           else { //creds acceptable, submit and redirect to login
-            LoginController Lcontroller = new LoginController();
-            //hash & salt
-            result = Lcontroller.addNewAccount(user, pass, email, business);
+            LoginController controller = new LoginController();
+            pass = controller.gimmeSalt(pass);
+            pass = controller.hashBrowns(pass);
+            result = controller.addNewAccount(user, pass, email, business);
             req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
           }
         } catch(Exception e) {
@@ -74,6 +75,17 @@ public class SignUpServlet extends HttpServlet {
 	}//end doPost
 	
 	
+	private Boolean getBooleanFromParameter(String parameter) {
+		if(parameter == "on"){
+			return true;
+		}
+		else if(parameter == null){
+			return false;
+		}
+		//YOU SHOULD NEVER GET TO THIS LINE
+		return null;
+	}
+
 	private String getStringFromParameter(String s) {
 		if (s == null || s.equals("")) {
 			return null;
