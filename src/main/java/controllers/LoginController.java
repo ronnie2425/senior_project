@@ -95,8 +95,11 @@ public class LoginController {
 		
 		public String gimmeSalt(String password) {
 			String salty = "";
+			String key = "sAltYwoRdS";
 			
-			
+			for(int i=0; i<password.length(); i++){
+				salty += password.charAt(i) + key.charAt(i%key.length());
+			}
 			
 			return salty;
 		}
