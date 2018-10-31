@@ -256,7 +256,37 @@ public List<Event> findEventByendDate(final int date) throws URISyntaxException{
 	}
 });
 }
-public List<Event> findByID(final int id) throws URISyntaxException{
+public List<Event> findEventByName(final String name) throws URISyntaxException{
+	return executeTransaction(new Transaction<List<Event>>(){
+		public List<Event> execute(Connection conn) throws SQLException{
+		PreparedStatement stmt = null;
+		ResultSet resultSet = null;
+		List <Event> result = new ArrayList<Event>();
+		
+		try {
+
+			stmt = conn.prepareStatement(
+					"Select * FROM events" +
+					"Where events.name = ?"
+					);
+			stmt.setString(1, name);
+			resultSet = stmt.executeQuery();
+			int index = 0;
+			while(resultSet.next()){
+				Event event = new Event();
+				loadEvent(event, resultSet, index);
+				result.add(event);
+			}
+			return result;
+		}
+		finally{
+			DBUtil.closeQuietly(conn);
+
+		}
+	}
+});
+}
+public List<Event> findEventByID(final int id) throws URISyntaxException{
 	return executeTransaction(new Transaction<List<Event>>(){
 		public List<Event> execute(Connection conn) throws SQLException{
 		PreparedStatement stmt = null;
@@ -343,6 +373,36 @@ public List<User> findAccountByName(final String name) throws URISyntaxException
 				User user = new User();
 				LoadUser(user, resultSet, index);
 				result.add(user);
+			}
+			return result;
+		}
+		finally{
+			DBUtil.closeQuietly(conn);
+
+		}
+	}
+});
+}
+public List<Business> findBusinessByName(final String name) throws URISyntaxException{
+	return executeTransaction(new Transaction<List<Business>>(){
+		public List<Business> execute(Connection conn) throws SQLException{
+		PreparedStatement stmt = null;
+		ResultSet resultSet = null;
+		List <Business> result = new ArrayList<Business>();
+		
+		try {
+
+			stmt = conn.prepareStatement(
+					"Select * FROM businesses" +
+					"Where businesses.business_name = ?"
+					);
+			stmt.setString(1, name);
+			resultSet = stmt.executeQuery();
+			int index = 0;
+			while(resultSet.next()){
+				Business bn = new Business();
+				LoadBusiness(bn, resultSet, index);
+				result.add(bn);
 			}
 			return result;
 		}
