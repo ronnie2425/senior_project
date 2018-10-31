@@ -15,7 +15,13 @@ import model.*;
 import database.DBUtil;
 
 public class Databasequeries {
-	
+	static {
+		try {
+			Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+		} catch (Exception e) {
+			throw new IllegalStateException("Could not load Derby driver");
+		}
+	}
 
 	private static final int MAX_ATTEMPTS = 10;
 
@@ -23,14 +29,14 @@ public class Databasequeries {
 		public ResultType execute(Connection conn) throws SQLException;
 	}
 	
-	public<ResultType> ResultType executeTransaction(Transaction<ResultType> txn) throws URISyntaxException {
+	public<ResultType> ResultType executeTransaction(Transaction<ResultType> txn) {
 		try {
 			return doExecuteTransaction(txn);
 		} catch (SQLException e) {
 			throw new PersistenceException("Transaction failed", e);
 		}
 	}
-	public<ResultType> ResultType doExecuteTransaction(Transaction<ResultType> txn) throws SQLException, URISyntaxException {
+	public<ResultType> ResultType doExecuteTransaction(Transaction<ResultType> txn) throws SQLException {
 		Connection conn = connect();
 
 		try {
@@ -65,8 +71,8 @@ public class Databasequeries {
 		}
 	}
 	
-	private Connection connect() throws SQLException, URISyntaxException {
-		Connection conn = DatabaseConnector.getConnection();
+	private Connection connect() throws SQLException {
+		Connection conn = DriverManager.getConnection("jdbc:derby:test.db;create=true");
 
 		// Set autocommit to false to allow execution of
 		// multiple queries/statements as part of the same transaction.
@@ -98,7 +104,8 @@ public class Databasequeries {
 		result.setName(resultSet.getString(index++));
 		result.setID(resultSet.getInt(index++));
 	}
-	public List<User> insertUser(final String username,final String password,final String email, final int userid) throws URISyntaxException
+	
+	public List<User> insertUser(final String username,final String password,final String email, final String businesses)
 	{
 		return executeTransaction(new Transaction<List<User>>()
 		{
@@ -110,12 +117,12 @@ public class Databasequeries {
 				try
 				{
 					stmt = conn.prepareStatement(
-							"insert into accounts(username,password,email,user_id)"
+							"insert into Users(username,password,email, businesses)"
 							+ "values(?,?,?,?)");
 					stmt.setString(1, username);
 					stmt.setString(2, password);
 					stmt.setString(3, email);
-					stmt.setInt(4, userid);
+					stmt.setString(4, businesses);
 					
 					stmt.executeUpdate();
 					return null;
@@ -129,7 +136,7 @@ public class Databasequeries {
 		});
 	}
 	
-	public List<Business> insertBusiness(final String name,final String location,final int id) throws URISyntaxException
+	public List<Business> insertBusiness(final String name,final String location)
 	{
 		return executeTransaction(new Transaction<List<Business>>()
 		{
@@ -141,11 +148,10 @@ public class Databasequeries {
 				try
 				{
 					stmt = conn.prepareStatement(
-							"insert into businesses(business_name, business_location,business_id)"
-							+ "values(?,?,?)");
+							"insert into Business(name, locaiton)"
+							+ "values(?,?)");
 					stmt.setString(1, name);
 					stmt.setString(2, location);
-					stmt.setInt(3, id);
 					
 					stmt.executeUpdate();
 					return null;
@@ -159,7 +165,7 @@ public class Databasequeries {
 		});
 	}
 	
-	public List<Event> insertEvent(final String name,final String description,final int start, final int end, final int time, final int business, final String location,final int id) throws URISyntaxException
+	public List<Event> insertEvent(final String name,final String description,final int start, final int end, final int time, final String business, final String location)
 	{
 		return executeTransaction(new Transaction<List<Event>>()
 		{
@@ -171,17 +177,15 @@ public class Databasequeries {
 				try
 				{
 					stmt = conn.prepareStatement(
-							"insert into events(name, event_description, start_date, end_date, time, business_id, location, event_id)"
-							+ "values(?,?,?,?,?,?,?,?)");
+							"insert into Event(name, description, start_date, end_date, time, business, location)"
+							+ "values(?,?,?,?,?,?,?)");
 					stmt.setString(1, name);
 					stmt.setString(2, description);
 					stmt.setInt(3, start);
 					stmt.setInt(4, end);
 					stmt.setInt(5, time);
-					stmt.setInt(6, business);
+					stmt.setString(6, business);
 					stmt.setString(7, location);
-					stmt.setInt(8, id);
-					
 					
 					
 					stmt.executeUpdate();
@@ -195,7 +199,7 @@ public class Databasequeries {
 			}
 		});
 	}
-	public List<Event> findEventByStartDate(final int date) throws URISyntaxException{
+	public List<Event> findEventByStartDate(final int date){
 		return executeTransaction(new Transaction<List<Event>>(){
 			public List<Event> execute(Connection conn) throws SQLException{
 			PreparedStatement stmt = null;
@@ -205,8 +209,8 @@ public class Databasequeries {
 			try {
 
 				stmt = conn.prepareStatement(
-						"Select * FROM events" +
-						"Where events.start_date = ?"
+						"Select * FROM Event" +
+						"Where Event.start_date = ?"
 						);
 				stmt.setInt(1, date);
 				resultSet = stmt.executeQuery();
@@ -226,7 +230,7 @@ public class Databasequeries {
 	});
 }
 
-public List<Event> findEventByendDate(final int date) throws URISyntaxException{
+public List<Event> findEventByendDate(final int date){
 	return executeTransaction(new Transaction<List<Event>>(){
 		public List<Event> execute(Connection conn) throws SQLException{
 		PreparedStatement stmt = null;
@@ -236,8 +240,8 @@ public List<Event> findEventByendDate(final int date) throws URISyntaxException{
 		try {
 
 			stmt = conn.prepareStatement(
-					"Select * FROM events" +
-					"Where events.end_date = ?"
+					"Select * FROM Event" +
+					"Where Event.end_date = ?"
 					);
 			stmt.setInt(1, date);
 			resultSet = stmt.executeQuery();
@@ -256,7 +260,7 @@ public List<Event> findEventByendDate(final int date) throws URISyntaxException{
 	}
 });
 }
-public List<Event> findByID(final int id) throws URISyntaxException{
+public List<Event> findByID(final int id){
 	return executeTransaction(new Transaction<List<Event>>(){
 		public List<Event> execute(Connection conn) throws SQLException{
 		PreparedStatement stmt = null;
@@ -266,8 +270,8 @@ public List<Event> findByID(final int id) throws URISyntaxException{
 		try {
 
 			stmt = conn.prepareStatement(
-					"Select * FROM events" +
-					"Where events.event_id = ?"
+					"Select * FROM Event" +
+					"Where Event.ID = ?"
 					);
 			stmt.setInt(1, id);
 			resultSet = stmt.executeQuery();
@@ -287,7 +291,7 @@ public List<Event> findByID(final int id) throws URISyntaxException{
 });
 }
 
-public List<Event> editEvent(final String name,final String description,final int start, final int end, final int time, final int business, final String location, final int id) throws URISyntaxException
+public List<Event> editEvent(final String name,final String description,final int start, final int end, final int time, final String business, final String location)
 {
 	return executeTransaction(new Transaction<List<Event>>()
 	{
@@ -299,17 +303,15 @@ public List<Event> editEvent(final String name,final String description,final in
 			try
 			{
 				stmt = conn.prepareStatement(
-						"insert into events(name, event_description, start_date, end_date, time, business_id, location, event_id)"
-						+ "values(?,?,?,?,?,?,?,?)");
+						"insert into Event(name, description, start_date, end_date, time, business, location)"
+						+ "values(?,?,?,?,?,?,?)");
 				stmt.setString(1, name);
 				stmt.setString(2, description);
 				stmt.setInt(3, start);
 				stmt.setInt(4, end);
 				stmt.setInt(5, time);
-				stmt.setInt(6, business);
+				stmt.setString(6, business);
 				stmt.setString(7, location);
-				stmt.setInt(8, id);
-				
 				
 				
 				stmt.executeUpdate();
@@ -323,7 +325,7 @@ public List<Event> editEvent(final String name,final String description,final in
 		}
 	});
 }
-public List<User> findAccountByName(final String name) throws URISyntaxException{
+public List<User> findAccountByName(final String name){
 	return executeTransaction(new Transaction<List<User>>(){
 		public List<User> execute(Connection conn) throws SQLException{
 		PreparedStatement stmt = null;
@@ -333,8 +335,8 @@ public List<User> findAccountByName(final String name) throws URISyntaxException
 		try {
 
 			stmt = conn.prepareStatement(
-					"Select * FROM accounts" +
-					"Where accounts.username = ?"
+					"Select * FROM User" +
+					"Where User.username = ?"
 					);
 			stmt.setString(1, name);
 			resultSet = stmt.executeQuery();
@@ -353,7 +355,7 @@ public List<User> findAccountByName(final String name) throws URISyntaxException
 	}
 });
 }
-public List<String> getBusinesssFromAccount(final String name) throws URISyntaxException{
+public List<String> getBusinesssFromAccount(final String name){
 	return executeTransaction(new Transaction<List<String>>(){
 		public List<String> execute(Connection conn) throws SQLException{
 		PreparedStatement stmt = null;
@@ -363,8 +365,8 @@ public List<String> getBusinesssFromAccount(final String name) throws URISyntaxE
 		try {
 
 			stmt = conn.prepareStatement(
-					"Select business FROM accounts" +
-					"Where accounts.username = ?"
+					"Select business FROM User" +
+					"Where User.username = ?"
 					);
 			stmt.setString(1, name);
 			resultSet = stmt.executeQuery();
@@ -382,8 +384,31 @@ public List<String> getBusinesssFromAccount(final String name) throws URISyntaxE
 });
 }
 
-}
+public String hashword(final String password){
+	return executeTransaction(new Transaction<String>(){
+		public String execute(Connection conn) throws SQLException{
+			PreparedStatement stmt = null;
+			ResultSet resultSet = null;
+			String result = null;
+			
+			try {
+				stmt = conn.prepareStatement(
+						"Select SHA2(?, 512)"
+						);
+				stmt.setString(1, password);
+				resultSet = stmt.executeQuery();
+				result = resultSet.getString(0);
+				return result;
+			}
+			finally{
+				DBUtil.closeQuietly(conn);
 
+			}
+		}
+		
+	});
+}
+}
 
 //verifyAccount not sure where to go about this one
 
