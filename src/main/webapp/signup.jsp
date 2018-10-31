@@ -15,29 +15,29 @@
   <body>
     <form>
     	<div class="form-group">
-		    <label for="InputEmail">Email address</label>
-		    <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+		    <label for="Email address">Email address</label>
+		    <input type="email" class="form-control" id="Email address" aria-describedby="emailHelp" placeholder="Enter email">
 		    <small id="emailHelp" class="form-text text-muted">We'll probably never share your email with anyone else.</small>
 		</div>
   		<div class="form-group">
-    		<label for="InputUsername">Username</label>
-    		<input type="text" class="form-control" id="InputUsername" placeholder="Enter Username">
+    		<label for="Username">Username</label>
+    		<input type="text" class="form-control" id="Username" placeholder="Enter Username">
   		</div>
  		 <div class="form-group">
-    		<label for="InputPassword1">Password</label>
-    		<input type="password" class="form-control" id="InputPassword1" placeholder="Password">
+    		<label for="Password">Password</label>
+    		<input type="password" class="form-control" id="Password" placeholder="Password">
   		</div>
   		<div class="form-group">
-    		<label for="InputPassword2">Confirm Password</label>
-    		<input type="password" class="form-control" id="InputPassword2" placeholder="Confirm Password">
+    		<label for="Confirm Password">Confirm Password</label>
+    		<input type="password" class="form-control" id="Confirm Password" placeholder="Confirm Password">
   		</div>
   		<div class="form-group form-check ative">
     		<input type="checkbox" class="form-check-input" id="BusinessCheck" checked="checked">
     		<label class="form-check-label active" onclick="businessHide()" for="BusinessCheck">Creating a Business Account</label>
   		</div>
   		<div id="business" class="form-group">
-    		<label for="InputBusiness">Business Name</label>
-    		<input type="text" class="form-control" id="InputBusiness" placeholder="Enter Business Name">
+    		<label for="Business Name">Business Name</label>
+    		<input type="text" class="form-control" id="Business Name" placeholder="Enter Business Name">
   		</div>
   		<div class="alert alert-warning" role="alert">
 		  ${errorMessage}
