@@ -260,7 +260,7 @@ public List<Event> findEventByendDate(final int date){
 	}
 });
 }
-<<<<<<< HEAD
+
 public List<Event> findEventByName(final String name) throws URISyntaxException{
 	return executeTransaction(new Transaction<List<Event>>(){
 		public List<Event> execute(Connection conn) throws SQLException{
@@ -291,10 +291,9 @@ public List<Event> findEventByName(final String name) throws URISyntaxException{
 	}
 });
 }
-public List<Event> findEventByID(final int id) throws URISyntaxException{
-=======
-public List<Event> findByID(final int id){
->>>>>>> branch 'master' of https://github.com/ronnie2425/senior_project.git
+
+
+public List<Event> findEventByID(final int id){
 	return executeTransaction(new Transaction<List<Event>>(){
 		public List<Event> execute(Connection conn) throws SQLException{
 		PreparedStatement stmt = null;
@@ -324,6 +323,7 @@ public List<Event> findByID(final int id){
 	}
 });
 }
+
 
 public List<Event> editEvent(final String name,final String description,final int start, final int end, final int time, final String business, final String location)
 {
@@ -389,7 +389,7 @@ public List<User> findAccountByName(final String name){
 	}
 });
 }
-<<<<<<< HEAD
+
 public List<Business> findBusinessByName(final String name) throws URISyntaxException{
 	return executeTransaction(new Transaction<List<Business>>(){
 		public List<Business> execute(Connection conn) throws SQLException{
@@ -421,9 +421,8 @@ public List<Business> findBusinessByName(final String name) throws URISyntaxExce
 });
 }
 public List<String> getBusinesssFromAccount(final String name) throws URISyntaxException{
-=======
-public List<String> getBusinesssFromAccount(final String name){
->>>>>>> branch 'master' of https://github.com/ronnie2425/senior_project.git
+
+
 	return executeTransaction(new Transaction<List<String>>(){
 		public List<String> execute(Connection conn) throws SQLException{
 		PreparedStatement stmt = null;
