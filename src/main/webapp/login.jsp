@@ -22,7 +22,10 @@
     		<label for="Password">Password</label>
     		<input type="password" class="form-control" id="Password" placeholder="Password">
   		</div>
-  		<button type="submit" class="btn btn-primary" onclick="redirect()">Login</button>
+  		<div class="alert alert-warning" role="alert">
+		  ${errorMessage}
+		</div>
+  		<button type="submit" class="btn btn-primary">Login</button>
 	</form>
 	<script>
 		function redirect() {
