@@ -39,9 +39,11 @@
     		<label for="Business Name">Business Name</label>
     		<input type="text" class="form-control" id="Business Name" placeholder="Enter Business Name">
   		</div>
-  		<div class="alert alert-warning" role="alert">
-		  ${errorMessage}
-		</div>
+  		<c:if test="${! empty errorMessage}">
+  			<div class="alert alert-warning" role="alert">
+		  		${errorMessage}
+			</div>
+		</c:if>
   		<button type="submit" class="btn btn-primary" >Sign Up</button>
 	</form>
 	<script>
