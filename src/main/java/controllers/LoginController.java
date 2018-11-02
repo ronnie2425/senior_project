@@ -13,6 +13,7 @@ import java.sql.SQLException;
 //import persist.DerbyDatabase;
 
 
+
 public class LoginController {
 	private User login;
 	DatabaseConnector db= new DatabaseConnector();
@@ -26,51 +27,34 @@ public class LoginController {
 			return login;
 		}
 	
-		public User findAccountByName(String name) throws SQLException{
+		public List<User> findAccountByName(String name) throws SQLException{
 			try{
 				//TODO make this
-				return null;//db.findAccountByUsername(name);
+				return info.findAccountByName(name);
 			}
 			catch (Exception e) {
-				User tmp = new User();;
-				tmp.setPassword("tmpPass");
-				tmp.setUsername("test");
-				tmp.setEmail("test@insertProvier.com");
-				return tmp;
-			}
-			
-		}
-		
-		public User getAccountbyUser(String name) throws SQLException{
-			try{
-				//TODO make this
-				login=null;//db.findAccountByUsername(name);
-				return login;
-			}
-			catch (Exception e) {
-				return login;
+				return null;
 			}
 			
 		}
 		
 		public boolean verifyAccount(String name, String password) throws SQLException{
 			try{
-				//TODO make this
-				return false;//db.verifyAccountFromAccountsTableByUsernameAndPassword(name, password);
+				String test = info.findAccountByName(name).get(0).getPassword();
+				String pass = hashBrowns(gimmeSalt(password));
+				if(test == pass){
+					return true;
+				}
 			}
 			catch (Exception e) {
-				User tmp = new User();
-				tmp.setPassword("tmpPass");
-				tmp.setUsername("test");
-				if( tmp.getUsername() != name || tmp.getPassword() != password){
-					return false;
-				}
-				return true;
+				return false;
+			
 			}
+			return false;
 			
 		}
 		
-		//TODO wtf is this supposed to do?
+		//TODO wtf is this supposed to do? A: get the list of businesses linked to an account.
 		public String[] getBusinesssFromAccount(String username){
 			//TODO database call to get the businesses linked to an account
 			
@@ -81,8 +65,9 @@ public class LoginController {
 		public boolean addNewAccount(String name, String password, String email, String business) throws SQLException{
 			try{
 				//TODO make this
-				//info.insertUser(name, password, email, business);
-				return true;//db.addAccountIntoAccountsTable(name, password, email);
+				password =  hashBrowns(gimmeSalt(password));
+				info.insertUser(name, password, email, business);
+				return true;
 			}
 			catch (Exception e) {
 				return false;
@@ -90,7 +75,7 @@ public class LoginController {
 		}
 		
 		public String hashBrowns(String password) {
-			return password;
+			return info.hashword(password);
 		}
 		
 		public String gimmeSalt(String password) {
