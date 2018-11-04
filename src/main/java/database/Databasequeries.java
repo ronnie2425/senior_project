@@ -50,8 +50,6 @@ public class Databasequeries {
 	public<ResultType> ResultType doExecuteTransaction(Transaction<ResultType> txn) throws SQLException, URISyntaxException {
 		Connection conn;
 			conn = connect();
-		
-		
 		try {
 			int numAttempts = 0;
 			boolean success = false;
@@ -110,7 +108,7 @@ public class Databasequeries {
 		result.setID(resultSet.getInt(index++));
 	}
 	
-	public List<User> insertUser(final String username,final String password,final String email, final int id) throws URISyntaxException
+	public List<User> insertUser(final String username,final String password,final String email, final String business) throws URISyntaxException
 	{
 		return executeTransaction(new Transaction<List<User>>()
 		{
@@ -127,7 +125,7 @@ public class Databasequeries {
 					stmt.setString(1, username);
 					stmt.setString(2, password);
 					stmt.setString(3, email);
-					stmt.setInt(4, id);
+					stmt.setString(4, business);
 					
 					stmt.executeUpdate();
 					return null;
@@ -140,7 +138,33 @@ public class Databasequeries {
 			}
 		});
 	}
-	
+	public List<User> removeUser(final String username) throws URISyntaxException
+	{
+		return executeTransaction(new Transaction<List<User>>()
+		{
+			public List<User> execute(Connection conn) throws SQLException
+			{
+				PreparedStatement stmt = null;
+				ResultSet res = null;
+				
+				try
+				{
+					stmt = conn.prepareStatement(
+							"delete from Users"
+							+ "where User.username = ?");
+					stmt.setString(1, username);
+					
+					stmt.executeUpdate();
+					return null;
+				}
+				finally
+				{
+					DBUtil.closeQuietly(stmt);
+					DBUtil.closeQuietly(res);
+				}
+			}
+		});
+	}
 	public List<Business> insertBusiness(final String name,final String location,final int id) throws URISyntaxException
 	{
 		return executeTransaction(new Transaction<List<Business>>()
@@ -170,7 +194,32 @@ public class Databasequeries {
 			}
 		});
 	}
-	
+	public List<Business> removeBusiness(final String name) throws URISyntaxException
+	{
+		return executeTransaction(new Transaction<List<Business>>()
+		{
+			public List<Business> execute(Connection conn) throws SQLException
+			{
+				PreparedStatement stmt = null;
+				ResultSet res = null;
+				
+				try
+				{
+					stmt = conn.prepareStatement(
+							"delete from business"+
+							"where business.name = ?");
+					stmt.setString(1, name);
+					stmt.executeUpdate();
+					return null;
+				}
+				finally
+				{
+					DBUtil.closeQuietly(stmt);
+					DBUtil.closeQuietly(res);
+				}
+			}
+		});
+	}
 	public List<Event> insertEvent(final String name,final String description,final int start, final int end, final int time, final int business, final String location,final int id) throws URISyntaxException
 	{
 		return executeTransaction(new Transaction<List<Event>>()
@@ -193,6 +242,34 @@ public class Databasequeries {
 					stmt.setInt(6, business);
 					stmt.setString(7, location);
 					stmt.setInt(8, id);
+					
+					
+					stmt.executeUpdate();
+					return null;
+				}
+				finally
+				{
+					DBUtil.closeQuietly(stmt);
+					DBUtil.closeQuietly(res);
+				}
+			}
+		});
+	}
+	public List<Event> removeEvent(final String name,final String description,final int start, final int end, final int time, final String business, final String location) throws URISyntaxException
+	{
+		return executeTransaction(new Transaction<List<Event>>()
+		{
+			public List<Event> execute(Connection conn) throws SQLException
+			{
+				PreparedStatement stmt = null;
+				ResultSet res = null;
+				
+				try
+				{
+					stmt = conn.prepareStatement(
+							"delete from event" +
+							"where event.name = ?");
+					stmt.setString(1, name);
 					
 					
 					stmt.executeUpdate();

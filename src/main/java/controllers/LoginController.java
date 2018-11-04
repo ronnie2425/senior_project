@@ -1,4 +1,5 @@
 package controllers;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +75,7 @@ public class LoginController {
 			}
 		}
 		
-		public String hashBrowns(String password) {
+		public String hashBrowns(String password) throws URISyntaxException {
 			return info.hashword(password);
 		}
 		
