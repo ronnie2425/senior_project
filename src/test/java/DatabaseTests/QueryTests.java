@@ -10,8 +10,6 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import database.*;
-//import database.Databasequeries.Transaction;
 
 import java.net.URISyntaxException;
 import java.sql.Connection;
@@ -28,15 +26,13 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import database.*;
 import model.*;
+import database.*;
 
 
 public class QueryTests {
 
 	private Databasequeries db = null;
-	
-	
 	
 	
 	List<User> users = null;
@@ -86,6 +82,8 @@ public class QueryTests {
 		{
 			db.insertUser(user, pass, email,id);
 			System.out.println("User successfully inserted");
+			db.removeUser(user);
+		
 		}
 		
 	}
@@ -100,7 +98,7 @@ public class QueryTests {
 		int id=5;
 		
 		businesses = db.findBusinessByName(business);
-		if (!users.isEmpty())
+		if (!businesses.isEmpty())
 		{
 			System.out.println("Failed to insert Business");
 			fail("Business already exists");
@@ -109,14 +107,127 @@ public class QueryTests {
 		{
 			db.insertBusiness(business,location,id);
 			System.out.println("Business successfully inserted");
-		}
+			db.removeBusiness(business);
+	}
 		
 	}
 	
-//	
+	
+	@Test
+	public void TestinsertEvent() throws URISyntaxException{
+		System.out.println("\n*** Testing InsertEvent ***");
+		
+		String name="Event of Fun";
+		String description="You WILL enjoy the event";
+		int start=12418;
+		int end=12518;
+		int time=1800;
+		String business="Shortbus Inc";
+		String location="Nowhere";
+		int id=5;
+
+		events = db.findEventByName(name);
+		if (!events.isEmpty())
+		{
+			System.out.println("Failed to insert Event");
+			fail("Event already exists");
+		}
+		else
+		{
+			db.insertEvent(name,description,start,end,time,business,location,id);
+			System.out.println("Event successfully inserted");
+			db.removeEvent(name);
+		}
+	}
+
+	@Test
+	public void TestfindEventByStartDate() throws URISyntaxException{
+		System.out.println("\n*** Testing findEventByStartDate ***");
+		String name="Event of Fun";
+		String description="You WILL enjoy the event";
+		int start=12418;
+		int end=12518;
+		int time=1800;
+		String business="Shortbus Inc";
+		String location="Nowhere";
+		int id=5;
+		db.insertEvent(name,description,start,end,time,business,location,id);
+		
+		events = db.findEventByStartDate(12418);
+		db.removeEvent(name);
+		if (events.isEmpty())
+		{
+			System.out.println("Ah fuck, you goofed");
+			fail("No event found with date <" + start + ">");
+		}
+		else
+		{
+			System.out.println("Event with start date <" + start + "> found!");
+		}
+		
+		
+	}
+	
+//
+	@Test
+	public void TestfindEventByEndDate() throws URISyntaxException{
+		System.out.println("\n*** Testing findEventByEndDate ***");
+		
+		String name="Event of Fun";
+		String description="You WILL enjoy the event";
+		int start=12418;
+		int end=12518;
+		int time=1800;
+		String business="Shortbus Inc";
+		String location="Nowhere";
+		int id=5;
+		db.insertEvent(name,description,start,end,time,business,location,id);
+		
+		int date = 12518;
+		events = db.findEventByEndDate(12518);
+		db.removeEvent(name);
+		if (events.isEmpty())
+		{
+			System.out.println("Ah fuck, you goofed");
+			fail("No event found with date <" + date + ">");
+		}
+		else
+		{
+			System.out.println("Event with end date <" + date + "> found!");
+		}
+	}
+//
+	@Test
+	public void TestfindEventByID() throws URISyntaxException{
+		System.out.println("\n*** Testing findEventById ***");
+		String name="Event of Fun";
+		String description="You WILL enjoy the event";
+		int start=12418;
+		int end=12518;
+		int time=1800;
+		String business="Shortbus Inc";
+		String location="Nowhere";
+		int id=5;
+	
+		db.insertEvent(name,description,start,end,time,business,location,id);
+		
+		events = db.findEventByID(5);
+		db.removeEvent(name);
+		
+		if (events.isEmpty())
+		{
+			System.out.println("Ah fuck, you goofed");
+			fail("No event found with date <" + id + ">");
+		}
+		else
+		{
+			System.out.println("Event with id <" + id + "> found!");
+		}
+	}
+
 //	@Test
-//	public void TestinsertEvent() throws URISyntaxException{
-//		System.out.println("\n*** Testing InsertEvent ***");
+//	public void TesteditEvent() throws URISyntaxException{
+//		System.out.println("\n*** Testing EditEvent ***");
 //		
 //		String name="Event of Fun";
 //		String description="You WILL enjoy the event";
@@ -135,131 +246,47 @@ public class QueryTests {
 //		}
 //		else
 //		{
-//			db.insertEvent(name,description,start,end,time,business,location,id);
-//			System.out.println("Event successfully inserted");
-//		}
-//	}
-
-//	@Test
-//	public void TestfindEventByStartDate() throws URISyntaxException{
-//		System.out.println("\n*** Testing findEventByStartDate ***");
-//		
-//		int date = 12418;
-//		events = db.findEventByStartDate(12418);
-//		if (events.isEmpty())
-//		{
-//			System.out.println("Ah fuck, you goofed");
-//			fail("No event found with date <" + date + ">");
-//		}
-//		else
-//		{
-//			System.out.println("Event with start date <" + date + "> found!");
-//		}
-//		
-//	}
-//	
-//
-//	@Test
-//	public void TestfindEventByEndDate() throws URISyntaxException{
-//		System.out.println("\n*** Testing findEventByEndDate ***");
-//		
-//		int date = 12518;
-//		events = db.findEventByEndDate(12518);
-//		if (events.isEmpty())
-//		{
-//			System.out.println("Ah fuck, you goofed");
-//			fail("No event found with date <" + date + ">");
-//		}
-//		else
-//		{
-//			System.out.println("Event with end date <" + date + "> found!");
+//			db.editEvent(name,description,start,end,time,business,location,id);
+//			System.out.println("Event successfully edited");
 //		}
 //	}
 //
-//	@Test
-//	public void TestfindEventByID() throws URISyntaxException{
-//		System.out.println("\n*** Testing findEventById ***");
-//		
-//		int id = 5;
-//		events = db.findEventByID(5);
-//		if (events.isEmpty())
-//		{
-//			System.out.println("Ah fuck, you goofed");
-//			fail("No event found with date <" + id + ">");
-//		}
-//		else
-//		{
-//			System.out.println("Event with id <" + id + "> found!");
-//		}
-//	}
 //
-////	@Test
-////	public void TesteditEvent() throws URISyntaxException{
-////		System.out.println("\n*** Testing EditEvent ***");
-////		
-////		String name="Event of Fun";
-////		String description="You WILL enjoy the event";
-////		int start=12418;
-////		int end=12518;
-////		int time=1800;
-////		int business=5;
-////		String location="Nowhere";
-////		int id=5;
-////		
-////		events = db.findEventByName(name);
-////		if (!events.isEmpty())
-////		{
-////			System.out.println("Failed to insert Event");
-////			fail("Event already exists");
-////		}
-////		else
-////		{
-////			db.editEvent(name,description,start,end,time,business,location,id);
-////			System.out.println("Event successfully edited");
-////		}
-////	}
-//
-//	@Test
-//	public void TestfindAccountByName() throws URISyntaxException{
-//		System.out.println("\n*** Testing FindUser ***");
-//		
-//		String username = "ricardon";
-//		users = db.findAccountByName(username);
-//		if (users.isEmpty())
-//		{
-//			System.out.println("Ah fuck, you goofed");
-//			fail("No user found with username <" + username + ">");
-//		}
-//		else
-//		{
-//			System.out.println("User <" + username + "> found!");
-//		}
-//		
-//	}
-//
-////	@Test
-////	public void TestgetBusinesssFromAccount() throws URISyntaxException{
-////		System.out.println("\n*** Testing FindBusinesssFromAccount ***");
-////		
-////		String username = "ricardon";
-////		users = db.findAccountByName(username);
-////		if (users.isEmpty())
-////		{
-////			System.out.println("Ah fuck, you goofed");
-////			fail("No user found with username <" + username + ">");
-////		}
-////		else
-////		{
-////			System.out.println("User <" + username + "> found!");
-////		}
-////		
-////	}
-////	
-//
-//
-//
-
-
+	@Test
+	public void TestgetBusinesssFromAccount() throws URISyntaxException{
+		System.out.println("\n*** Testing FindBusinesssFromAccount ***");
+		String user = "ricardon";
+		String pass = "kelly";
+		String email = "iam@tired.rn";
+		int u_id=5;
+		db.removeUser(user);
+		db.insertUser(user, pass, email,u_id);
+		
+		String business = "Shortbus Inc";
+		String location = "Back of the shortbus";
+		int b_id=5;
+		db.removeBusiness(business);
+		db.insertBusiness(business,location,b_id);
+		
+		db.insertRelation(business,user);
+		
+		
 	
-	
-}
+		businesses = db.findBusinesssFromAccount(user);
+		db.removeBusiness(business);
+		db.removeUser(user);
+		db.removeRelation(user,business);
+		
+		if (business.isEmpty())
+		{
+			System.out.println("Ah fuck, you goofed");
+			fail("No business found with user <" + user + ">");
+		}
+		else
+		{
+			System.out.println("Business <" + business + "> found!");
+		}
+		
+	}
+	}
+
