@@ -220,7 +220,7 @@ public class Databasequeries {
 			}
 		});
 	}
-	public List<Event> insertEvent(final String name,final String description,final int start, final int end, final int time, final int business, final String location,final int id) throws URISyntaxException
+	public List<Event> insertEvent(final String name,final String description,final int start, final int end, final int time, final int business, final String location) throws URISyntaxException
 	{
 		return executeTransaction(new Transaction<List<Event>>()
 		{
@@ -233,7 +233,7 @@ public class Databasequeries {
 				{
 					stmt = conn.prepareStatement(
 							"insert into Event(name, event_description, start_date, end_date, time, business, location, event_id)"
-							+ "values(?,?,?,?,?,?,?)");
+							+ "values(?,?,?,?,?,?)");
 					stmt.setString(1, name);
 					stmt.setString(2, description);
 					stmt.setInt(3, start);
@@ -241,7 +241,6 @@ public class Databasequeries {
 					stmt.setInt(5, time);
 					stmt.setInt(6, business);
 					stmt.setString(7, location);
-					stmt.setInt(8, id);
 					
 					
 					stmt.executeUpdate();
@@ -409,7 +408,7 @@ public List<Event> findEventByID(final int id) throws URISyntaxException{
 }
 
 
-public List<Event> editEvent(final String name,final String description,final int start, final int end, final int time, final int business, final String location,final int id) throws URISyntaxException
+public List<Event> editEvent(final String name,final String description,final int start, final int end, final int time, final String business, final String location,final int id) throws URISyntaxException
 {
 	return executeTransaction(new Transaction<List<Event>>()
 	{
@@ -428,7 +427,7 @@ public List<Event> editEvent(final String name,final String description,final in
 				stmt.setInt(3, start);
 				stmt.setInt(4, end);
 				stmt.setInt(5, time);
-				stmt.setInt(6, business);
+				stmt.setString(6, business);
 				stmt.setString(7, location);
 				stmt.setInt(8, id);
 				
@@ -560,6 +559,12 @@ public String hashword(final String password) throws URISyntaxException{
 		}
 		
 	});
+}
+
+public void insertEvent(String name, String description, int start_date, int end_date, int time, String business,
+		String location) {
+	// TODO Auto-generated method stub
+	
 }
 }
 

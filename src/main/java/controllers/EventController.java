@@ -6,13 +6,13 @@ import java.util.List;
 import database.DatabaseConnector;
 import model.Event;
 import model.User;
-
+import database.Databasequeries;
 
 
 public class EventController {
 	private Event event;
 	DatabaseConnector db= new DatabaseConnector();
-
+	Databasequeries queries = new Databasequeries();
 	public void setEvent(Event x){
 		event = x;
 	}
@@ -23,59 +23,54 @@ public class EventController {
 	
 	
 
-	public Event findEventByStartDate(int date){
+	public List<Event> findEventByStartDate(int date){
 		try{
 			//TODO make this
-			return null;//db.findEventByStartDate(date);
+			return queries.findEventByStartDate(date);//db.findEventByStartDate(date);
 		}
 		catch (Exception e) {
-			Event tmp = new Event();
-			tmp.setBusiness("fake");
-			tmp.setDescription("testing purposes only");
-			tmp.setEndDate(2);
-			tmp.setLocation("place");
-			tmp.setName("something");
-			tmp.setStartDate(1);
-			tmp.setTime(7);
-			return tmp;
+			
+			return null;
 		}
 		
 	}
 	
-	public Event findEventByEndDate(int date){
+	public List<Event> findEventByEndDate(int date){
 		try{
 			//TODO make this
-			return null;//db.findEventByEndDate(date);
+			return queries.findEventByEndDate(date);//db.findEventByEndDate(date);
 		}
 		catch (Exception e) {
-			Event tmp = new Event();
-			tmp.setBusiness("fake");
-			tmp.setDescription("testing purposes only");
-			tmp.setEndDate(2);
-			tmp.setLocation("place");
-			tmp.setName("something");
-			tmp.setStartDate(1);
-			tmp.setTime(7);
-			return tmp;
+			return null;
 		}
 
 	}
 	
 	public Event findByID(int id){
-		Event tmp = new Event();
-		tmp.setBusiness("fake");
-		tmp.setDescription("testing purposes only");
-		tmp.setEndDate(2);
-		tmp.setLocation("place");
-		tmp.setName("something");
-		tmp.setStartDate(1);
-		tmp.setTime(7);
-		return tmp;
+		try{
+			//TODO make this
+			return (Event) queries.findEventByID(id);//db.findEventByEndDate(date);
+		}
+		catch (Exception e) {
+			return null;
+		
+	}
 	}
 	public boolean editEvent(int id, String name, String description, int start_date, int end_date,int time,String business,String location){
 		try{
 			//TODO: update existing event with new information
-			//db.editEvent("info");
+			queries.editEvent(name, description, start_date, end_date, time, business, location, id);
+			return true;
+		}//end try
+		catch (Exception e) {
+			return false;
+		}//end catch
+		
+	}
+	public boolean AddEvent(String name, String description, int start_date, int end_date,int time,String business,String location){
+		try{
+			//TODO: Lookup Bussiness_ID by business name string (business)
+			queries.insertEvent(name, description, start_date, end_date, time, business, location);
 		}//end try
 		catch (Exception e) {
 			return false;
@@ -83,11 +78,13 @@ public class EventController {
 		
 		return true;
 		
-	}
-	public Boolean AddEvent(String name, String description, int start_date, int end_date,int time,String business,String location){
+	}	
+	
+	
+	boolean removeEvent(String name, String description, int start_date, int end_date,int time,String business,String location){
 		try{
 			//TODO: Lookup Bussiness_ID by business name string (business)
-			//db.addEvent(name, description, start, end);
+			queries.removeEvent(name, description, start_date, end_date, time, business, location);
 		}//end try
 		catch (Exception e) {
 			return false;
