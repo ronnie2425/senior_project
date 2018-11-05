@@ -1,0 +1,44 @@
+#background{
+	margin: 0 auto;
+	padding-bottom: 30px;
+	background: #ff8f66;
+	border: 2px solid black;
+}
+.navbar{
+	list-style-type:none;
+	margin:0;
+	margin-bottom:15px;
+	padding:0;
+	overflow:hidden;
+	background-color:black;
+}
+li{
+	float:left;
+	list-style-type:none;
+	display:block;
+}
+li a{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	display:block;
+	color:orange;
+	text-align:center;
+	padding:20px 20px;
+	text-decoration: none;
+}
+li a:hover{
+	background-color:grey;
+}
+#welcome
+{
+	border-top:5px solid black;
+	border-bottom:5px solid black;
+	font-size: 30px;
+	text-align:center;
+	font-variant:small-caps;
+	margin-bottom:20px;
+}	
+#welcomememe
+{
+	padding: 25px 25px
+}
