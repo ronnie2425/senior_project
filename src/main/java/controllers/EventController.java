@@ -56,21 +56,38 @@ public class EventController {
 		
 	}
 	}
-	public boolean editEvent(int id, String name, String description, int start_date, int end_date,int time,String business,String location){
-		try{
-			//TODO: update existing event with new information
-			queries.editEvent(name, description, start_date, end_date, time, business, location, id);
-			return true;
-		}//end try
-		catch (Exception e) {
-			return false;
-		}//end catch
-		
-	}
+//	public boolean editEvent(int id, String name, String description, int start_date, int end_date,int time,String business,String location){
+//		try{
+//			//TODO: update existing event with new information
+//			queries.editEvent(name, description, start_date, end_date, time, business, location, id);
+//			return true;
+//		}//end try
+//		catch (Exception e) {
+//			return false;
+//		}//end catch
+//		
+//	}
 	public boolean AddEvent(String name, String description, int start_date, int end_date,int time,String business,String location){
 		try{
 			//TODO: Lookup Bussiness_ID by business name string (business)
-			queries.insertEvent(name, description, start_date, end_date, time, business, location);
+			int id =(int) (Math.random()*10000);
+			boolean exist=true;
+			List<Event> events = null;
+			int count=1;
+			
+			while(exist=true) {
+				events = queries.findEventByID(id);
+				if (!events.isEmpty())
+				{
+					break;
+				
+				}
+				else {
+					id=((id+1)*count)%10000;
+					count++;
+				}
+			}
+			queries.insertEvent(name, description, start_date, end_date, time, business, location,id);
 		}//end try
 		catch (Exception e) {
 			return false;
@@ -84,7 +101,7 @@ public class EventController {
 	boolean removeEvent(String name, String description, int start_date, int end_date,int time,String business,String location){
 		try{
 			//TODO: Lookup Bussiness_ID by business name string (business)
-			queries.removeEvent(name, description, start_date, end_date, time, business, location);
+			queries.removeEvent(name, business);
 		}//end try
 		catch (Exception e) {
 			return false;

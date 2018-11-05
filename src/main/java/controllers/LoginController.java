@@ -1,4 +1,6 @@
 package controllers;
+import static org.junit.Assert.fail;
+
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -66,8 +68,26 @@ public class LoginController {
 		public boolean addNewAccount(String name, String password, String email, String business) throws SQLException{
 			try{
 				//TODO make this
+				int id =(int) (Math.random()*10000);
+				boolean exist=true;
+				List<User> users = null;
+				int count=1;
+				
+				while(exist=true) {
+					users = info.findAccountById(id);
+					if (!users.isEmpty())
+					{
+						break;
+					
+					}
+					else {
+						id=((id+1)*count)%10000;
+						count++;
+					}
+				}
+				
 				password =  hashBrowns(gimmeSalt(password));
-				info.insertUser(name, password, email, business);
+				info.insertUser(name, password, email, id);
 				return true;
 			}
 			catch (Exception e) {

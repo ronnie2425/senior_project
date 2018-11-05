@@ -136,7 +136,7 @@ public class QueryTests {
 		{
 			db.insertEvent(name,description,start,end,time,business,location,id);
 			System.out.println("Event successfully inserted");
-			db.removeEvent(name);
+			db.removeEvent(name,business);
 		}
 	}
 
@@ -154,7 +154,7 @@ public class QueryTests {
 		db.insertEvent(name,description,start,end,time,business,location,id);
 		
 		events = db.findEventByStartDate(12418);
-		db.removeEvent(name);
+		db.removeEvent(name,business);
 		if (events.isEmpty())
 		{
 			System.out.println("Ah fuck, you goofed");
@@ -185,7 +185,7 @@ public class QueryTests {
 		
 		int date = 12518;
 		events = db.findEventByEndDate(12518);
-		db.removeEvent(name);
+		db.removeEvent(name,business);
 		if (events.isEmpty())
 		{
 			System.out.println("Ah fuck, you goofed");
@@ -212,7 +212,7 @@ public class QueryTests {
 		db.insertEvent(name,description,start,end,time,business,location,id);
 		
 		events = db.findEventByID(5);
-		db.removeEvent(name);
+		db.removeEvent(name,business);
 		
 		if (events.isEmpty())
 		{

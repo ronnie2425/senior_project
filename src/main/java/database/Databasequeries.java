@@ -264,7 +264,7 @@ public List<User> insertUser(final String username,final String password,final S
 			}
 		});
 	}
-	public List<Event> removeEvent(final String name) throws URISyntaxException
+	public List<Event> removeEvent(final String name,final String business) throws URISyntaxException
 	{
 		return executeTransaction(new Transaction<List<Event>>()
 		{
@@ -277,8 +277,9 @@ public List<User> insertUser(final String username,final String password,final S
 				{
 					stmt = conn.prepareStatement(
 							"delete from events " +
-							"where name = ?");
+							"where name = ? AND business = ?");
 					stmt.setString(1, name);
+					stmt.setString(2, business);
 					
 					
 					stmt.executeUpdate();
@@ -622,7 +623,60 @@ public List<User> findAccountByName(final String name) throws URISyntaxException
 		}
 	});
 }
-//
+
+public List<User> findAccountById(final int id) throws URISyntaxException{
+	return executeTransaction(new Transaction<List<User>>() {
+		//@Override
+		public List<User> execute(Connection conn) throws SQLException {
+			PreparedStatement stmt = null;
+			ResultSet resultSet = null;
+			
+			try {
+				// retreive all attributes from both Books and Authors tables
+				stmt = conn.prepareStatement(
+						"select Accounts.* " +
+						"  from Accounts " +
+						" where Accounts.user_id = ? " 
+				);
+				stmt.setInt(1, id);
+				
+				List <User> result = new ArrayList<User>();
+				
+				resultSet = stmt.executeQuery();
+				
+				// for testing that a result was returned
+				Boolean found = false;
+				
+				while (resultSet.next()) {
+					found = true;
+					
+					// create new User object
+					// retrieve attributes from resultSet starting with index 1
+					User user = new User();
+					loadUser(user, resultSet, 1);
+					
+					result.add(user);
+				}
+				
+				// check if the title was found
+				if (!found) {
+					System.out.println("<" + id + "> was not found in the users table");
+				}
+				
+				return result;
+			} finally {
+				DBUtil.closeQuietly(resultSet);
+				DBUtil.closeQuietly(stmt);
+			}
+		}
+	});
+}
+
+
+
+
+
+
 public List<Business> findBusinessByName(final String name) throws URISyntaxException{
 	return executeTransaction(new Transaction<List<Business>>() {
 		//@Override
@@ -716,30 +770,30 @@ public List<Business> findBusinesssFromAccount(final String id) throws URISyntax
 });
 }
 //
-//public String hashword(final String password) throws URISyntaxException{
-//	return executeTransaction(new Transaction<String>(){
-//		public String execute(Connection conn) throws SQLException{
-//			PreparedStatement stmt = null;
-//			ResultSet resultSet = null;
-//			String result = null;
-//			
-//			try {
-//				stmt = conn.prepareStatement(
-//						"Select SHA2(?, 512)"
-//						);
-//				stmt.setString(1, password);
-//				resultSet = stmt.executeQuery();
-//				result = resultSet.getString(0);
-//				return result;
-//			}
-//			finally{
-//				DBUtil.closeQuietly(conn);
-//
-//			}
-//		}
-//		
-//	});
-//}
+public String hashword(final String password) throws URISyntaxException{
+	return executeTransaction(new Transaction<String>(){
+		public String execute(Connection conn) throws SQLException{
+			PreparedStatement stmt = null;
+			ResultSet resultSet = null;
+			String result = null;
+			
+			try {
+				stmt = conn.prepareStatement(
+						"Select SHA2(?, 512)"
+						);
+				stmt.setString(1, password);
+				resultSet = stmt.executeQuery();
+				result = resultSet.getString(0);
+				return result;
+			}
+			finally{
+				DBUtil.closeQuietly(conn);
+
+			}
+		}
+		
+	});
+}
 //
 
 }
