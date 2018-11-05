@@ -56,17 +56,19 @@ public class EventController {
 		
 	}
 	}
-//	public boolean editEvent(int id, String name, String description, int start_date, int end_date,int time,String business,String location){
-//		try{
-//			//TODO: update existing event with new information
-//			queries.editEvent(name, description, start_date, end_date, time, business, location, id);
-//			return true;
-//		}//end try
-//		catch (Exception e) {
-//			return false;
-//		}//end catch
-//		
-//	}
+	public boolean editEvent(int id, String name, String description, int start_date, int end_date,int time,String business,String location){
+		try{
+			//TODO: update existing event with new information
+			List<Event> events = null;
+			queries.removeEvent(name,business);
+			queries.insertEvent(name, description, start_date, end_date, time, business, location, id);
+			return true;
+		}//end try
+		catch (Exception e) {
+			return false;
+		}//end catch
+		
+	}
 	public boolean AddEvent(String name, String description, int start_date, int end_date,int time,String business,String location){
 		try{
 			//TODO: Lookup Bussiness_ID by business name string (business)
