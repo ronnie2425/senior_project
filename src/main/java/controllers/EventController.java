@@ -85,7 +85,7 @@ public class EventController {
 				
 				}
 				else {
-					id=((id+1)*count)%10000;
+					id=((id^count)%10000);
 					count++;
 				}
 			}
