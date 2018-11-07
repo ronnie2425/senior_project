@@ -103,11 +103,11 @@ public class Databasequeries {
 		result.setBusiness(resultSet.getString(index++));
 	}
 private void loadUser(User user, ResultSet resultSet, int index) throws SQLException {
-		
+		user.setUserId(resultSet.getInt(index++));
 		user.setUsername(resultSet.getString(index++));
 		user.setPassword(resultSet.getString(index++));
 		user.setEmail(resultSet.getString(index++));
-		user.setUserId(resultSet.getInt(index++));
+		
 	}
 	
 	private void loadBusiness(Business result, ResultSet resultSet, int index) throws SQLException{
@@ -714,6 +714,53 @@ public List<Business> findBusinessByName(final String name) throws URISyntaxExce
 				// check if the title was found
 				if (!found) {
 					System.out.println("<" + name + "> was not found in the business table");
+				}
+				
+				return result;
+			} finally {
+				DBUtil.closeQuietly(resultSet);
+				DBUtil.closeQuietly(stmt);
+			}
+		}
+	});
+}
+public List<Business> findBusinessById(final int id) throws URISyntaxException{
+	return executeTransaction(new Transaction<List<Business>>() {
+		//@Override
+		public List<Business> execute(Connection conn) throws SQLException {
+			PreparedStatement stmt = null;
+			ResultSet resultSet = null;
+			
+			try {
+				// retreive all attributes from both Books and Authors tables
+				stmt = conn.prepareStatement(
+						"select businesses.* " +
+						"  from businesses " +
+						" where businesses.business_id = ? " 
+				);
+				stmt.setInt(1, id);
+				
+				List <Business> result = new ArrayList<Business>();
+				
+				resultSet = stmt.executeQuery();
+				
+				// for testing that a result was returned
+				Boolean found = false;
+				
+				while (resultSet.next()) {
+					found = true;
+					
+					// create new User object
+					// retrieve attributes from resultSet starting with index 1
+					Business b = new Business();
+					loadBusiness(b, resultSet, 1);
+					
+					result.add(b);
+				}
+				
+				// check if the title was found
+				if (!found) {
+					System.out.println("<" + id + "> was not found in the business table");
 				}
 				
 				return result;

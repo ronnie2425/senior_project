@@ -1,8 +1,10 @@
 package controllers;
 import java.sql.SQLException;
+import java.util.List;
 
 import database.DatabaseConnector;
 import model.Business;
+import model.Event;
 import database.Databasequeries;
 //import persist.DerbyDatabase;
 
@@ -18,8 +20,25 @@ public class BusinessController {
 	public Business getBusiness(){
 		return business;
 	}
-	public boolean insertBusiness(String name,String location,int id){
+	public boolean insertBusiness(String name,String location){
 		try{
+			int id =(int) (Math.random()*10000);
+			boolean exist=true;
+			List<Business> events = null;
+			int count=1;
+			
+			while(exist=true) {
+				events = queries.findBusinessById(id);
+				if (!events.isEmpty())
+				{
+					break;
+				
+				}
+				else {
+					id=((id^count)%10000);
+					count++;
+				}
+			}
 			queries.insertBusiness(name, location, id);
 		}
 		catch (Exception e){
