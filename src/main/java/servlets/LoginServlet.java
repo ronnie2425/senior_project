@@ -1,8 +1,8 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
 import controllers.LoginController;
 
@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 		
 		// Decode form parameters and dispatch to controller
         String errorMessage = null;
-        Double result = null;
+        //Double result = null;
         try {
           String user = req.getParameter("Username");
           String pass = req.getParameter("Password");
@@ -48,7 +48,8 @@ public class LoginServlet extends HttpServlet {
             pass = controller.hashBrowns(pass);
             
             if(controller.verifyAccount(user, pass)){
-            	resp.sendRedirect(req.getContextPath() + "/businessList.jsp");
+            	//resp.sendRedirect(req.getContextPath() + "/businessList.jsp");
+            	req.getRequestDispatcher("/_view/businessList.jsp").forward(req, resp);
             }//end good login
             else {//bad creds
             	errorMessage = "Invalid login.";
@@ -59,20 +60,21 @@ public class LoginServlet extends HttpServlet {
           
         } catch(Exception e) {
           errorMessage = "Something went worng in the LoginServlet :(";
+          req.setAttribute("errorMessage", errorMessage);
         }
         
         //display
-        req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
+        req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
         
 	}//end doPost
 	
 	
-	private String getStringFromParameter(String s) {
+	/*private String getStringFromParameter(String s) {
 		if (s == null || s.equals("")) {
 			return null;
 		} else {
 			return s;
 		}
-	}//end parse string args
+	}//end parse string args*/
 	
 }//end class
