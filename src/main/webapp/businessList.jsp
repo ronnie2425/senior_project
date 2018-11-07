@@ -17,9 +17,9 @@
   <body>
     <h1>Businesses</h1>
 	<div class="list-group">
-  		<a href="#" class="list-group-item list-group-item-action">York College</a>
-  		<a href="#" class="list-group-item list-group-item-action">Demo</a>
-  		<a href="#" class="list-group-item list-group-item-action">Third Example Inc</a>
+	<c:forEach items="${businessList}" var = "event">
+  		<a href="#" class="list-group-item list-group-item-action">${business.name}</a>
+	</c:forEach>
 	</div>
 	
     <!-- Optional JavaScript -->
