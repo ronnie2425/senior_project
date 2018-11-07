@@ -1,5 +1,6 @@
 <!doctype html>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -22,9 +23,11 @@
     		<label for="Password">Password</label>
     		<input type="password" class="form-control" id="Password" placeholder="Password">
   		</div>
-  		<div class="alert alert-warning" role="alert">
-		  ${errorMessage}
-		</div>
+  		<c:if test="${! empty errorMessage}">
+  			<div class="alert alert-warning" role="alert">
+		  		${errorMessage}
+			</div>
+		</c:if>
   		<button type="submit" class="btn btn-primary">Login</button>
 	</form>
 	<script>
