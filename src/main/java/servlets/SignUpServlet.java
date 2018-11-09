@@ -68,6 +68,7 @@ public class SignUpServlet extends HttpServlet {
         } catch(Exception e) {
           errorMessage = "Something went worng in the SignUpServlet :(";
           req.setAttribute("errorMessage", errorMessage);
+          req.getRequestDispatcher("/_view/signUp.jsp").forward(req, resp);
         }
         
         
