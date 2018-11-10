@@ -13,7 +13,7 @@
     <title>Sign Up</title>
   </head>
   <body>
-    <form action = "SignUpServlet" method = "POST">
+    <form action = "../java/servlets/SignUpServlet" method = "POST">
     <input type ="submit" value = "val"> 		<!-- May not need this or wrong spot. -->
     	<div class="form-group">
 		    <label for="Email address">Email address</label>
