@@ -94,7 +94,15 @@ public class LoginController {
 				return false;
 			}
 		}
-		
+		public boolean removeAccount(String name){
+			try{
+				info.removeUser(name);
+				return true;
+			}
+			catch(Exception e){
+				return false;
+			}
+		}
 		public String hashBrowns(String password) throws URISyntaxException {
 			return info.hashword(password);
 		}
