@@ -57,13 +57,6 @@ public class LoginController {
 			
 		}
 		
-		//TODO wtf is this supposed to do? A: get the list of businesses linked to an account.
-		public String[] getBusinesssFromAccount(String username){
-			//TODO database call to get the businesses linked to an account
-			
-			return login.getBusinesses();
-			
-		}
 		
 		public boolean addNewAccount(String name, String password, String email, String business) throws SQLException{
 			try{
