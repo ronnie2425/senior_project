@@ -10,33 +10,20 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <title>Sign Up</title>
+    <title>Create Business</title>
   </head>
   <body>
     <form action = "/servlets/SignUpServlet" method = "POST">
-    	<div class="form-group">
-		    <label for="Email address">Email address</label>
-		    <input type="email" class="form-control" id="Email address" aria-describedby="emailHelp" placeholder="Enter email">
-		    <small id="emailHelp" class="form-text text-muted">We'll probably never share your email with anyone else.</small>
-		</div>
-  		<div class="form-group">
-    		<label for="Username">Username</label>
-    		<input type="text" class="form-control" id="Username" placeholder="Enter Username">
-  		</div>
- 		 <div class="form-group">
-    		<label for="Password">Password</label>
-    		<input type="password" class="form-control" id="Password" placeholder="Password">
-  		</div>
-  		<div class="form-group">
-    		<label for="Confirm Password">Confirm Password</label>
-    		<input type="password" class="form-control" id="Confirm Password" placeholder="Confirm Password">
+  		<div id="business" class="form-group">
+    		<label for="Business Name">Business Name</label>
+    		<input type="text" class="form-control" id="Business Name" placeholder="Enter Business Name">
   		</div>
   		<c:if test="${! empty errorMessage}">
   			<div class="alert alert-warning" role="alert">
 		  		${errorMessage}
 			</div>
 		</c:if>
-  		<button type="submit" class="btn btn-primary" >Sign Up</button>
+  		<button type="submit" class="btn btn-primary" >Create New Business</button>
 	</form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
