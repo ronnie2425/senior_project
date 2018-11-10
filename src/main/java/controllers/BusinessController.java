@@ -46,6 +46,15 @@ public class BusinessController {
 		}
 		return true;
 	}
+	public Business findBusinessByName(String name){
+		try{
+			return queries.findBusinessByName(name).get(0);		}
+		catch (Exception e){
+			return null;
+		}
+		
+	} 
+	
 	public boolean removeBusiness(String name){
 		try{
 			queries.removeBusiness(name);
