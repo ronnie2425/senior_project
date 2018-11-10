@@ -8,7 +8,7 @@ import org.junit.Test;
 import model.User;
 import controllers.LoginController;
 
-public class LoginTest {
+public class LoginControllerTest {
 	private User user;
 	private LoginController con;
 	@Before

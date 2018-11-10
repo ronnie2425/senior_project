@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import model.Business;
 import controllers.BusinessController;
-public class BusinessTest {
+public class BusinessControllerTest {
 	private Business business;
 	private BusinessController con;
 	@Before

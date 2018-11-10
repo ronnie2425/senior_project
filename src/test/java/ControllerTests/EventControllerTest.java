@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import model.Event;
 import controllers.EventController;
-public class EventTest {
+public class EventControllerTest {
 	private Event event;
 	private EventController con;
 	@Before
