@@ -1,4 +1,5 @@
 package controllers;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -78,8 +79,7 @@ public class EventController {
 		}//end catch
 		
 	}
-	public boolean AddEvent(String name, String description, int start_date, int end_date,int time,String business,String location){
-		try{
+	public boolean AddEvent(String name, String description, int start_date, int end_date,int time,String business,String location) throws URISyntaxException{
 			//TODO: Lookup Bussiness_ID by business name string (business)
 			int id =(int) (Math.random()*10000);
 			boolean exist=true;
@@ -98,13 +98,19 @@ public class EventController {
 //					count++;
 //				}
 //			}
-			queries.insertEvent(name, description, start_date, end_date, time, business, location,id);
-		}//end try
-		catch (Exception e) {
-			return false;
-		}//end catch
+			if (business.equals(queries.findEventByName(name).get(0).getBusiness())){
+				
+			
 		
-		return true;
+			
+			queries.insertEvent(name, description, start_date, end_date, time, business, location,id);
+			return true;
+			}
+			return false;
+		//end try
+		
+		
+		
 		
 	}	
 	
