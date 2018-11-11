@@ -42,7 +42,7 @@ public class EventControllerTest {
 //	public void testFindByID(){
 //		assertEquals(con.findEventByStartDate(1).get(0), con.findByID(con.findEventByStartDate(1).get(0).getId()) );
 //	}
-	@Test
+//	@Test
 	public void testRemove(){
 		assertTrue(con.removeEvent("test", "fun stuff", 1, 2, 3, "fake", "a place"));
 	}

@@ -98,14 +98,21 @@ public class EventController {
 //					count++;
 //				}
 //			}
-			if (business.equals(queries.findEventByName(name).get(0).getBusiness())){
+			events = queries.findEventByName(name);
+	
+			if (events.isEmpty()) {
 				
-			
-		
-			
-			queries.insertEvent(name, description, start_date, end_date, time, business, location,id);
+				queries.insertEvent(name, description, start_date, end_date, time, business, location,id);
 			return true;
 			}
+				
+//			if (business.equals(events[0].getBusiness())){
+//				
+//			
+//		
+//			
+//			
+//			}
 			return false;
 		//end try
 		
