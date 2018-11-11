@@ -32,14 +32,14 @@ public class LoginServlet extends HttpServlet {
 		
 		// Decode form parameters and dispatch to controller
         String errorMessage = null;
+        if(req.getParameter("register") != null) {
+      	  req.getRequestDispatcher("signup.jsp").forward(req, resp);
+        }
         //Double result = null;
         try {
           String user = req.getParameter("Username");
           String pass = req.getParameter("Password");
 
-          if(req.getParameter("register") != null) {
-        	  req.getRequestDispatcher("signup.jsp").forward(req, resp);
-          }
           if (user == null || pass == null) {
             errorMessage = "Please fill in all fields.";
           }
