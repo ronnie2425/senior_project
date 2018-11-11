@@ -13,7 +13,7 @@
     <title>Sign Up</title>
   </head>
   <body>
-    <form action = "/servlets/SignUpServlet" method = "POST">
+    <form action = "signUpServlet" method = "POST">
     	<div class="form-group">
 		    <label for="Email address">Email address</label>
 		    <input type="email" class="form-control" id="Email address" aria-describedby="emailHelp" placeholder="Enter email">
@@ -36,7 +36,7 @@
 		  		${errorMessage}
 			</div>
 		</c:if>
-  		<button type="submit" class="btn btn-primary" >Sign Up</button>
+  		<button type="submit" class="btn btn-primary" value="Call Servlet">Sign Up</button>
 	</form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
