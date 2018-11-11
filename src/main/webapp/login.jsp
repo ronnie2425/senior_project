@@ -28,6 +28,7 @@
 			</div>
 		</c:if>
   		<button type="submit" class="btn btn-primary">Login</button>
+  		<button id="register" type="button" class="btn btn-link">Don't have an account?</button>
 	</form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
