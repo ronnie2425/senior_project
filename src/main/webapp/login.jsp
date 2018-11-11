@@ -13,8 +13,7 @@
     <title>Login</title>
   </head>
   <body>
- 
-    <form action="${pageContext.servletContext.contextPath}/login.jsp" method="post">
+    <form action="loginServlet" method="post">
   		<div class="form-group">
     		<label for="Username">Username</label>
     		<input type="text" class="form-control" id="Username" placeholder="Enter Username">
@@ -30,11 +29,6 @@
 		</c:if>
   		<button type="submit" class="btn btn-primary">Login</button>
 	</form>
-	<script>
-		function redirect() {
-    		window.location.href = "/businessList.jsp";
-		}
-	</script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

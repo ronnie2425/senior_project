@@ -11,7 +11,7 @@
     <title>Edit Event</title>
   </head>
   <body>
-    <form>
+    <form action="editEventServlet" method="post">
   		<div class="form-group">
     		<label for="InputEventName">Event Title</label>
     		<input type="text" class="form-control" value="Event Name" id="InputEventName" placeholder="Enter Name For Event">
