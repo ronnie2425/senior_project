@@ -60,7 +60,7 @@ public class LoginServlet extends HttpServlet {
           }//end fields filled else
           
         } catch(Exception e) {
-          errorMessage = "There was a problem with your credentials.";
+          errorMessage = "There was a problem in the LoginServlet.";
           req.setAttribute("errorMessage", errorMessage);
         }
         
