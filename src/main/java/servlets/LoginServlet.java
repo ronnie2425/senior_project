@@ -37,7 +37,9 @@ public class LoginServlet extends HttpServlet {
           String user = req.getParameter("Username");
           String pass = req.getParameter("Password");
 
-
+          if(req.getParameter("register") != null) {
+        	  req.getRequestDispatcher("signup.jsp").forward(req, resp);
+          }
           if (user == null || pass == null) {
             errorMessage = "Please fill in all fields.";
           }
@@ -58,7 +60,7 @@ public class LoginServlet extends HttpServlet {
           }//end fields filled else
           
         } catch(Exception e) {
-          errorMessage = "Something went wrong in the LoginServlet :(";
+          errorMessage = "There was a problem with your credentials.";
           req.setAttribute("errorMessage", errorMessage);
         }
         
