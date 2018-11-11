@@ -10,7 +10,7 @@
   <properties>
     <tomcat.version>8.5.23</tomcat.version>
   </properties>
-  <dependencies>
+   <dependencies>
   	<dependency>
   		<groupId>javax.servlet</groupId>
         <artifactId>javax.servlet-api</artifactId>
@@ -28,7 +28,26 @@
         <artifactId>tomcat-embed-core</artifactId>
         <version>${tomcat.version}</version>
     </dependency>
-    
+    <dependency>
+        <groupId>org.apache.tomcat.embed</groupId>
+        <artifactId>tomcat-embed-jasper</artifactId>
+        <version>${tomcat.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-jasper</artifactId>
+        <version>${tomcat.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-jasper-el</artifactId>
+        <version>${tomcat.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-jsp-api</artifactId>
+        <version>${tomcat.version}</version>
+    </dependency>
     <dependency>
     	<groupId>javax.servlet</groupId>
 	    <artifactId>jstl</artifactId>
