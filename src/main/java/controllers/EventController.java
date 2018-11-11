@@ -85,19 +85,19 @@ public class EventController {
 			boolean exist=true;
 			List<Event> events = null;
 			int count=1;
-			
-			while(exist=true) {
-				events = queries.findEventByID(id);
-				if (!events.isEmpty())
-				{
-					break;
-				
-				}
-				else {
-					id=((id^count)%10000);
-					count++;
-				}
-			}
+//			
+//			while(exist=true) {
+//				events = queries.findEventByID(id);
+//				if (!events.isEmpty())
+//				{
+//					break;
+//				
+//				}
+//				else {
+//					id=((id^count)%10000);
+//					count++;
+//				}
+//			}
 			queries.insertEvent(name, description, start_date, end_date, time, business, location,id);
 		}//end try
 		catch (Exception e) {

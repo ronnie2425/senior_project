@@ -25,7 +25,7 @@ public class NewEventServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 		throws ServletException, IOException {
-		req.getRequestDispatcher("/_view/editEvent.jsp").forward(req, resp);
+		req.getRequestDispatcher("editEvent.jsp").forward(req, resp);
 	}
 
 	@Override
@@ -40,13 +40,24 @@ public class NewEventServlet extends HttpServlet {
         String errorMessage = null;
         Double result = null;
         try {
-          String name = getStringFromParameter(req.getParameter("Event name"));
-          String description = getStringFromParameter(req.getParameter("Event details"));
-          int start = getIntFromParameter(req.getParameter("Start date"));
-          int end = getIntFromParameter(req.getParameter("End date"));
-          int time = getIntFromParameter(req.getParameter("Time"));
-          String businessName = getStringFromParameter(req.getParameter("Business"));	//May not work
-          String location = getStringFromParameter(req.getParameter("Location"));
+          String name = req.getParameter("Name");
+          String description = req.getParameter("Description");
+          String start1 = req.getParameter("Start");
+          String end1 = req.getParameter("End");
+          String time1 = req.getParameter("Time");
+          String businessName = null;
+        		  //req.getParameter("Business");	//May not work
+          String location = req.getParameter("Location");
+          
+          String array[]=start1.split("-");
+          int time= (Integer.parseInt(array[0])-2000) + (Integer.parseInt(array[2])*100) +(Integer.parseInt(array[0])*10000);
+          String array1[]=start1.split(":");
+          int start= (Integer.parseInt(array[2])) + (Integer.parseInt(array[1])*100) +(Integer.parseInt(array[0])*10000);
+          String array2[]=start1.split(":");
+          int end= (Integer.parseInt(array[2])) + (Integer.parseInt(array[1])*100) +(Integer.parseInt(array[0])*10000);
+         
+          
+          
           
           /*if(req.getSession().getAttribute("username") != null){
   			String username = (String) req.getSession().getAttribute("username");
@@ -69,7 +80,7 @@ public class NewEventServlet extends HttpServlet {
             req.setAttribute("errorMessage", errorMessage);
             
             //reload
-            req.getRequestDispatcher("/_view/editEvent.jsp").forward(req, resp);
+            req.getRequestDispatcher("editEvent.jsp").forward(req, resp);
           }
           
           else { //fields filled
@@ -87,7 +98,7 @@ public class NewEventServlet extends HttpServlet {
             	//TODO Make sure the event is saved before displaying to the user
                 
             	//display the event
-            	req.getRequestDispatcher("/_view/event.jsp").forward(req, resp);
+            	req.getRequestDispatcher("event.jsp").forward(req, resp);
             
             }//end saves properly
             else{
@@ -97,7 +108,7 @@ public class NewEventServlet extends HttpServlet {
                 req.setAttribute("errorMessage", errorMessage);
                 
                 //display the event
-                req.getRequestDispatcher("/_view/event.jsp").forward(req, resp);
+                req.getRequestDispatcher("event.jsp").forward(req, resp);
             }
             
           }//end else
@@ -109,7 +120,7 @@ public class NewEventServlet extends HttpServlet {
           req.setAttribute("errorMessage", errorMessage);
           
           //display the event
-          req.getRequestDispatcher("/_view/event.jsp").forward(req, resp);
+          req.getRequestDispatcher("event.jsp").forward(req, resp);
         }
         
 

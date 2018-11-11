@@ -16,7 +16,7 @@ public class DatabaseConnector {
 
 	    return DriverManager.getConnection(dbUrl, username, password);
 	}
-//	public static Connection getConnection() throws URISyntaxException, SQLException {
+//		public static Connection getConnection() throws URISyntaxException, SQLException {
 //		   
 //
 //	    String username = "rpekxmxqsxmdwe";
@@ -25,5 +25,6 @@ public class DatabaseConnector {
 //
 //	    return DriverManager.getConnection(dbUrl, username, password);
 //	}
+
 	
 }

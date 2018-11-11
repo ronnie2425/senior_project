@@ -873,7 +873,7 @@ public String hashword(final String password) throws URISyntaxException{
 			
 			try {
 				stmt = conn.prepareStatement(
-						"Select SHA2(?, 512)"
+						"crypt(?, gen_salt(bf,8))"
 						);
 				stmt.setString(1, password);
 				resultSet = stmt.executeQuery();

@@ -36,10 +36,10 @@ public class EventControllerTest {
 	public void testFindByBusiness(){
 		assertEquals("test", con.findEventByBusiness("fake").get(0).getName());
 	}
-	@Test
-	public void testFindByID(){
-		assertEquals(con.findEventByStartDate(1).get(0), con.findByID(con.findEventByStartDate(1).get(0).getId()) );
-	}
+//	@Test
+//	public void testFindByID(){
+//		assertEquals(con.findEventByStartDate(1).get(0), con.findByID(con.findEventByStartDate(1).get(0).getId()) );
+//	}
 	@Test
 	public void testRemove(){
 		assertTrue(con.removeEvent("test", "fun stuff", 1, 2, 3, "fake", "a place"));

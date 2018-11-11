@@ -288,5 +288,12 @@ public class QueryTests {
 		}
 		
 	}
+	@Test
+	public void Testhash() throws URISyntaxException{
+	String test=db.hashword("password");
+	System.out.println(test);
+	
+	
 	}
+}
 
