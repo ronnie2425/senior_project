@@ -6,6 +6,10 @@ public class Business{
 	private int id;
 	private String location;
 	
+	public Business() {
+		
+	}
+	
 	public Business(String name, int id, String location) {
 		this.name=name;
 		this.id=id;

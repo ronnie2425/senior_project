@@ -1,6 +1,8 @@
 package ControllerTests;
 import static org.junit.Assert.*;
 
+import java.net.URISyntaxException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,7 +24,7 @@ public class EventControllerTest {
 		assertEquals("Event of Funness",con.getEvent().getName());
 	}
 	@Test
-	public void testInsert(){
+	public void testInsert() throws URISyntaxException{
 		assertTrue(con.AddEvent("test", "fun stuff", 1, 2, 3, "fake", "a place"));
 	}
 	@Test
