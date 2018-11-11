@@ -41,14 +41,7 @@ public class SignUpServlet extends HttpServlet {
           //String business = getStringFromParameter(req.getParameter("Business Name"));
           //Boolean hasBusiness = getBooleanFromParameter(req.getParameter("BusinessCheck"));
 
-
-
-          if (user == null 
-        		  || email == null 
-        		  || pass == null 
-        		  || cpass == null 
-        		 // || (hasBusiness && business == null)
-        		  ) {
+          if (user == null || email == null || pass == null || cpass == null /*|| (hasBusiness && business == null)*/) {
             errorMessage = "Please fill in all fields.";
             req.setAttribute("errorMessage", errorMessage);
             req.setAttribute("Username", user);
@@ -60,25 +53,21 @@ public class SignUpServlet extends HttpServlet {
           if(!pass.equals(cpass)){
         	  errorMessage = "Passwords do not match.";
         	  req.setAttribute("errorMessage", errorMessage);
-        	  
-        	  
         	  req.getRequestDispatcher("signup.jsp").forward(req, resp);
           }
           else { //creds acceptable, submit and redirect to login
             LoginController controller = new LoginController();
             //pass = controller.gimmeSalt(pass);
-           // pass = controller.hashBrowns(pass);
+            //pass = controller.hashBrowns(pass);
             result = controller.addNewAccount(user, pass, email,null);
             req.getRequestDispatcher("login.jsp").forward(req, resp);
           }
         } catch(Exception e) {
           errorMessage = "Something went worng in the SignUpServlet :(";
           req.setAttribute("errorMessage", errorMessage);
-         // req.getRequestDispatcher("/_view/signUp.jsp").forward(req, resp);
+          //req.getRequestDispatcher("/_view/signUp.jsp").forward(req, resp);
         }
-        
-        
-        
+           
 	}//end doPost
 	
 	
@@ -93,13 +82,13 @@ public class SignUpServlet extends HttpServlet {
 		return null;
 	}
 
-	private String getStringFromParameter(String s) {
+	/*private String getStringFromParameter(String s) {
 		if (s == null || s.equals("")) {
 			return null;
 		} else {
 			return s;
 		}
-	}//end parse string args
+	}//end parse string args*/
 	
 }//end class
 

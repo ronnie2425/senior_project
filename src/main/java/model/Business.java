@@ -1,20 +1,20 @@
 
 package model;
 
-public class Business
-{
+public class Business{
 	private String name;
 	private int id;
 	private String location;
 	
-	public Business(String name,int id, String location) {
+	public Business(String name, int id, String location) {
 		this.name=name;
 		this.id=id;
 		this.location=location;
 	}
 	
-	public Business() {
-		
+	public Business(String name) {
+		this.name=name;
+		location = "Gallifrey";
 	}
 	
 	public void setName(String name) {
