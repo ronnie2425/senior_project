@@ -442,6 +442,53 @@ public List<Event> findEventByEndDate(final int date) throws URISyntaxException{
 });
 }
 //
+public List<Event> findEventByBusiness(final String business) throws URISyntaxException{
+	return executeTransaction(new Transaction<List<Event>>() {
+		//@Override
+		public List<Event> execute(Connection conn) throws SQLException {
+			PreparedStatement stmt = null;
+			ResultSet resultSet = null;
+			
+			try {
+				// retreive all attributes from both Books and Authors tables
+				stmt = conn.prepareStatement(
+						"select Events.* " +
+						"  from Events " +
+						" where Events.business = ? " 
+				);
+				stmt.setString(1, business);
+				
+				List <Event> result = new ArrayList<Event>();
+				
+				resultSet = stmt.executeQuery();
+				
+				// for testing that a result was returned
+				Boolean found = false;
+				
+				while (resultSet.next()) {
+					found = true;
+					
+					// create new User object
+					// retrieve attributes from resultSet starting with index 1
+					Event event = new Event();
+					loadEvent(event, resultSet, 1);
+					
+					result.add(event);
+				}
+				
+				// check if the title was found
+				if (!found) {
+					System.out.println("<" + business + "> was not found in the event table");
+				}
+				
+				return result;
+			} finally {
+				DBUtil.closeQuietly(resultSet);
+				DBUtil.closeQuietly(stmt);
+			}
+		}
+	});
+	}
 public List<Event> findEventByName(final String name) throws URISyntaxException{
 	return executeTransaction(new Transaction<List<Event>>() {
 		//@Override

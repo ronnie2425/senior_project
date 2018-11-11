@@ -1,5 +1,5 @@
 package ControllerTests;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,6 +22,10 @@ public class EventControllerTest {
 		assertEquals("Event of Funness",con.getEvent().getName());
 	}
 	@Test
+	public void testInsert(){
+		assertTrue(con.AddEvent("test", "fun stuff", 1, 2, 3, "fake", "a place"));
+	}
+	@Test
 	public void testgetByStart() {		
 		assertEquals("fake",con.findEventByStartDate(1).get(0).getBusiness());
 	}
@@ -29,5 +33,15 @@ public class EventControllerTest {
 	public void testgetByEnd() {		
 		assertEquals("fake",con.findEventByEndDate(2).get(0).getBusiness());
 	}
-	
+	public void testFindByBusiness(){
+		assertEquals("test", con.findEventByBusiness("fake").get(0).getName());
+	}
+	@Test
+	public void testFindByID(){
+		assertEquals(con.findEventByStartDate(1).get(0), con.findByID(con.findEventByStartDate(1).get(0).getId()) );
+	}
+	@Test
+	public void testRemove(){
+		assertTrue(con.removeEvent("test", "fun stuff", 1, 2, 3, "fake", "a place"));
+	}
 }

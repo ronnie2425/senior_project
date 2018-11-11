@@ -45,7 +45,16 @@ public class EventController {
 		}
 
 	}
-	
+	public List<Event> findEventByBusiness(String business){
+		try{
+			//TODO make this
+			return queries.findEventByBusiness(business);//db.findEventByEndDate(date);
+		}
+		catch (Exception e) {
+			return null;
+		}
+
+	}
 	public Event findByID(int id){
 		try{
 			//TODO make this
@@ -100,7 +109,7 @@ public class EventController {
 	}	
 	
 	
-	boolean removeEvent(String name, String description, int start_date, int end_date,int time,String business,String location){
+	public boolean removeEvent(String name, String description, int start_date, int end_date,int time,String business,String location){
 		try{
 			//TODO: Lookup Bussiness_ID by business name string (business)
 			queries.removeEvent(name, business);
@@ -113,5 +122,13 @@ public class EventController {
 		
 		
 	}
-
+	public List<Event> findByName(String name){
+		try{
+			//TODO make this
+			return queries.findEventByName(name);//db.findEventByEndDate(date);
+		}
+		catch (Exception e) {
+			return null;
+		
+	}
 }
