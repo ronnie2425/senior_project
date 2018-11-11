@@ -58,34 +58,41 @@ public class LoginController {
 		}
 		
 		
-		public boolean addNewAccount(String name, String password, String email, String business) throws SQLException{
-			try{
+		public boolean addNewAccount(String name, String password, String email, String business) throws SQLException, URISyntaxException{
+			
 				//TODO make this
-				int id =(int) (Math.random()*10000);
-				boolean exist=true;
-				List<User> users = null;
-				int count=1;
-				
-				while(exist=true) {
-					users = info.findAccountById(id);
-					if (!users.isEmpty())
-					{
-						break;
-					
-					}
-					else {
-						id=((id^count)%10000);
-						count++;
-					}
-				}
-				
-				password =  hashBrowns(gimmeSalt(password));
-				info.insertUser(name, password, email, id);
+//				int id =(int) (Math.random()*10000);
+//				boolean exist=true;
+//				List<User> users = null;
+//				int count=1;
+//				
+////				while(exist==true) {
+////					users = info.findAccountById(id);
+////					if (!users.isEmpty())
+////					{
+////						exist=false;
+////						break;
+////					
+////					}
+////					else {
+//						id=((id^count)%10000);
+////						count++;
+////					}
+////				}
+//				
+//				//password =  hashBrowns(gimmeSalt(password));
+//				//users = info.findAccountByName(name);
+//				//if (!users.isEmpty())
+//				//{
+//					//info.removeUser(name);
+//					//return false;
+//				
+//				//}
+				info.insertUser(name, password, email, 7);
+		
 				return true;
-			}
-			catch (Exception e) {
-				return false;
-			}
+			
+			
 		}
 		public boolean removeAccount(String name){
 			try{

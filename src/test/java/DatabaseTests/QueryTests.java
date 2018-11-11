@@ -71,7 +71,7 @@ public class QueryTests {
 		String pass = "kelly";
 		String email = "iam@tired.rn";
 		int id=5;
-		
+	
 		users = db.findAccountByName(user);
 		if (!users.isEmpty())
 		{

@@ -16,20 +16,20 @@
     <form action = "signUpServlet" method = "POST">
     	<div class="form-group">
 		    <label for="Email address">Email address</label>
-		    <input type="email" class="form-control" id="Email address" aria-describedby="emailHelp" placeholder="Enter email">
+		    <input type="email" class="form-control" id="Email address" aria-describedby="emailHelp" placeholder="Enter email" name="Email address" value="">
 		    <small id="emailHelp" class="form-text text-muted">We'll probably never share your email with anyone else.</small>
 		</div>
   		<div class="form-group">
     		<label for="Username">Username</label>
-    		<input type="text" class="form-control" id="Username" placeholder="Enter Username">
+    		<input type="text" class="form-control" id="Username" placeholder="Enter Username" name="Username" value="">
   		</div>
  		 <div class="form-group">
     		<label for="Password">Password</label>
-    		<input type="password" class="form-control" id="Password" placeholder="Password">
+    		<input type="password" class="form-control" id="Password" placeholder="Password" name="Password" value="">
   		</div>
   		<div class="form-group">
     		<label for="Confirm Password">Confirm Password</label>
-    		<input type="password" class="form-control" id="Confirm Password" placeholder="Confirm Password">
+    		<input type="password" class="form-control" id="Confirm Password" placeholder="Confirm Password" name="Confirm Password" value="">
   		</div>
   		<c:if test="${! empty errorMessage}">
   			<div class="alert alert-warning" role="alert">

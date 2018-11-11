@@ -23,7 +23,7 @@ public class SignUpServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 		throws ServletException, IOException {
-		req.getRequestDispatcher("/_view/signUp.jsp").forward(req, resp);
+		req.getRequestDispatcher("signup.jsp").forward(req, resp);
 	}
 
 	@Override
@@ -34,22 +34,27 @@ public class SignUpServlet extends HttpServlet {
         String errorMessage = null;
         Boolean result = null;
         try {
-          String user = getStringFromParameter(req.getParameter("Username"));
-          String email = getStringFromParameter(req.getParameter("Email address"));
-          String pass = getStringFromParameter(req.getParameter("Password"));
-          String cpass = getStringFromParameter(req.getParameter("Confirm Password"));
-          String business = getStringFromParameter(req.getParameter("Business Name"));
-          Boolean hasBusiness = getBooleanFromParameter(req.getParameter("BusinessCheck"));
+          String user = req.getParameter("Username");
+          String email = req.getParameter("Email address");
+          String pass = req.getParameter("Password");
+          String cpass = req.getParameter("Confirm Password");
+          //String business = getStringFromParameter(req.getParameter("Business Name"));
+          //Boolean hasBusiness = getBooleanFromParameter(req.getParameter("BusinessCheck"));
 
 
 
-          if (user == null || email == null || pass == null || cpass == null || (hasBusiness && business == null)) {
+          if (user == null 
+        		  || email == null 
+        		  || pass == null 
+        		  || cpass == null 
+        		 // || (hasBusiness && business == null)
+        		  ) {
             errorMessage = "Please fill in all fields.";
             req.setAttribute("errorMessage", errorMessage);
             req.setAttribute("Username", user);
             req.setAttribute("Email address", email);
-            req.setAttribute("Business Name", business);
-            req.getRequestDispatcher("/_view/signUp.jsp").forward(req, resp);
+           // req.setAttribute("Business Name", business);
+            req.getRequestDispatcher("signup.jsp").forward(req, resp);
           }
           
           if(!pass.equals(cpass)){
@@ -57,19 +62,19 @@ public class SignUpServlet extends HttpServlet {
         	  req.setAttribute("errorMessage", errorMessage);
         	  
         	  
-        	  req.getRequestDispatcher("/_view/signUp.jsp").forward(req, resp);
+        	  req.getRequestDispatcher("signup.jsp").forward(req, resp);
           }
           else { //creds acceptable, submit and redirect to login
             LoginController controller = new LoginController();
-            pass = controller.gimmeSalt(pass);
-            pass = controller.hashBrowns(pass);
-            result = controller.addNewAccount(user, pass, email, business);
-            req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+            //pass = controller.gimmeSalt(pass);
+           // pass = controller.hashBrowns(pass);
+            result = controller.addNewAccount(user, pass, email,null);
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
           }
         } catch(Exception e) {
           errorMessage = "Something went worng in the SignUpServlet :(";
           req.setAttribute("errorMessage", errorMessage);
-          req.getRequestDispatcher("/_view/signUp.jsp").forward(req, resp);
+         // req.getRequestDispatcher("/_view/signUp.jsp").forward(req, resp);
         }
         
         
