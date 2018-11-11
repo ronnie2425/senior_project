@@ -120,7 +120,7 @@ public class NewEventServlet extends HttpServlet {
           req.setAttribute("errorMessage", errorMessage);
           
           //display the event
-          req.getRequestDispatcher("event.jsp").forward(req, resp);
+          req.getRequestDispatcher("login.jsp").forward(req, resp);
         }
         
 
