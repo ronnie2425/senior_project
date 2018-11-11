@@ -41,12 +41,10 @@ public class LoginServlet extends HttpServlet {
           if (user == null || pass == null) {
             errorMessage = "Please fill in all fields.";
           }
-          
           else { //fields filled
             LoginController controller = new LoginController();
-            
-           // pass = controller.gimmeSalt(pass);
-           // pass = controller.hashBrowns(pass);
+            //pass = controller.gimmeSalt(pass);
+            //pass = controller.hashBrowns(pass);
             
             if(controller.verifyAccount(user, pass)){
             	//resp.sendRedirect(req.getContextPath() + "/businessList.jsp");
