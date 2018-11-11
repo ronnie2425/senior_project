@@ -46,7 +46,7 @@ public class NewEventServlet extends HttpServlet {
           String end1 = req.getParameter("End");
           String time1 = req.getParameter("Time");
           String businessName = null;
-        		  //req.getParameter("Business");	//May not work
+          //req.getParameter("Business");	//May not work
           String location = req.getParameter("Location");
           
           String array[]=start1.split("-");

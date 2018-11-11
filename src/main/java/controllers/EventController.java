@@ -79,14 +79,14 @@ public class EventController {
 		}//end catch
 		
 	}
-	public boolean AddEvent(String name, String description, int start_date, int end_date,int time,String business,String location) throws URISyntaxException{
-			//TODO: Lookup Bussiness_ID by business name string (business)
+	public boolean AddEvent(String name, String description, int start_date, int end_date, int time, String business, String location) throws URISyntaxException{
+			//TODO: Lookup Bussiness_ID by business name string (business)		NEEDS FIXES
 			int id =(int) (Math.random()*10000);
 			boolean exist=true;
 			List<Event> events = null;
 			int count=1;
 //			
-//			while(exist=true) {
+//			while(exist) {
 //				events = queries.findEventByID(id);
 //				if (!events.isEmpty())
 //				{
@@ -100,16 +100,14 @@ public class EventController {
 //			}
 			events = queries.findEventByName(name);
 	
+
 //			if (events.isEmpty()) {
 //				
 //				queries.insertEvent(name, description, start_date, end_date, time, business, location,id);
 //			return true;
 //			}
 //				
-//			if (business.equals(events[0].getBusiness())){
-//				
-//			
-//		
+
 //			
 //			
 //			}
