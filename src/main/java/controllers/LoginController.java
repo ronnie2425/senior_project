@@ -41,19 +41,19 @@ public class LoginController {
 			
 		}
 		
-		public boolean verifyAccount(String name, String password) throws SQLException{
-			try{
+		public boolean verifyAccount(String name, String password) throws SQLException, URISyntaxException{
+		
 				String test = info.findAccountByName(name).get(0).getPassword();
-				String pass = hashBrowns(gimmeSalt(password));
-				if(test == pass){
+				//String pass = hashBrowns(gimmeSalt(password));
+				if(test == password){
 					return true;
 				}
-			}
-			catch (Exception e) {
+			
+		
 				return false;
 			
-			}
-			return false;
+			
+			//return false;
 			
 		}
 		
@@ -61,10 +61,10 @@ public class LoginController {
 		public boolean addNewAccount(String name, String password, String email, String business) throws SQLException, URISyntaxException{
 			
 				//TODO make this
-//				int id =(int) (Math.random()*10000);
-//				boolean exist=true;
-//				List<User> users = null;
-//				int count=1;
+				int id =(int) (Math.random()*10000);
+				boolean exist=true;
+				List<User> users = null;
+				int count=1;
 //				
 ////				while(exist==true) {
 ////					users = info.findAccountById(id);
@@ -81,14 +81,14 @@ public class LoginController {
 ////				}
 //				
 //				//password =  hashBrowns(gimmeSalt(password));
-//				//users = info.findAccountByName(name);
-//				//if (!users.isEmpty())
-//				//{
-//					//info.removeUser(name);
-//					//return false;
-//				
-//				//}
-				info.insertUser(name, password, email, 7);
+				users = info.findAccountByName(name);
+				if (!users.isEmpty())
+				{
+					//info.removeUser(name);
+					return false;
+				
+				}
+				info.insertUser(name, password, email, id);
 		
 				return true;
 			

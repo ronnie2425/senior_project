@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+		req.getRequestDispatcher("login.jsp").forward(req, resp);
 	}
 
 	@Override
@@ -45,12 +45,12 @@ public class LoginServlet extends HttpServlet {
           else { //fields filled
             LoginController controller = new LoginController();
             
-            pass = controller.gimmeSalt(pass);
-            pass = controller.hashBrowns(pass);
+           // pass = controller.gimmeSalt(pass);
+           // pass = controller.hashBrowns(pass);
             
             if(controller.verifyAccount(user, pass)){
             	//resp.sendRedirect(req.getContextPath() + "/businessList.jsp");
-            	req.getRequestDispatcher("/_view/businessList.jsp").forward(req, resp);
+            	req.getRequestDispatcher("businessList.jsp").forward(req, resp);
             }//end good login
             else {//bad creds
             	errorMessage = "Invalid login.";
@@ -60,12 +60,12 @@ public class LoginServlet extends HttpServlet {
           }//end fields filled else
           
         } catch(Exception e) {
-          errorMessage = "Something went worng in the LoginServlet :(";
+          errorMessage = "Something went wrong in the LoginServlet :(";
           req.setAttribute("errorMessage", errorMessage);
         }
         
         //display
-        req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+        req.getRequestDispatcher("login.jsp").forward(req, resp);
         
 	}//end doPost
 	

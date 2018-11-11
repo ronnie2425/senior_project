@@ -16,11 +16,11 @@
     <form action="loginServlet" method="post">
   		<div class="form-group">
     		<label for="Username">Username</label>
-    		<input type="text" class="form-control" id="Username" placeholder="Enter Username">
+    		<input type="text" class="form-control" id="Username" placeholder="Enter Username" name="Username" value="">
   		</div>
  		 <div class="form-group">
     		<label for="Password">Password</label>
-    		<input type="password" class="form-control" id="Password" placeholder="Password">
+    		<input type="password" class="form-control" id="Password" placeholder="Password" name="Password" value="">
   		</div>
   		<c:if test="${! empty errorMessage}">
   			<div class="alert alert-warning" role="alert">
