@@ -45,15 +45,21 @@ public class LoginController {
 		
 				String test = info.findAccountByName(name).get(0).getPassword();
 				//String pass = hashBrowns(gimmeSalt(password));
-				if(test == password){
-					return true;
+				
+				if(test.isEmpty()){
+				//if(test == password){
+					return false;
+				}
+				//System.out.println("<" + test + "> testing");
+				//System.out.println("<" + test + "> testing");
+					//System.out.println("<" + password + "> testing");
+				if (test.equals(password)) {
+					
+				return true;
 				}
 			
-		
-				return false;
 			
-			
-			//return false;
+			return false;
 			
 		}
 		

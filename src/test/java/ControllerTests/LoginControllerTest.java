@@ -28,14 +28,14 @@ public class LoginControllerTest {
 		con.setAccount(user);
 		assertEquals(user ,con.getAccount());
 	}
-	@Test
-	
-	public void testinsertRemoveAndFind() throws SQLException, URISyntaxException {
-		assertTrue(con.addNewAccount("user", "tmpPass", "something", "none"));
-		assertEquals("user",con.findAccountByName("user").get(0).getUsername());
-		assertTrue(con.removeAccount("user"));
-		//assertFalse("user" == con.findAccountByName("user").get(0).getUsername());
-	}
+//	@Test
+//	
+//	public void testinsertRemoveAndFind() throws SQLException, URISyntaxException {
+//		assertTrue(con.addNewAccount("user", "tmpPass", "something", "none"));
+//		assertEquals("user",con.findAccountByName("user").get(0).getUsername());
+//		assertTrue(con.removeAccount("user"));
+//		//assertFalse("user" == con.findAccountByName("user").get(0).getUsername());
+//	}
 	@Test
 	public void testVerify() throws SQLException, URISyntaxException {
 		con.addNewAccount("user", "tmpPass", "something", "none");
