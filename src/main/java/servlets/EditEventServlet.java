@@ -40,7 +40,7 @@ public class EditEventServlet extends HttpServlet {
 		
 		String name = oldInfo.getName();
         String description = oldInfo.getDescription();
-        int start = oldInfo.getStartDate();
+        int start = oldInfo.getStart();
         int end = oldInfo.getEndDate();
         int time = oldInfo.getTime();
         String businessName = oldInfo.getBusiness();

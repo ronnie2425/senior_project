@@ -35,7 +35,7 @@
 			<c:forEach items="${list}" var="event">
 			        	Event is: ${event.name}
 			        	Starts at: ${event.time}
-			        	On: ${event.startdate}
+			        	On: ${event.start}
 			        	At: ${event.location}
 			        	Description: ${event.description}
 			        	

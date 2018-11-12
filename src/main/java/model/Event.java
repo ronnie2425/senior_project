@@ -60,7 +60,7 @@ public class Event implements Comparable<Event>
 	public String getDescription(){
 		return description;
 	}
-	public int getStartDate(){
+	public int getStart(){
 		return start_date;
 	}
 	public int getEndDate(){
@@ -80,7 +80,7 @@ public class Event implements Comparable<Event>
 	}
 	//@Override
 	public int compareTo(Event e) {
-		return start_date - e.getStartDate();
+		return start_date - e.getStart();
 	}
 	
 	
