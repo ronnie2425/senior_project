@@ -32,9 +32,6 @@ public class LoginServlet extends HttpServlet {
 		
 		// Decode form parameters and dispatch to controller
         String errorMessage = null;
-        if(req.getParameter("register") != null) {
-      	  req.getRequestDispatcher("signup.jsp").forward(req, resp);
-        }
         //Double result = null;
         try {
           String user = getStringFromParameter(req.getParameter("Username"));
@@ -42,6 +39,7 @@ public class LoginServlet extends HttpServlet {
 
           if (user == null || pass == null) {
             errorMessage = "Please fill in all fields.";
+            req.setAttribute("errorMessage", errorMessage);
           }
           else { //fields filled
             LoginController controller = new LoginController();
@@ -50,7 +48,7 @@ public class LoginServlet extends HttpServlet {
             
             if(controller.verifyAccount(user, pass)){
             	//resp.sendRedirect(req.getContextPath() + "/businessList.jsp");
-            	req.getRequestDispatcher("businessList.jsp").forward(req, resp);
+            	req.getRequestDispatcher("businessList.jsp").forward(req, resp);	//TODO UserHome.jsp
             }//end good login
             else {//bad creds
             	errorMessage = "Invalid login.";
