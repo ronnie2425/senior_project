@@ -16,11 +16,12 @@
     <form action="newEventServlet" method="post">
   		<div class="form-group">
     		<label for="InputEventName">Event Title</label>
-				<c:if test="${! empty errorMessage}">
+				<c:if test="${! empty Event name}">
   					<div class="alert alert-warning" role="alert">
-		  			${errorMessage}
+		  			${Event name}
 				</div>
-		</c:if>  		</div>
+			</c:if>
+		</div>
   		<div class="form-group">
     		<label for="InputEventDetails">Event Details</label>
     		<textarea class="form-control" id="InputEventName" placeholder="Describe the Event" rows="3" name="Description" value=""></textarea>

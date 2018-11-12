@@ -49,8 +49,7 @@ public class SignUpServlet extends HttpServlet {
            // req.setAttribute("Business Name", business);
             req.getRequestDispatcher("signup.jsp").forward(req, resp);
           }
-          
-          if(!pass.equals(cpass)){
+          else if(!pass.equals(cpass)){
         	  errorMessage = "Passwords do not match.";
         	  req.setAttribute("errorMessage", errorMessage);
         	  req.getRequestDispatcher("signup.jsp").forward(req, resp);
