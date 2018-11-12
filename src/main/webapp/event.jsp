@@ -17,29 +17,54 @@
   		<div class="form-group">
     		<label for="InputEventName">Event Title</label>
 				<c:if test="${! empty Event name}">
-  					<div class="alert alert-warning" role="alert">
-		  			${Event name}
-				</div>
-			</c:if>
+  					<div class="alert alert-warning" role="alert" name="Event name">
+		  				${Event name}
+					</div>
+				</c:if>
 		</div>
   		<div class="form-group">
     		<label for="InputEventDetails">Event Details</label>
+    			<c:if test="${! empty Event name}">
+  					<div class="alert alert-warning" role="alert" name="Description">
+		  				${Event name}
+					</div>
+				</c:if>
     		<textarea class="form-control" id="InputEventName" placeholder="Describe the Event" rows="3" name="Description" value=""></textarea>
   		</div>
   		<div class="form-group">
 		  <label for="example-date-input">Date</label>
+		  	<c:if test="${! empty Event name}">
+ 				<div class="alert alert-warning" role="alert" name="Description">
+	  				${Event name}
+				</div>
+			</c:if>
 		  <input class="form-control" type="date" value="2018-10-22" id="eventDate" name="Date" value="">
 		</div>
 		<div class="form-group">
 		  <label for="startTime">Start Time</label>
+		  	<c:if test="${! empty Event name}">
+ 				<div class="alert alert-warning" role="alert" name="Description">
+	  				${Event name}
+				</div>
+			</c:if>
 		  <input class="form-control" type="time" value="12:15:00" id="startTime" name="Start" value="">
 		</div>
 		<div class="form-group">
 		  <label for="endTime">End Time</label>
+		  	<c:if test="${! empty Event name}">
+ 				<div class="alert alert-warning" role="alert" name="Description">
+	  				${Event name}
+				</div>
+			</c:if>
 		  <input class="form-control" type="time" value="12:15:00" id="endTime" name="End" value="">
 		</div>
 		<div class="form-group">
     		<label for="InputLocation">Event Location</label>
+    			<c:if test="${! empty Event name}">
+  					<div class="alert alert-warning" role="alert" name="Description">
+		  				${Event name}
+					</div>
+				</c:if>
     		<input type="text" class="form-control" id="InputLocation" placeholder="Location">
   		</div>
   		<button type="submit" class="btn btn-primary">Submit</button>

@@ -34,10 +34,10 @@ public class SignUpServlet extends HttpServlet {
         String errorMessage = null;
         Boolean result = null;
         try {
-          String user = req.getParameter("Username");
-          String email = req.getParameter("Email address");
-          String pass = req.getParameter("Password");
-          String cpass = req.getParameter("Confirm Password");
+          String user = getStringFromParameter(req.getParameter("Username"));
+          String email = getStringFromParameter(req.getParameter("Email address"));
+          String pass = getStringFromParameter(req.getParameter("Password"));
+          String cpass = getStringFromParameter(req.getParameter("Confirm Password"));
           //String business = getStringFromParameter(req.getParameter("Business Name"));
           //Boolean hasBusiness = getBooleanFromParameter(req.getParameter("BusinessCheck"));
 
@@ -81,13 +81,13 @@ public class SignUpServlet extends HttpServlet {
 		return null;
 	}
 
-	/*private String getStringFromParameter(String s) {
+	private String getStringFromParameter(String s) {
 		if (s == null || s.equals("")) {
 			return null;
 		} else {
 			return s;
 		}
-	}//end parse string args*/
+	}//end parse string args
 	
 }//end class
 

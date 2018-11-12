@@ -37,8 +37,8 @@ public class LoginServlet extends HttpServlet {
         }
         //Double result = null;
         try {
-          String user = req.getParameter("Username");
-          String pass = req.getParameter("Password");
+          String user = getStringFromParameter(req.getParameter("Username"));
+          String pass = getStringFromParameter(req.getParameter("Password"));
 
           if (user == null || pass == null) {
             errorMessage = "Please fill in all fields.";
@@ -70,12 +70,12 @@ public class LoginServlet extends HttpServlet {
 	}//end doPost
 	
 	
-	/*private String getStringFromParameter(String s) {
+	private String getStringFromParameter(String s) {
 		if (s == null || s.equals("")) {
 			return null;
 		} else {
 			return s;
 		}
-	}//end parse string args*/
+	}//end parse string args
 	
 }//end class
