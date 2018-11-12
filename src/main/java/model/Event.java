@@ -1,7 +1,7 @@
 
 package model;
 
-public class Event
+public class Event implements Comparable<Event>
 {
 	private String name;
 	private String description;
@@ -77,6 +77,10 @@ public class Event
 	}
 	public int getId(){
 		return id;
+	}
+	//@Override
+	public int compareTo(Event e) {
+		return start_date - e.getStartDate();
 	}
 	
 	
