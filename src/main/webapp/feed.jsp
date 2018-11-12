@@ -9,29 +9,16 @@
 	
 <body>
 	<div id="background">
-		<div class="navbar">
-			<ul>
-				<li><img src = "MSM Trading Network Logo.png" alt= "MSM logo" style="width:75px;height:75px;">
-				<li><a href="${pageContext.servletContext.contextPath}/index">Home</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/login">Log in</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/register">Register</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/listings">Trade</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/logout">Logout</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/userInfo">User Info</a></li>
-			</ul>
-		</div>
+		
 		<div style="text-align:center;">
-			<form action="${pageContext.servletContext.contextPath}/post" method="get">
-			<br>Click here to create a new post</br>
-			<input name="post" type="submit" value="Create"/>
-			</form>
+			
 			
 			Please select a platform, game, and trade method:
 			<form action="feedServlet" method="post">
 				
 				<select name="business">
-				  <option value="null">Platform</option>
-				  <option value="PC">PC</option>
+				  <option value="null">User</option>
+				  <option value="Tester"></option>
 				  <option value="PS3">PS3</option>
 				  <option value="PS4">PS4</option>
 				  <option value="Xbox 360">Xbox 360</option>

@@ -35,7 +35,10 @@ private static final long serialVersionUID = 1L;
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 	
-		User user = (User) req.getSession().getAttribute("user");
+		//User user = (User) req.getSession().getAttribute("user");
+		String[] businesses= {"Test1","Test2","Test3"}; 
+		
+		User user=new User ("TESTER","PASSWORD", "EMAIL",businesses );
 		/*
 		 * Send a query recieving posts that satisfy the above conditions
 		 * Create 10 posts with the queried information
