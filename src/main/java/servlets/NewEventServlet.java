@@ -98,7 +98,7 @@ public class NewEventServlet extends HttpServlet {
             	//TODO Make sure the event is saved before displaying to the user
                 
             	//display the event
-            	req.getRequestDispatcher("index.jsp").forward(req, resp);
+            	req.getRequestDispatcher("index.jsp").forward(req, resp); //TODO Change to event.jsp
             
             }//end saves properly
             else{
