@@ -56,8 +56,8 @@ public class SignUpServlet extends HttpServlet {
           }
           else { //creds acceptable, submit and redirect to login
             LoginController controller = new LoginController();
-            pass = controller.gimmeSalt(pass);
-            pass = controller.hashBrowns(pass);
+           // pass = controller.gimmeSalt(pass);
+            //pass = controller.hashBrowns(pass);
             result = controller.addNewAccount(user, pass, email, null);
             req.getRequestDispatcher("login.jsp").forward(req, resp);
           }
