@@ -323,6 +323,50 @@ public List<User> insertUser(final String username,final String password,final S
 			}
 		});
 	}
+	
+	
+	public String findRelationsByUser(final String name) throws URISyntaxException{
+		return executeTransaction(new Transaction<String>(){
+			public String execute(Connection conn) throws SQLException{
+			PreparedStatement stmt = null;
+			ResultSet resultSet = null;
+			String result = null;
+			
+			try {
+
+				stmt = conn.prepareStatement(
+						"select relations.business_name " +
+						"  from relations " +
+						" where relations.username = ? AND relations.own? = true "
+						);
+				stmt.setString(1, name);
+				resultSet = stmt.executeQuery();
+				// for testing that a result was returned
+				Boolean found = false;
+				
+				while (resultSet.next()) {
+					found = true;
+					
+					// create new User object
+					// retrieve attributes from resultSet starting with index 1
+					result = resultSet.getString(0);
+				}
+				
+				// check if the title was found
+				if (!found) {
+					System.out.println("<" + name + "> owns no businesses");
+				}
+				
+				return result;
+			} finally {
+				DBUtil.closeQuietly(resultSet);
+				DBUtil.closeQuietly(stmt);
+			}
+		}
+	});
+}
+
+	
 		public List<User> removeRelation(final String u_id,final String b_id) throws URISyntaxException
 		{
 			return executeTransaction(new Transaction<List<User>>()
