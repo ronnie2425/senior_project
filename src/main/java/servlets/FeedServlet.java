@@ -49,7 +49,7 @@ private static final long serialVersionUID = 1L;
 		try {
 			user = db.findAccountByName(username).get(0);
 		
-		
+			String errormessage=req.getSession().getAttribute("user").toString();
 		
 		/*
 		 * Send a query recieving posts that satisfy the above conditions
@@ -70,7 +70,7 @@ private static final long serialVersionUID = 1L;
 		req.setAttribute("list", list);
 		}  catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			String errormessage=req.getSession().getAttribute("user").toString();
 		}
 		
 		req.getRequestDispatcher("feed.jsp").forward(req, resp);

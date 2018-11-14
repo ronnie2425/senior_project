@@ -33,6 +33,7 @@
 			<br />
 			<br />
 			<c:forEach items="${list}" var="event">
+						${errormessage}
 			        	Event is: ${event.name}
 			        	Starts at: ${event.time}
 			        	On: ${event.start}
