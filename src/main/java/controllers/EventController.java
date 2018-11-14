@@ -101,11 +101,11 @@ public class EventController {
 			events = queries.findEventByName(name);
 	
 
-			if (events.isEmpty()) {
+			//if (events.isEmpty()) {
 				
-				queries.insertEvent(name, description, start_date, end_date, time, business, location,id);
+				//queries.insertEvent(name, description, start_date, end_date, time, business, location,id);
 			return true;
-			}
+			//}
 				
 
 //			
