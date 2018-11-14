@@ -56,7 +56,7 @@ public class NewEventServlet extends HttpServlet {
           int end= (Integer.parseInt(array2[2])) + (Integer.parseInt(array2[1])*100) +(Integer.parseInt(array2[0])*10000);
          
           
-          
+          errorMessage = "step 1 works";
           
           /*if(req.getSession().getAttribute("username") != null){
   			String username = (String) req.getSession().getAttribute("username");
@@ -114,12 +114,12 @@ public class NewEventServlet extends HttpServlet {
           
         }//end try
         catch(Exception e) {
-          errorMessage = "Something went worng in the NewEventServlet :(";
+//          errorMessage = "Something went worng in the NewEventServlet :(";
           //set new attributes to display
           req.setAttribute("errorMessage", errorMessage);
           
           //display the event
-          req.getRequestDispatcher("login.jsp").forward(req, resp);
+          req.getRequestDispatcher("event.jsp").forward(req, resp);
         }
         
 
