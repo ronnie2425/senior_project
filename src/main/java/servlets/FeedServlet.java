@@ -46,10 +46,8 @@ private static final long serialVersionUID = 1L;
 		User user=null;
 		try {
 			user = c.findAccountByName(username).get(0);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		
 		
 		/*
 		 * Send a query recieving posts that satisfy the above conditions
@@ -68,7 +66,10 @@ private static final long serialVersionUID = 1L;
 		Collections.sort(list);
 		
 		req.setAttribute("list", list);
-		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			String errorMessage = "username is: "+req.getSession().getAttribute("user").toString();
+		}
 		
 		req.getRequestDispatcher("feed.jsp").forward(req, resp);
 
