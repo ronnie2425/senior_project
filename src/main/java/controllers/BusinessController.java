@@ -27,18 +27,18 @@ public class BusinessController {
 			List<Business> events = null;
 			int count=1;
 			
-			while(exist=true) {
-				events = queries.findBusinessById(id);
-				if (!events.isEmpty())
-				{
-					break;
-				
-				}
-				else {
-					id=((id^count)%10000);
-					count++;
-				}
-			}
+//			while(exist=true) {
+//				events = queries.findBusinessById(id);
+//				if (!events.isEmpty())
+//				{
+//					break;
+//				
+//				}
+//				else {
+//					id=((id^count)%10000);
+//					count++;
+//				}
+//			}
 			queries.insertBusiness(name, location, id);
 		}
 		catch (Exception e){
@@ -46,9 +46,9 @@ public class BusinessController {
 		}
 		return true;
 	}
-	public Business findBusinessByName(String name){
+	public List<Business> findBusinessByName(String name){
 		try{
-			return queries.findBusinessByName(name).get(0);		}
+			return queries.findBusinessByName(name);		}
 		catch (Exception e){
 			return null;
 		}
