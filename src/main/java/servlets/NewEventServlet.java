@@ -85,14 +85,14 @@ public class NewEventServlet extends HttpServlet {
           else { //fields filled
             EventController controller = new EventController();
             if(controller.AddEvent(name, description, start, end, time, businessName, location)){
-            	//set new attributes to display
-            	req.setAttribute("Event name", name);
-                req.setAttribute("Event details", description);
-                req.setAttribute("Start date", start);
-                req.setAttribute("End date", end);
-                req.setAttribute("Business", businessName);
-                req.setAttribute("Location", location);
-                req.setAttribute("errorMessage", errorMessage);
+//            	//set new attributes to display
+//            	req.setAttribute("Event name", name);
+//                req.setAttribute("Event details", description);
+//                req.setAttribute("Start date", start);
+//                req.setAttribute("End date", end);
+//                req.setAttribute("Business", businessName);
+//                req.setAttribute("Location", location);
+//                req.setAttribute("errorMessage", errorMessage);
             
             	//TODO Make sure the event is saved before displaying to the user
                 
@@ -107,7 +107,7 @@ public class NewEventServlet extends HttpServlet {
                 req.setAttribute("errorMessage", errorMessage);
                 
                 //display the event
-                req.getRequestDispatcher("event.jsp").forward(req, resp);
+                req.getRequestDispatcher("login.jsp").forward(req, resp);
             }
             
           }//end else
