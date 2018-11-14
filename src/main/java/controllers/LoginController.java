@@ -1,20 +1,15 @@
 package controllers;
-import static org.junit.Assert.fail;
 
+import static org.junit.Assert.fail;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import database.DatabaseConnector;
 import database.Databasequeries;
-//import persist.DerbyDatabase;
 import model.User;
-
-import java.sql.SQLException;
-//import model.Account;
-//import persist.DerbyDatabase;
-
 import org.apache.commons.codec.binary.*;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
@@ -29,6 +24,8 @@ public class LoginController {
 	private User login;
 	DatabaseConnector db= new DatabaseConnector();
 	Databasequeries info = new Databasequeries();
+	private static final SecurityController hacker = new SecurityController(11);
+
 
 	public void setAccount(User account) {
 		login=account;
@@ -109,28 +106,13 @@ public class LoginController {
 		}
 	}
 	
-	public String hashBrowns(String password) throws URISyntaxException {
-		String salt = gimmeSalt(password);
-		int iterations = 10000;
-        int keyLength = 512;
-        char[] passwordChars = password.toCharArray();
-        byte[] saltBytes = salt.getBytes();
 
-        byte[] hashedBytes;
-        String hashedString = null;
-		
-        try {
-            SecretKeyFactory skf = SecretKeyFactory.getInstance( "PBKDF2WithHmacSHA512" );
-            PBEKeySpec spec = new PBEKeySpec( password, salt, iterations, keyLength );
-            SecretKey key = skf.generateSecret( spec );
-            hashedBytes = key.getEncoded( );
-            hashedString = Hex.encodeHexString(hashedBytes);
-        } 
-        catch ( NoSuchAlgorithmException | InvalidKeySpecException e ) {
-            throw new RuntimeException( e );
-        }
-		
-		return info.hashword(password);
+	public static boolean verifyAndUpdateHash(String password, String hash, Function<String, Boolean> updateFunc) {
+	    return hacker.verifyAndUpdateHash(password, hash, updateFunc);
+	}
+	
+	public String hashBrowns(String password) throws URISyntaxException {
+		return hacker.fuckYou(password);
 	}
 	
 	public String gimmeSalt(String password) {
