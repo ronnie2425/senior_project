@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.*;
 import controllers.*;
+import database.Databasequeries;
 
 
 
@@ -42,10 +44,10 @@ private static final long serialVersionUID = 1L;
 		
 		//User user=new User ("TESTER","PASSWORD", "EMAIL",businesses );
 		String username = req.getSession().getAttribute("user").toString();
-		LoginController c=new LoginController();
+		Databasequeries db=new Databasequeries();
 		User user=null;
 		try {
-			user = c.findAccountByName(username).get(0);
+			user = db.findAccountByName(username).get(0);
 		
 		
 		
@@ -66,9 +68,9 @@ private static final long serialVersionUID = 1L;
 		Collections.sort(list);
 		
 		req.setAttribute("list", list);
-		} catch (SQLException e) {
+		}  catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
-			String errorMessage = "username is: "+req.getSession().getAttribute("user").toString();
+			e.printStackTrace();
 		}
 		
 		req.getRequestDispatcher("feed.jsp").forward(req, resp);
