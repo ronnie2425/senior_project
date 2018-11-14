@@ -56,7 +56,7 @@ public class NewEventServlet extends HttpServlet {
           int end= (Integer.parseInt(array2[2])) + (Integer.parseInt(array2[1])*100) +(Integer.parseInt(array2[0])*10000);
          
           
-          
+          errorMessage = "step 1 works";
           
           /*if(req.getSession().getAttribute("username") != null){
   			String username = (String) req.getSession().getAttribute("username");
