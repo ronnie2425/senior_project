@@ -111,7 +111,7 @@ public class EventController {
 //			
 //			
 //			}
-			return true;
+			//return true;
 		//end try
 		
 		
