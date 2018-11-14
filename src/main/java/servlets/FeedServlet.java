@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 
@@ -40,7 +41,16 @@ private static final long serialVersionUID = 1L;
 		//String[] businesses= {"Test1","Test2","Test3"}; 
 		
 		//User user=new User ("TESTER","PASSWORD", "EMAIL",businesses );
-		User user = (User) req.getSession().getAttribute("user");
+		String username = req.getSession().getAttribute("user").toString();
+		LoginController c=new LoginController();
+		User user=null;
+		try {
+			user = c.findAccountByName(username).get(0);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		/*
 		 * Send a query recieving posts that satisfy the above conditions
 		 * Create 10 posts with the queried information
