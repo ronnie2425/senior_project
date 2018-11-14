@@ -20,7 +20,7 @@ public class UserServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 		throws ServletException, IOException {
-		req.getRequestDispatcher("/_view/signUp.jsp").forward(req, resp);
+		req.getRequestDispatcher("/_view/signUp.jsp").forward(req, resp);		//TODO update relative URL
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class UserServlet extends HttpServlet {
             else{
             	errorMessage = "Attempted to access your homepage without a logged in user.";
             	req.setAttribute("errorMessage", errorMessage);
-            	req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+            	req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);		//TODO update relative URL
             }
         	
             
@@ -47,7 +47,7 @@ public class UserServlet extends HttpServlet {
         catch(Exception e) {
         	errorMessage = "Something went worng in the UserServlet :(";
         	req.setAttribute("errorMessage", errorMessage);
-        	req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+        	req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);	//TODO update relative URL
         }
         
         

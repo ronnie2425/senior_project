@@ -15,6 +15,14 @@ import java.sql.SQLException;
 //import model.Account;
 //import persist.DerbyDatabase;
 
+import org.apache.commons.codec.binary.*;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+
 
 
 public class LoginController {
@@ -80,7 +88,7 @@ public class LoginController {
 			}
 		}
 */
-		//password =  hashBrowns(gimmeSalt(password));
+		//password =  hashBrowns(gimmeSalt(password));		//REDUNDANT, remove from final project
 		users = info.findAccountByName(name);
 		if (!users.isEmpty()){
 			return false;
@@ -102,6 +110,26 @@ public class LoginController {
 	}
 	
 	public String hashBrowns(String password) throws URISyntaxException {
+		String salt = gimmeSalt(password);
+		int iterations = 10000;
+        int keyLength = 512;
+        char[] passwordChars = password.toCharArray();
+        byte[] saltBytes = salt.getBytes();
+
+        byte[] hashedBytes;
+        String hashedString = null;
+		
+        try {
+            SecretKeyFactory skf = SecretKeyFactory.getInstance( "PBKDF2WithHmacSHA512" );
+            PBEKeySpec spec = new PBEKeySpec( password, salt, iterations, keyLength );
+            SecretKey key = skf.generateSecret( spec );
+            hashedBytes = key.getEncoded( );
+            hashedString = Hex.encodeHexString(hashedBytes);
+        } 
+        catch ( NoSuchAlgorithmException | InvalidKeySpecException e ) {
+            throw new RuntimeException( e );
+        }
+		
 		return info.hashword(password);
 	}
 	
@@ -117,9 +145,3 @@ public class LoginController {
 	}
 		
 }//end class
-
-
-	
-	
-
-

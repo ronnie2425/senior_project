@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controllers.BusinessController;
 import controllers.EventController;
 import model.Business;
 import model.User;
@@ -21,6 +22,9 @@ import model.User;
 public class NewEventServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	EventController controller = new EventController();
+    BusinessController bus_control = new BusinessController();
+
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -38,6 +42,7 @@ public class NewEventServlet extends HttpServlet {
 		
 		// Decode form parameters and dispatch to controller
         String errorMessage = null;
+        Double result = null;
         try {
           String name = req.getParameter("Name");
           String description = req.getParameter("Description");
@@ -48,22 +53,26 @@ public class NewEventServlet extends HttpServlet {
           //req.getParameter("Business");	//May not work
           String location = req.getParameter("Location");
           
-          String array[]=time1.split("-");
+          String array[]=start1.split("-");
           int time= (Integer.parseInt(array[0])-2000) + (Integer.parseInt(array[2])*100) +(Integer.parseInt(array[0])*10000);
           String array1[]=start1.split(":");
-          int start= (Integer.parseInt(array1[2])) + (Integer.parseInt(array1[1])*100) +(Integer.parseInt(array1[0])*10000);
-          String array2[]=end1.split(":");
-          int end= (Integer.parseInt(array2[2])) + (Integer.parseInt(array2[1])*100) +(Integer.parseInt(array2[0])*10000);
+          int start= (Integer.parseInt(array[2])) + (Integer.parseInt(array[1])*100) +(Integer.parseInt(array[0])*10000);
+          String array2[]=start1.split(":");
+          int end= (Integer.parseInt(array[2])) + (Integer.parseInt(array[1])*100) +(Integer.parseInt(array[0])*10000);
          
           
-          errorMessage = "step 1 works";
           
-          /*if(req.getSession().getAttribute("username") != null){
-  			String username = (String) req.getSession().getAttribute("username");
-  		  }
-          else{
-          		//req.getSession().setAttribute("username", "guest");
-          }*/
+          
+          if(req.getSession().getAttribute("user") != null && req.getSession().getAttribute("user") != ""){
+    			String user = (String) req.getSession().getAttribute("user");
+    			businessName = bus_control.findBusinessByUser(user);
+    		  }
+            else{
+            	req.getSession().setAttribute("user", null);
+            	errorMessage = "Session terminated, please log in again.";
+            	req.setAttribute("errorMessage", errorMessage);
+            	req.getRequestDispatcher("login.jsp").forward(req, resp);
+            }//end session data check
 
 
           if (name == null || location == null || start < 1010001 || end < 1010001) { // (01-01-0001) the first day.
@@ -85,36 +94,34 @@ public class NewEventServlet extends HttpServlet {
           else { //fields filled
             EventController controller = new EventController();
             if(controller.AddEvent(name, description, start, end, time, businessName, location)){
-//            	//set new attributes to display
-//            	req.setAttribute("Event name", name);
-//                req.setAttribute("Event details", description);
-//                req.setAttribute("Start date", start);
-//                req.setAttribute("End date", end);
-//                req.setAttribute("Business", businessName);
-//                req.setAttribute("Location", location);
-//                req.setAttribute("errorMessage", errorMessage);
-            
-            	//TODO Make sure the event is saved before displaying to the user
-                
+            	//set new attributes to display
+            	req.setAttribute("Event name", name);
+                req.setAttribute("Event details", description);
+                req.setAttribute("Start date", start);
+                req.setAttribute("End date", end);
+                req.setAttribute("Business", businessName);
+                req.setAttribute("Location", location);
+                req.setAttribute("errorMessage", errorMessage);
+                            
             	//display the event
             	req.getRequestDispatcher("index.jsp").forward(req, resp); //TODO Change to event.jsp
             
             }//end saves properly
             else{
             	//TODO: goto catch
-            	errorMessage = "Something went worng in the NewEventServlet :(";
+            	errorMessage = "Something fucked up."; 				//TODO recheck this
                 //set new attributes to display
                 req.setAttribute("errorMessage", errorMessage);
                 
                 //display the event
-                req.getRequestDispatcher("login.jsp").forward(req, resp);
+                req.getRequestDispatcher("event.jsp").forward(req, resp);
             }
             
           }//end else
           
         }//end try
         catch(Exception e) {
-          errorMessage = "Something went worng in the NewEventServlet :(";
+          errorMessage = "Something went wrong in the NewEventServlet :(";
           //set new attributes to display
           req.setAttribute("errorMessage", errorMessage);
           
@@ -146,3 +153,4 @@ public class NewEventServlet extends HttpServlet {
 
 
 //end quarantine
+

@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 		
 		// Decode form parameters and dispatch to controller
         String errorMessage = null;
-        //Double result = null;
+        
         try {
           String user = getStringFromParameter(req.getParameter("Username"));
           String pass = getStringFromParameter(req.getParameter("Password"));
@@ -43,13 +43,12 @@ public class LoginServlet extends HttpServlet {
           }
           else { //fields filled
             LoginController controller = new LoginController();
-            //pass = controller.gimmeSalt(pass);
-          //  pass = controller.hashBrowns(pass);
+            pass = controller.gimmeSalt(pass);
+            pass = controller.hashBrowns(pass);
             
             if(controller.verifyAccount(user, pass)){
             	//resp.sendRedirect(req.getContextPath() + "/businessList.jsp");
-            	req.getSession().setAttribute("user", user);	
-            	req.getRequestDispatcher("index.jsp").forward(req, resp);	//TODO UserHome.jsp
+            	req.getRequestDispatcher("businessList.jsp").forward(req, resp);	//TODO UserHome.jsp
             }//end good login
             else {//bad creds
             	errorMessage = "Invalid login.";
@@ -78,3 +77,4 @@ public class LoginServlet extends HttpServlet {
 	}//end parse string args
 	
 }//end class
+
