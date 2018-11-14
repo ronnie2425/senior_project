@@ -37,6 +37,8 @@
 			</div>
 		</c:if>
   		<button type="submit" class="btn btn-primary" value="Call Servlet">Sign Up</button>
+  		<button id="login" type="button" class="btn btn-link" onclick="window.location.href='login.jsp'">Already have an account?</button>
+  		
 	</form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

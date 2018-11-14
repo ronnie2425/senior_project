@@ -14,6 +14,7 @@ import model.*;
 import controllers.*;
 
 
+
 @WebServlet("/feedServlet")
 public class FeedServlet extends HttpServlet{
 	
@@ -36,9 +37,10 @@ private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 	
 		//User user = (User) req.getSession().getAttribute("user");
-		String[] businesses= {"Test1","Test2","Test3"}; 
+		//String[] businesses= {"Test1","Test2","Test3"}; 
 		
-		User user=new User ("TESTER","PASSWORD", "EMAIL",businesses );
+		//User user=new User ("TESTER","PASSWORD", "EMAIL",businesses );
+		User user = (User) req.getSession().getAttribute("user");
 		/*
 		 * Send a query recieving posts that satisfy the above conditions
 		 * Create 10 posts with the queried information
