@@ -48,7 +48,7 @@ public class LoginController {
 	
 	public boolean verifyAccount(String name, String password) throws SQLException, URISyntaxException{
 		String test = info.findAccountByName(name).get(0).getPassword();
-		//String pass = hashBrowns(gimmeSalt(password));
+		//String pass = hashBrowns(gimmeSalt(password));		//REDUNDANT, remove from final project
 		
 		if(test.isEmpty()){
 		//if(test == password){
@@ -57,7 +57,11 @@ public class LoginController {
 		//System.out.println("<" + test + "> testing");
 		//System.out.println("<" + test + "> testing");
 			//System.out.println("<" + password + "> testing");
-		if (test.equals(password)) {
+		Function<String, Boolean> update = new Function<String, Boolean>() {
+			public Boolean apply(String hash) { String[] mutableHash;
+			mutableHash[0] = hash; return true; }
+		};
+		if (verifyAndUpdateHash(password, test, update)) {
 			return true;
 		}
 		
