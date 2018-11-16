@@ -53,7 +53,7 @@ public class NewEventServlet extends HttpServlet {
           //req.getParameter("Business");	//May not work
           String location = req.getParameter("Location");
           errorMessage = "falure between time and parameters";
-          String array[]=time1.split("-");
+          String array[]=time1.split("/");
           int time= (Integer.parseInt(array[0])-2000) + (Integer.parseInt(array[2])*100) +(Integer.parseInt(array[0])*10000);
           String array1[]=start1.split(":");
           int start= (Integer.parseInt(array1[2])) + (Integer.parseInt(array1[1])*100) +(Integer.parseInt(array1[0])*10000);

@@ -47,6 +47,14 @@ private static final long serialVersionUID = 1L;
 				LoginController log = new LoginController();
 				User user=null;
 				String username=req.getSession().getAttribute("user").toString();
+				
+				
+				String errorMessage = username;
+            	//req.getSession().setAttribute("user", null);
+            	//errorMessage = "Session terminated, please log in again.";
+            	req.setAttribute("errorMessage", errorMessage);
+            	//req.getRequestDispatcher("login.jsp").forward(req, resp);
+            	
 				try {
 					user = log.findAccountByName(username).get(0);
 				} catch (SQLException e) {
