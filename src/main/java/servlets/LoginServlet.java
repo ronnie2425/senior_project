@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
            // if(controller.verifyAccount(user, pass)){
             if (true) {
             	//resp.sendRedirect(req.getContextPath() + "/businessList.jsp");
-            	req.getRequestDispatcher("businessList.jsp").forward(req, resp);	//TODO UserHome.jsp
+            	req.getRequestDispatcher("index.jsp").forward(req, resp);	//TODO UserHome.jsp
             }//end good login
             else {//bad creds
             	errorMessage = "Invalid login.";
