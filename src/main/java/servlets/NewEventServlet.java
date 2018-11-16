@@ -29,7 +29,7 @@ public class NewEventServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 		throws ServletException, IOException {
-		req.getRequestDispatcher("editEvent.jsp").forward(req, resp);
+		req.getRequestDispatcher("newEvent.jsp").forward(req, resp);
 	}
 
 	@Override
@@ -116,7 +116,7 @@ public class NewEventServlet extends HttpServlet {
                 req.setAttribute("errorMessage", errorMessage);
                 
                 //display the event
-                req.getRequestDispatcher("event.jsp").forward(req, resp);
+                req.getRequestDispatcher("login.jsp").forward(req, resp);
             }
             
           }//end else
