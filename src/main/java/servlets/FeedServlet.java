@@ -40,26 +40,14 @@ private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 	
 		//User user = (User) req.getSession().getAttribute("user");
-		//String[] businesses= {"Test1","Test2","Test3"}; 
+		String[] businesses= {"Test1","Test2","Test3"}; 
 		
-		//User user=new User ("TESTER","PASSWORD", "EMAIL",businesses );
+		User user=new User ("TESTER","PASSWORD", "EMAIL",businesses );
 		//String username = req.getSession().getAttribute("user").toString();
 		
-		String username = "TESTER";
+		//String username = "TESTER";
 		Databasequeries db=new Databasequeries();
-		User user=null;
-		try {
-			user = db.findAccountByName(username).get(0);
-		
-			//String errormessage=req.getSession().getAttribute("user").toString();
-		
-		/*
-		 * Send a query recieving posts that satisfy the above conditions
-		 * Create 10 posts with the queried information
-		 * Send these posts to the jsp
-		 * Store position in the list of queries so that a next button can be implemented that prints the next 10 posts
-		 */
-	
+		User user1=null;
 		EventController controller = new EventController();
 		String[] b=user.getBusinesses();
 		List<Event> list=controller.findEventByBusiness(b[0]);
@@ -70,11 +58,7 @@ private static final long serialVersionUID = 1L;
 		Collections.sort(list);
 		
 		req.setAttribute("list", list);
-		}  catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			String errormessage=req.getSession().getAttribute("user").toString();
-		}
-		
+	
 		req.getRequestDispatcher("feed.jsp").forward(req, resp);
 
 		
