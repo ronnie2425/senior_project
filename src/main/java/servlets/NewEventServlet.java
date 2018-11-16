@@ -44,6 +44,7 @@ public class NewEventServlet extends HttpServlet {
         String errorMessage = null;
         Double result = null;
         try {
+        	errorMessage = "failed at start";
           String name = req.getParameter("Name");
           String description = req.getParameter("Description");
           String start1 = req.getParameter("Start");
@@ -60,7 +61,7 @@ public class NewEventServlet extends HttpServlet {
           String array2[]=start1.split(":");
           int end= (Integer.parseInt(array[2])) + (Integer.parseInt(array[1])*100) +(Integer.parseInt(array[0])*10000);
          
-          
+          errorMessage = "failed at first if";
           
           
           if(req.getSession().getAttribute("user") != null && req.getSession().getAttribute("user") != ""){
@@ -68,6 +69,7 @@ public class NewEventServlet extends HttpServlet {
     			businessName = bus_control.findBusinessByUser(user);
     		  }
             else{
+            	errorMessage = "failed at else to first if";
             	req.getSession().setAttribute("user", null);
             	errorMessage = "Session terminated, please log in again.";
             	req.setAttribute("errorMessage", errorMessage);
@@ -92,6 +94,7 @@ public class NewEventServlet extends HttpServlet {
           }
           
           else { //fields filled
+        	  errorMessage = "failed at eventController";
             EventController controller = new EventController();
             if(controller.AddEvent(name, description, start, end, time, businessName, location)){
             	//set new attributes to display
@@ -109,7 +112,7 @@ public class NewEventServlet extends HttpServlet {
             }//end saves properly
             else{
             	//TODO: goto catch
-            	errorMessage = "Something fucked up."; 				//TODO recheck this
+            	//errorMessage = "Something fucked up."; 				//TODO recheck this
                 //set new attributes to display
                 req.setAttribute("errorMessage", errorMessage);
                 
@@ -121,7 +124,7 @@ public class NewEventServlet extends HttpServlet {
           
         }//end try
         catch(Exception e) {
-          errorMessage = "Something went wrong in the NewEventServlet :(";
+          //errorMessage = "Something went wrong in the NewEventServlet :(";
           //set new attributes to display
           req.setAttribute("errorMessage", errorMessage);
           
