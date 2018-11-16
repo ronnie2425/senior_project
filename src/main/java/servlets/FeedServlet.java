@@ -41,9 +41,17 @@ private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 	
 		//User user = (User) req.getSession().getAttribute("user");
-				String[] businesses= {"Test1","Test2","Test3"}; 
+				//String[] businesses= {"Test1","Test2","Test3"}; 
 				
-				User user=new User ("TESTER","PASSWORD", "EMAIL",businesses );
+				//User user=new User ("TESTER","PASSWORD", "EMAIL",businesses );
+				LoginController log = new LoginController();
+				User user=null;
+				try {
+					user = log.findAccountByName("TESTER").get(0);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			
 			
 				EventController controller = new EventController();
