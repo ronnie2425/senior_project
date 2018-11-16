@@ -33,35 +33,34 @@ private static final long serialVersionUID = 1L;
 		//if the user is logged in send to feed page
 		else{
 			req.getRequestDispatcher("feed.jsp").forward(req, resp);
-
+	//String username = req.getSession().getAttribute("user").toString();
+		
 		}
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 	
 		//User user = (User) req.getSession().getAttribute("user");
-		String[] businesses= {"Test1","Test2","Test3"}; 
-		
-		User user=new User ("TESTER","PASSWORD", "EMAIL",businesses );
-		//String username = req.getSession().getAttribute("user").toString();
-		
-		//String username = "TESTER";
-		Databasequeries db=new Databasequeries();
-		User user1=null;
-		EventController controller = new EventController();
-		String[] b=user.getBusinesses();
-		List<Event> list=controller.findEventByBusiness(b[0]);
-		for(int i=1; i< (b.length);i++) {
-			list.addAll(controller.findEventByBusiness(b[i]));
-		}
-		
-		Collections.sort(list);
-		
-		req.setAttribute("list", list);
-	
-		req.getRequestDispatcher("feed.jsp").forward(req, resp);
+				String[] businesses= {"Test1","Test2","Test3"}; 
+				
+				User user=new User ("TESTER","PASSWORD", "EMAIL",businesses );
+			
+			
+				EventController controller = new EventController();
+				String[] b=user.getBusinesses();
+				List<Event> list=controller.findEventByBusiness(b[0]);
+				for(int i=1; i< (b.length);i++) {
+					list.addAll(controller.findEventByBusiness(b[i]));
+				}
+				
+				Collections.sort(list);
+				
+				req.setAttribute("list", list);
+				
+				
+				req.getRequestDispatcher("feed.jsp").forward(req, resp);
 
-		
+
 		
 	}
 
