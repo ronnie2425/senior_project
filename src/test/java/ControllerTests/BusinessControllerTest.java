@@ -28,7 +28,7 @@ public class BusinessControllerTest {
 		business.setLocation("a place");
 		con.setBusiness(business);
 		assertTrue(con.insertBusiness("test", "a place"));
-		assertEquals(con.findBusinessByName("test").get(0).getLocation(), business.getLocation());
+		assertEquals(con.findBusinessByName("test").getLocation(), business.getLocation());
 		assertTrue(con.removeBusiness("test"));
 	}
 }
