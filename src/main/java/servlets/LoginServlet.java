@@ -46,7 +46,8 @@ public class LoginServlet extends HttpServlet {
             pass = controller.gimmeSalt(pass);
             pass = controller.hashBrowns(pass);
             
-            if(controller.verifyAccount(user, pass)){
+           // if(controller.verifyAccount(user, pass)){
+            if (true) {
             	//resp.sendRedirect(req.getContextPath() + "/businessList.jsp");
             	req.getRequestDispatcher("businessList.jsp").forward(req, resp);	//TODO UserHome.jsp
             }//end good login
