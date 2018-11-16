@@ -40,16 +40,16 @@ private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 	
 		//User user = (User) req.getSession().getAttribute("user");
-		//String[] businesses= {"Test1","Test2","Test3"}; 
+		String[] businesses= {"Test1","Test2","Test3"}; 
 		
-		//User user=new User ("TESTER","PASSWORD", "EMAIL",businesses );
-		//String username = req.getSession().getAttribute("user").toString();
+		User user=new User ("TESTER","PASSWORD", "EMAIL",businesses );
+		String username = req.getSession().getAttribute("user").toString();
 		
-		String username = "TESTER";
+		//String username = "TESTER";
 		Databasequeries db=new Databasequeries();
-		User user=null;
+		User user1=null;
 		try {
-			user = db.findAccountByName(username).get(0);
+			user1 = db.findAccountByName(username).get(0);
 		
 			//String errormessage=req.getSession().getAttribute("user").toString();
 		
@@ -72,9 +72,9 @@ private static final long serialVersionUID = 1L;
 		req.setAttribute("list", list);
 		}  catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
-			String errormessage=req.getSession().getAttribute("user").toString();
+		String errormessage=req.getSession().getAttribute("user").toString();
 		}
-		
+	
 		req.getRequestDispatcher("feed.jsp").forward(req, resp);
 
 		
