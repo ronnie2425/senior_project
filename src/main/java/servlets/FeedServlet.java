@@ -30,7 +30,7 @@ private static final long serialVersionUID = 1L;
 		if (user == null){
 			req.getRequestDispatcher("login.jsp").forward(req, resp);
 		}
-		//if the user is logged in send to listings page
+		//if the user is logged in send to feed page
 		else{
 			req.getRequestDispatcher("feed.jsp").forward(req, resp);
 
@@ -43,13 +43,15 @@ private static final long serialVersionUID = 1L;
 		//String[] businesses= {"Test1","Test2","Test3"}; 
 		
 		//User user=new User ("TESTER","PASSWORD", "EMAIL",businesses );
-		String username = req.getSession().getAttribute("user").toString();
+		//String username = req.getSession().getAttribute("user").toString();
+		
+		String username = "TESTER";
 		Databasequeries db=new Databasequeries();
 		User user=null;
 		try {
 			user = db.findAccountByName(username).get(0);
 		
-			String errormessage=req.getSession().getAttribute("user").toString();
+			//String errormessage=req.getSession().getAttribute("user").toString();
 		
 		/*
 		 * Send a query recieving posts that satisfy the above conditions
