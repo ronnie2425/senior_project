@@ -16,11 +16,13 @@
   </head>
   <body>
     <h1>Businesses</h1>
+    <form action="feedServlet" method="post">
 	<div class="list-group">
 	<c:forEach items="${businessList}" var = "event">
   		<a href="#" class="list-group-item list-group-item-action">${business.name}</a>
 	</c:forEach>
 	</div>
+	</form>
 	
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

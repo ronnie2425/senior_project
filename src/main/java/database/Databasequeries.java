@@ -934,6 +934,48 @@ public String hashword(final String password) throws URISyntaxException{
 }
 //
 
+
+public List<Business> findAllBusinesses() throws URISyntaxException{
+	return executeTransaction(new Transaction<List<Business>>() {
+		//@Override
+		public List<Business> execute(Connection conn) throws SQLException {
+			PreparedStatement stmt = null;
+			ResultSet resultSet = null;
+			
+			try {
+				// retreive all attributes from both Books and Authors tables
+				stmt = conn.prepareStatement(
+						"select businesses.* " +
+						"  from businesses "
+				);
+				
+				List <Business> result = new ArrayList<Business>();
+				
+				resultSet = stmt.executeQuery();
+				
+				// for testing that a result was returned
+				Boolean found = false;
+				
+				while (resultSet.next()) {
+					found = true;
+					
+					// create new User object
+					// retrieve attributes from resultSet starting with index 1
+					Business b = new Business();
+					loadBusiness(b, resultSet, 1);
+					
+					result.add(b);
+				}
+				
+			
+				return result;
+			} finally {
+				DBUtil.closeQuietly(resultSet);
+				DBUtil.closeQuietly(stmt);
+			}
+		}
+	});
+}
 }
 //
 ////verifyAccount not sure where to go about this one
