@@ -19,7 +19,7 @@ import database.Databasequeries;
 
 
 
-@WebServlet("/feedServlet")
+@WebServlet("/businessListServlet")
 public class BusinessListServlet extends HttpServlet{
 	
 private static final long serialVersionUID = 1L;
