@@ -943,9 +943,9 @@ public List<Business> findAllBusinesses() throws URISyntaxException{
 			ResultSet resultSet = null;
 			
 			try {
-				// retreive all attributes from both Books and Authors tables
+				
 				stmt = conn.prepareStatement(
-						"select businesses.* " +
+						"select * " +
 						"  from businesses "
 				);
 				
