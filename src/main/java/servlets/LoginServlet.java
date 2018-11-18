@@ -8,6 +8,7 @@ import controllers.LoginController;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -49,7 +50,9 @@ public class LoginServlet extends HttpServlet {
            // if(controller.verifyAccount(user, pass)){
             if (true) {
             	//resp.sendRedirect(req.getContextPath() + "/businessList.jsp");
-            	req.getSession().setAttribute("user", user);	
+            	//req.getSession().setAttribute("username", user);	
+            	Cookie ck=new Cookie("auth",user);
+            	ck.setMaxAge(6000);
             	req.getRequestDispatcher("index.jsp").forward(req, resp);	//TODO UserHome.jsp
             }//end good login
             else {//bad creds

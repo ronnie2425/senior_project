@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +26,7 @@ private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		User user = (User) req.getSession().getAttribute("user");
+		User user = (User) req.getSession().getAttribute("username");
 		//if the user is not logged in send to login page
 		if (user == null){
 			req.getRequestDispatcher("login.jsp").forward(req, resp);
@@ -46,15 +47,26 @@ private static final long serialVersionUID = 1L;
 				//User user=new User ("TESTER","PASSWORD", "EMAIL",businesses );
 				LoginController log = new LoginController();
 				User user=null;
-				String username=req.getSession().getAttribute("user").toString();
+				String username=null;
+				//String username=req.getSession().getAttribute("username").toString();
+				Cookie[] cks=req.getCookies();
+				if (cks !=null){
+					for (int i=0;i<cks.length;i++){
+						String name=cks[i].getName();
+						username = cks[i].getValue();
+						if (name.equals("auth")){
+							break;
+						}
+					}
+				}
 				
 				
-				String errorMessage = username;
+				//String errorMessage = username;
             	//req.getSession().setAttribute("user", null);
             	//errorMessage = "Session terminated, please log in again.";
-            	req.setAttribute("errorMessage", errorMessage);
+            	//req.setAttribute("errorMessage", errorMessage);
             	//req.getRequestDispatcher("login.jsp").forward(req, resp);
-            	
+            	if (username!=null){
 				try {
 					user = log.findAccountByName(username).get(0);
 				} catch (SQLException e) {
@@ -79,6 +91,7 @@ private static final long serialVersionUID = 1L;
 
 
 		
+	}
 	}
 
 }
