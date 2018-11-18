@@ -57,7 +57,7 @@ private static final long serialVersionUID = 1L;
 				req.setAttribute("businessList", list);
 				
 				
-				req.getRequestDispatcher("feed.jsp").forward(req, resp);
+				req.getRequestDispatcher("businessList.jsp").forward(req, resp);
 				}
 			
 				

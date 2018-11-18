@@ -22,6 +22,7 @@
   		<a href="#" class="list-group-item list-group-item-action">${business.name}</a>
 	</c:forEach>
 	</div>
+	<button type="submit" class="btn btn-primary">See Businesses</button>
 	</form>
 	
     <!-- Optional JavaScript -->
