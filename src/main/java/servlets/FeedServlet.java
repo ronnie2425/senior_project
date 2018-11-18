@@ -45,7 +45,7 @@ private static final long serialVersionUID = 1L;
 				//String[] businesses= {"Test1","Test2","Test3"}; 
 				
 				//User user=new User ("TESTER","PASSWORD", "EMAIL",businesses );
-				LoginController log = new LoginController();
+				//LoginController log = new LoginController();
 				User user=null;
 				String username=null;
 				//String username=req.getSession().getAttribute("username").toString();
@@ -67,27 +67,37 @@ private static final long serialVersionUID = 1L;
             	//req.setAttribute("errorMessage", errorMessage);
             	//req.getRequestDispatcher("login.jsp").forward(req, resp);
             	if (username!=null){
-				try {
-					user = log.findAccountByName(username).get(0);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			
+//				try {
+//					//user = log.findAccountByName(username).get(0);
+//				} catch (SQLException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+            		Databasequeries queries = new Databasequeries();
 			
 				EventController controller = new EventController();
-				String[] b=user.getBusinesses();
-				List<Event> list=controller.findEventByBusiness(b[0]);
-				for(int i=1; i< (b.length);i++) {
-					list.addAll(controller.findEventByBusiness(b[i]));
+				List<Business> b;
+				try {
+					b = queries.findBusinesssFromAccount(username);
+					List<Event> list=controller.findEventByBusiness(b.get(0).getName());
+				for(int i=1; i< (b.size());i++) {
+					list.addAll(controller.findEventByBusiness(b.get(0).getName()));
 				}
-				
-				Collections.sort(list);
+					Collections.sort(list);
 				
 				req.setAttribute("list", list);
 				
 				
 				req.getRequestDispatcher("feed.jsp").forward(req, resp);
+				}
+				 catch (URISyntaxException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				}
+				
+				
 
 
 		

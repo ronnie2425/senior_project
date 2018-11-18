@@ -53,6 +53,7 @@ public class LoginServlet extends HttpServlet {
             	//req.getSession().setAttribute("username", user);	
             	Cookie ck=new Cookie("auth",user);
             	ck.setMaxAge(6000);
+            	resp.addCookie(ck);
             	req.getRequestDispatcher("index.jsp").forward(req, resp);	//TODO UserHome.jsp
             }//end good login
             else {//bad creds
