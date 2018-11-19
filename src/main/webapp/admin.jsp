@@ -15,7 +15,7 @@
 				<c>
 					<li>Username is: ${user.username}</li><br />
 					<li>Password is: ${user.password}</li><br />
-				</c>
+				
 				<c:forEach items="${list}" var="event">
 			        	Event is: ${event.name}
 			        	Starts at: ${event.time}
@@ -40,6 +40,7 @@
 						</form>		
 						<br />	            
 				</c:forEach>
+				</c>
 			</div>
 			<input name ="submit" type ="submit" value="Search"/>
 			</form>
