@@ -18,7 +18,7 @@
     <h1>Businesses</h1>
     <form action="businessListServlet" method="post">
 		<div class="list-group">
-		<c:forEach items="${businessList}" var = "event">
+		<c:forEach items="${list}" var = "business">
 			Business is: ${business.name}
   			<a href="#" class="list-group-item list-group-item-action">${business.name}</a>
 		</c:forEach>
