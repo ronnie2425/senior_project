@@ -10,7 +10,7 @@
 	
 	<body>
 		<div id="background">
-			<form action="adminServlet" method="post">
+			<form action="adminServlet" method="get">
 			<div>
 				<c>
 					<li>Username is: ${user.username}</li><br />
