@@ -48,8 +48,8 @@ public class LoginServlet extends HttpServlet {
             pass = controller.gimmeSalt(pass);
             pass = controller.hashBrowns(pass);
             
-           // if(controller.verifyAccount(user, pass)){
-            if (true) {
+           if(controller.verifyAccount(user, pass)){
+            //if (true) {
             	//resp.sendRedirect(req.getContextPath() + "/businessList.jsp");
             	//req.getSession().setAttribute("username", user);	
             	Cookie ck=new Cookie("auth",user);
@@ -65,7 +65,7 @@ public class LoginServlet extends HttpServlet {
           }//end fields filled else
           
         } catch(Exception e) {
-          errorMessage = "There was a problem in the LoginServlet.";
+          errorMessage = "There was a problem in the LoginServlet. check verifyaccount's isEmpty return val.";
           req.setAttribute("errorMessage", errorMessage);
         }
         
