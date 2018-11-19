@@ -112,8 +112,9 @@ private void loadUser(User user, ResultSet resultSet, int index) throws SQLExcep
 	
 	private void loadBusiness(Business result, ResultSet resultSet, int index) throws SQLException{
 		result.setID(resultSet.getInt(index++));
-		result.setLocation(resultSet.getString(index++));
 		result.setName(resultSet.getString(index++));
+		result.setLocation(resultSet.getString(index++));
+		
 		
 	}
 	

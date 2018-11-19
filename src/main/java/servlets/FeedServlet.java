@@ -78,8 +78,8 @@ private static final long serialVersionUID = 1L;
 				EventController controller = new EventController();
 				List<Business> b;
 				try {
-					//b = queries.findBusinesssFromAccount(username);
-					b=queries.findBusinessByName("Test1");
+					b = queries.findBusinesssFromAccount(username);
+					//b=queries.findBusinessByName("Test1");
 					List<Event> list=controller.findEventByBusiness(b.get(0).getName());
 				for(int i=1; i< (b.size());i++) {
 					list.addAll(controller.findEventByBusiness(b.get(0).getName()));
