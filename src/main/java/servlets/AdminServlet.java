@@ -58,7 +58,8 @@ public class AdminServlet extends HttpServlet {
 			for (int i=0;i<b.size();i++){
 			list.addAll(controller.findEventByBusiness(b.get(i).getName()));
 			}
-			req.setAttribute("eventlist", list);
+			req.setAttribute("list", list);
+			req.setAttribute("user", user);
 			
 			
 			} catch (URISyntaxException e) {
