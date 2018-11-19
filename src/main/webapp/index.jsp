@@ -22,6 +22,7 @@
 				<li><a href="${pageContext.servletContext.contextPath}/editEvent.jsp">Edit Event</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/newEvent.jsp">New Event</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/feed.jsp">Feed</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/admin.jsp">Feed</a></li>
 				
 				
 			</ul>
