@@ -43,5 +43,13 @@ public class LoginControllerTest {
 		//assertFalse(con.verifyAccount("user", "falure"));
 		con.removeAccount("user");
 	}
+	
+	@Test
+	public void testVerify_Extensive() throws SQLException, URISyntaxException {
+		System.out.println("Insert: " + con.addNewAccount("user", "tmpPass", "something", "none"));
+		//assertTrue(con.verifyAccount("user", "tmpPass"));
+		//assertFalse(con.verifyAccount("user", "falure"));
+		con.removeAccount("user");
+	}
 
 }
