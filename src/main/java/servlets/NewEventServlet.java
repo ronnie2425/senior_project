@@ -60,12 +60,16 @@ public class NewEventServlet extends HttpServlet {
 //        int start= (Integer.parseInt(array1[2])) + (Integer.parseInt(array1[1])*100) +(Integer.parseInt(array1[0])*10000);
 //        String array2[]=end1.split(":");
 //        int end= (Integer.parseInt(array2[2])) + (Integer.parseInt(array2[1])*100) +(Integer.parseInt(array2[0])*10000);
-        	int start = 1;
-        	//Integer.parseInt(start1);
-        	int end =  1;
-        	//Integer.parseInt(end1);
-        	int time =  1;
-        	//Integer.parseInt(time1);
+          String array[]=time1.split("-");
+ 	     int time= (Integer.parseInt(array[0])*10000) + (Integer.parseInt(array[1])*100) +(Integer.parseInt(array[2]));
+ 	     String array1[]=start1.split(":");
+ 	     int start= (Integer.parseInt(array1[0])*100) + (Integer.parseInt(array1[1]));
+ 	     String array2[]=end1.split(":");
+ 	     int end= (Integer.parseInt(array2[0])*100) + (Integer.parseInt(array2[1]));
+ 	     System.out.println("end equals"+end); 
+ 	     System.out.println("start equals"+start); 
+ 	     System.out.println("time equals"+time); 
+          	
           errorMessage = "failed at first if";
           
           
