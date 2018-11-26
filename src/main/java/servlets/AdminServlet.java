@@ -50,8 +50,8 @@ public class AdminServlet extends HttpServlet {
 			
 			try {
 				User user=queries.findAccountByName(username).get(0);
-				//List<Business> b=queries.findBusinesssFromAccount(username);
-				List<Business> b=queries.findBusinessByName("Test1");
+				List<Business> b=queries.findBusinesssFromAccount(username);
+				//List<Business> b=queries.findBusinessByName("Test1");
 			
 			EventController controller = new EventController();
 			List<Event> list=new ArrayList<Event>();
@@ -81,7 +81,7 @@ public class AdminServlet extends HttpServlet {
 		
 		if(!req.getParameter("eventId").equals(null)){
 			//redirect to edit the selected post
-			int postid = Integer.parseInt(req.getParameter("postID"));
+			int postid = Integer.parseInt(req.getParameter("eventId"));
 			req.getRequestDispatcher("editEvent.jsp").forward(req, resp);
 			
 		
