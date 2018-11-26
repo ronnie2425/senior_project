@@ -47,23 +47,25 @@ public class LoginController {
 	}
 	
 	public boolean verifyAccount(String name, String password) throws SQLException, URISyntaxException{
-		String test = info.findAccountByName(name).get(0).getPassword();
-		//String pass = hashBrowns(gimmeSalt(password));		//REDUNDANT, remove from final project
-		
-		if(test.isEmpty()){
-		//if(test == password){
-			return false;
-		}
-		//System.out.println("<" + test + "> testing");
-		//System.out.println("<" + test + "> testing");
-			//System.out.println("<" + password + "> testing");
-//		Function<String, Boolean> update = new Function<String, Boolean>() {
-//			public Boolean apply(String hash) { String[] mutableHash = {""};
-//			mutableHash[0] = hash; return true; }
-//		};
-		if (hacker.verifyHash(password, test)) {
-			return true;
-		}
+		if(!info.findAccountByName(name).isEmpty()){//shell isEmpty check, empty list may store a value in string?
+			String test = info.findAccountByName(name).get(0).getPassword();
+			//String pass = hashBrowns(gimmeSalt(password));		//REDUNDANT, remove from final project
+			
+			if(test.isEmpty() || test.equals("")){
+			//if(test == password){
+				return false;
+			}
+			//System.out.println("<" + test + "> testing");
+			//System.out.println("<" + test + "> testing");
+				//System.out.println("<" + password + "> testing");
+	//		Function<String, Boolean> update = new Function<String, Boolean>() {
+	//			public Boolean apply(String hash) { String[] mutableHash = {""};
+	//			mutableHash[0] = hash; return true; }
+	//		};
+			if (hacker.verifyHash(password, test)) {
+				return true;
+			}
+		}//end if has results
 		
 		return false;
 	}
