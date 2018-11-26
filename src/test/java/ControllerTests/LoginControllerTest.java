@@ -9,14 +9,18 @@ import org.junit.Test;
 
 import model.User;
 import controllers.LoginController;
+import controllers.SecurityController;
 
 public class LoginControllerTest {
 	private User user;
 	private LoginController con;
+	private SecurityController sec;
+	
 	@Before
 	public void setUp() throws Exception {
 		user=new User();
 		con = new LoginController();
+		sec = new SecurityController(1);
 		User user = new User();;
 		user.setPassword("tmpPass");
 		user.setUsername("test");
@@ -28,28 +32,44 @@ public class LoginControllerTest {
 		con.setAccount(user);
 		assertEquals(user ,con.getAccount());
 	}
-	@Test
 	
+	@Test
 	public void testinsertRemoveAndFind() throws SQLException, URISyntaxException {
 		assertTrue(con.addNewAccount("user", "tmpPass", "something", "none"));
 		assertEquals("user",con.findAccountByName("user").get(0).getUsername());
 		assertTrue(con.removeAccount("user"));
 		assertFalse("user" == con.findAccountByName("user").get(0).getUsername());
 	}
-	@Test
-	public void testVerify() throws SQLException, URISyntaxException {
-		con.addNewAccount("user", "tmpPass", "something", "none");
-		//assertTrue(con.verifyAccount("user", "tmpPass"));
-		//assertFalse(con.verifyAccount("user", "falure"));
-		con.removeAccount("user");
-	}
+
 	
 	@Test
-	public void testVerify_Extensive() throws SQLException, URISyntaxException {
-		System.out.println("Insert: " + con.addNewAccount("user", "tmpPass", "something", "none"));
-		//assertTrue(con.verifyAccount("user", "tmpPass"));
-		//assertFalse(con.verifyAccount("user", "falure"));
-		con.removeAccount("user");
+	public void testVerifyExtensive() throws SQLException, URISyntaxException {
+		String temp = sec.fuckYou("password");
+		System.out.println(temp);
+		String temp2 = con.hashBrowns("password");
+		System.out.println(temp2);
+		
+		if(temp.equals(temp2)){
+			System.out.println("They match!");
+			if(sec.verifyHash("password", temp2)){
+				System.out.println("Verified!");
+				
+				System.out.println("Insert: " + con.addNewAccount("user", "tmpPass", "something", "none"));
+				//assertTrue(con.verifyAccount("user", "tmpPass"));
+				//assertFalse(con.verifyAccount("user", "falure"));
+				con.removeAccount("user");
+			}
+			else{
+				System.out.println("Verification failed. Check param types?");
+			}
+			
+		}
+		else{
+			System.out.println("They don't match. Check middleman method?");
+		}
+		
+		
+		
 	}
 
 }
