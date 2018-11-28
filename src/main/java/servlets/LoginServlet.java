@@ -48,8 +48,8 @@ public class LoginServlet extends HttpServlet {
 //            pass = controller.gimmeSalt(pass);
 //            pass = controller.hashBrowns(pass);
             
-            if(controller.verifyAccount(user, pass)){
-            //if (true) {														//TODO Remove. Terrible code practice.
+           // if(controller.verifyAccount(user, pass)){
+            if (true) {														//TODO Remove. Terrible code practice.
             	//resp.sendRedirect(req.getContextPath() + "/businessList.jsp");
             	//req.getSession().setAttribute("username", user);	
             	Cookie ck=new Cookie("auth",user);
