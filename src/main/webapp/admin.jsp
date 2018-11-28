@@ -10,7 +10,7 @@
 	
 	<body>
 		<div id="background">
-			<form action="adminServlet" method="get">
+			
 			<div>
 				<c>
 					<li>Username is: ${user.username}</li><br />
@@ -26,9 +26,9 @@
 							<br>Click here to view info about the event</br>
 							<input name="name" type="text" value="${event.name}" hidden />
 							<input name="time" type="text" value="${event.time}" hidden />
-							<input name="start" type="text" value="${post.start}" hidden />
-							<input name="location" type="text" value="${post.location}" hidden />
-							<input name="description" type="text" value="${post.description}" hidden />
+							<input name="start" type="text" value="${event.start}" hidden />
+							<input name="location" type="text" value="${event.location}" hidden />
+							<input name="description" type="text" value="${event.description}" hidden />
 							
 							
 							<input name="post" type="submit" value="View"/>
@@ -42,8 +42,8 @@
 				</c:forEach>
 				</c>
 			</div>
-			<input name ="submit" type ="submit" value="Search"/>
-			</form>
+		
+		
 		</div>
 	</body>
 	

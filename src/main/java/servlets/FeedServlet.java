@@ -26,16 +26,47 @@ private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		User user = (User) req.getSession().getAttribute("username");
+		String username=null;
+		Cookie[] cks=req.getCookies();
+		if (cks !=null){
+			for (int i=0;i<cks.length;i++){
+				String name=cks[i].getName();
+				username = cks[i].getValue();
+				if (name.equals("auth")){
+					break;
+				}
+			}
+		}
 		//if the user is not logged in send to login page
-		if (user == null){
+		if (username == null){
 			req.getRequestDispatcher("login.jsp").forward(req, resp);
 		}
-		//if the user is logged in send to feed page
-		else{
-			req.getRequestDispatcher("feed.jsp").forward(req, resp);
-	//String username = req.getSession().getAttribute("user").toString();
 		
+		if (username!=null){
+
+        	Databasequeries queries = new Databasequeries();
+		
+			EventController controller = new EventController();
+			List<Business> b;
+			try {
+				b = queries.findBusinesssFromAccount(username);
+				//b=queries.findBusinessByName("Test1");
+				List<Event> list=controller.findEventByBusiness(b.get(0).getName());
+			for(int i=1; i< (b.size());i++) {
+				list.addAll(controller.findEventByBusiness(b.get(0).getName()));
+			}
+				Collections.sort(list);
+			
+			req.setAttribute("list", list);
+			
+			
+			//req.getRequestDispatcher("feed.jsp").forward(req, resp);
+			req.getRequestDispatcher("index.jsp").forward(req, resp);
+			}
+			 catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			 }
 		}
 	}
 	
@@ -98,6 +129,7 @@ private static final long serialVersionUID = 1L;
 				}
 				
 				}
+            	req.getRequestDispatcher("index.jsp").forward(req, resp);
 				
 				
 

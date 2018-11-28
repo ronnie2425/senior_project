@@ -22,7 +22,7 @@
 				<li><a href="${pageContext.servletContext.contextPath}/editEvent.jsp">Edit Event</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/newEvent.jsp">New Event</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/feed.jsp">Feed</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/admin.jsp">Admin</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/adminServlet">Admin</a></li>
 				
 				
 			</ul>
@@ -48,6 +48,17 @@
 			        	On: ${event.start}
 			        	At: ${event.location}
 			        	Description: ${event.description}
+			        	<form action="${pageContext.servletContext.contextPath}/event.jsp" method="get">
+							<br>Click here to view info about the event</br>
+							<input name="name" type="text" value="${event.name}" hidden />
+							<input name="time" type="text" value="${event.time}" hidden />
+							<input name="start" type="text" value="${event.start}" hidden />
+							<input name="location" type="text" value="${event.location}" hidden />
+							<input name="description" type="text" value="${event.description}" hidden />
+							
+							
+							<input name="post" type="submit" value="View"/>
+						</form>
 			        	
 						         
 			</c:forEach>

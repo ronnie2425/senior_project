@@ -70,9 +70,28 @@ public class AdminServlet extends HttpServlet {
 			req.getRequestDispatcher("admin.jsp").forward(req, resp);
 
 		}
+	
+
+	
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String username=null;
+		Cookie[] cks=req.getCookies();
+		if (cks !=null){
+			for (int i=0;i<cks.length;i++){
+				String name=cks[i].getName();
+				username = cks[i].getValue();
+				if (name.equals("auth")){
+					break;
+				}
+			}
+		}
+		if (username == null){
+			req.getRequestDispatcher("login.jsp").forward(req, resp);
+		}
+		
+		
 		String name = req.getParameter("name");
 		String time = req.getParameter("time");
 		String start = req.getParameter("start");
@@ -81,7 +100,7 @@ public class AdminServlet extends HttpServlet {
 		
 		if(!req.getParameter("eventId").equals(null)){
 			//redirect to edit the selected post
-			int postid = Integer.parseInt(req.getParameter("eventId"));
+			int eventid = Integer.parseInt(req.getParameter("eventId"));
 			req.getRequestDispatcher("editEvent.jsp").forward(req, resp);
 			
 		
