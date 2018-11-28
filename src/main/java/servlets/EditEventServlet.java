@@ -36,7 +36,7 @@ public class EditEventServlet extends HttpServlet {
 		int id = getIntFromParameter(req.getParameter("ID"));
 		
 		EventController controller = new EventController();
-		Event oldInfo = controller.findByID(id);
+		Event oldInfo = controller.findByID(12);
 		
 		String name = oldInfo.getName();
         String description = oldInfo.getDescription();
@@ -49,15 +49,16 @@ public class EditEventServlet extends HttpServlet {
         
         req.setAttribute("Event name", name);
         req.setAttribute("Event details", description);
-        req.setAttribute("Start date", start);
-        req.setAttribute("End date", end);
+        req.setAttribute("Start time", start);
+        req.setAttribute("End time", end);
+        req.setAttribute("date", time);
         req.setAttribute("Business", businessName);
         req.setAttribute("Location", location);
         req.setAttribute("errorMessage", errorMessage);
         req.setAttribute("ID", id);
         
     	//display the event
-    	req.getRequestDispatcher("/_view/event.jsp").forward(req, resp);
+    	req.getRequestDispatcher("/_view/editEvent.jsp").forward(req, resp);
 		
 		
 	}//end get event info
@@ -72,7 +73,6 @@ public class EditEventServlet extends HttpServlet {
 		
 		// Decode form parameters and dispatch to controller
         String errorMessage = null;
-        Double result = null;
         try {
           String name = getStringFromParameter(req.getParameter("Event name"));
           String description = getStringFromParameter(req.getParameter("Event details"));

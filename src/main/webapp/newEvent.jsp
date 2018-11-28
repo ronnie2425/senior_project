@@ -22,7 +22,7 @@
   		</div>
   		<div class="form-group">
 		  <label for="example-date-input">Date</label>
-		  <input class="form-control" type="date" value="10-23-19" id="eventDate" name="Date" value="">
+		  <input class="form-control" type="date" value="2018-10-22" id="eventDate" name="Date" value="">
 		</div>
 		<div class="form-group">
 		  <label for="startTime">Start Time</label>
