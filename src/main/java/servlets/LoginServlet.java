@@ -45,10 +45,10 @@ public class LoginServlet extends HttpServlet {
           }
           else { //fields filled
             LoginController controller = new LoginController();
-            pass = controller.gimmeSalt(pass);
-            pass = controller.hashBrowns(pass);
+//            pass = controller.gimmeSalt(pass);
+//            pass = controller.hashBrowns(pass);
             
-           //if(controller.verifyAccount(user, pass)){
+           // if(controller.verifyAccount(user, pass)){
             if (true) {														//TODO Remove. Terrible code practice.
             	//resp.sendRedirect(req.getContextPath() + "/businessList.jsp");
             	//req.getSession().setAttribute("username", user);	

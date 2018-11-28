@@ -268,7 +268,7 @@ public class QueryTests {
 		db.removeBusiness(business);
 		db.insertBusiness(business,location,b_id);
 		
-		db.insertRelation(business,user);
+		db.insertRelation(user,business);
 		
 		
 	
@@ -277,7 +277,7 @@ public class QueryTests {
 		db.removeUser(user);
 		db.removeRelation(user,business);
 		
-		if (business.isEmpty())
+		if (businesses.isEmpty())
 		{
 			System.out.println("Ah fuck, you goofed");
 			fail("No business found with user <" + user + ">");
@@ -295,25 +295,25 @@ public class QueryTests {
 	
 	
 	}
-//	@Test
-//	public void Test() throws URISyntaxException{
-//		
-//		db.insertUser("TESTER", "PASSWORD", "EMAIL",666);
-//		
-//		db.insertBusiness("Test1","Somewhere",7);
-//		db.insertBusiness("Test2","Somewhere",8);
-//		db.insertBusiness("Test3","Somewhere",9);
-//		
-//		db.insertEvent("t1","This is a testert",102019,122519,120000,"Test1","Somewhere",1231);
-//		db.insertEvent("t2","This is a testert",102119,122519,120000,"Test1","Somewhere",674754);
-//		db.insertEvent("t3","This is a testert",112219,122519,120000,"Test2","Somewhere",241254);
-//		db.insertEvent("t4","This is a testert",112319,122519,120000,"Test2","Somewhere",5432);
-//		db.insertEvent("t5","This is a testert",122419,122519,120000,"Test3","Somewhere",12);
-//		db.insertEvent("t6","This is a testert",122519,122519,120000,"Test3","Somewhere",1241);
-//		
-//		db.insertRelation("Test1", "TESTER");
-//		db.insertRelation("Test3", "TESTER" );
-//		db.insertRelation("Test2","TESTER");
-//	}
+	@Test
+	public void Test() throws URISyntaxException{
+		
+		db.insertUser("TESTER", "PASSWORD", "EMAIL",666);
+		
+		db.insertBusiness("Test1","Somewhere",7);
+		db.insertBusiness("Test2","Somewhere",8);
+		db.insertBusiness("Test3","Somewhere",9);
+		
+		db.insertEvent("t1","This is a testert",102019,122519,120000,"Test1","Somewhere",1231);
+		db.insertEvent("t2","This is a testert",102119,122519,120000,"Test1","Somewhere",674754);
+		db.insertEvent("t3","This is a testert",112219,122519,120000,"Test2","Somewhere",241254);
+		db.insertEvent("t4","This is a testert",112319,122519,120000,"Test2","Somewhere",5432);
+		db.insertEvent("t5","This is a testert",122419,122519,120000,"Test3","Somewhere",12);
+		db.insertEvent("t6","This is a testert",122519,122519,120000,"Test3","Somewhere",1241);
+		
+		db.insertRelation("Test1", "TESTER");
+		db.insertRelation("Test3", "TESTER" );
+		db.insertRelation("Test2","TESTER");
+	}
 }
 

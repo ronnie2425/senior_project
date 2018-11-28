@@ -89,7 +89,8 @@ private static final long serialVersionUID = 1L;
 				req.setAttribute("list", list);
 				
 				
-				req.getRequestDispatcher("feed.jsp").forward(req, resp);
+				//req.getRequestDispatcher("feed.jsp").forward(req, resp);
+				req.getRequestDispatcher("index.jsp").forward(req, resp);
 				}
 				 catch (URISyntaxException e) {
 					// TODO Auto-generated catch block
