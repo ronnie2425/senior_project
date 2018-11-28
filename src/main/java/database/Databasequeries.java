@@ -382,7 +382,8 @@ public List<User> insertUser(final String username,final String password,final S
 					{
 						stmt = conn.prepareStatement(
 								"delete from relations "
-								+ "where username = ? AND business_name = ?");
+								+ "where username = ? "
+								+ "AND business_name = ?");
 						stmt.setString(1, u_id);
 						stmt.setString(2, b_id);
 						
@@ -876,9 +877,11 @@ public List<Business> findBusinesssFromAccount(final String id) throws URISyntax
 		try {
 
 			stmt = conn.prepareStatement(
-					"Select * FROM Businesses " +
-					"INNER JOIN relations on relations.business_name=businesses.business_name "
-					+ "where relations.username = ?"
+					"Select * "+
+					"FROM Businesses " +
+					"INNER JOIN relations " +
+					"on relations.business_name=businesses.business_name "+
+					"where relations.username = ?"
 					);
 			stmt.setString(1, id);
 			resultSet = stmt.executeQuery();

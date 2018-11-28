@@ -268,7 +268,7 @@ public class QueryTests {
 		db.removeBusiness(business);
 		db.insertBusiness(business,location,b_id);
 		
-		db.insertRelation(business,user);
+		db.insertRelation(user,business);
 		
 		
 	
@@ -277,7 +277,7 @@ public class QueryTests {
 		db.removeUser(user);
 		db.removeRelation(user,business);
 		
-		if (business.isEmpty())
+		if (businesses.isEmpty())
 		{
 			System.out.println("Ah fuck, you goofed");
 			fail("No business found with user <" + user + ">");
