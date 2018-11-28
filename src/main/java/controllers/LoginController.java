@@ -1,22 +1,12 @@
 package controllers;
 
-import static org.junit.Assert.fail;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
-
 import database.DatabaseConnector;
 import database.Databasequeries;
 import model.User;
-//import org.apache.commons.codec.binary.*;
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 
 
 
@@ -121,15 +111,24 @@ public class LoginController {
 		return hacker.fuckYou(password);
 	}
 	
+	
+	/**
+	 * Adds salt to a String.
+	 * The encryption algorithm adds its own salt to the passwords automatically.
+	 * This method IS NOT the security, but it was a proof of concept that now serves to add a little extra salt and length to the password before encryption.
+	 * @see SecurityController
+	 * @param password The user-entered password.
+	 * @return The salted password (String).
+	 */
 	public String gimmeSalt(String password) {
 		String salty = "";
 		String key = "sAltYwoRdS";
 		
 		for(int i=0; i<password.length(); i++){
 			salty += password.charAt(i) + key.charAt(i%key.length());
-		}
+		}//end salting loop
 		
 		return salty;
-	}
+	}//end gimmeSalt
 		
 }//end class

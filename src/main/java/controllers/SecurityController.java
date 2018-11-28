@@ -1,15 +1,9 @@
 package controllers;
 
-import java.sql.SQLException;
-import java.util.List;
 import java.util.function.Function;
-
-import org.apache.taglibs.standard.lang.jstl.Logger;
 import org.mindrot.jbcrypt.BCrypt;
 
 
-
-@SuppressWarnings("unused")
 public class SecurityController {
 	
 	//private static final Logger log = LoggerFactory.getLogger(SecurityController.class);
