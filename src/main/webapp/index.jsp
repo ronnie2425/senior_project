@@ -29,7 +29,7 @@
 			</div>
 			<div id="welcome">
 				
-				<form action="feedServlet" method="post">
+				<form action="feedServlet" method="get">
 				
 				<select name="business">
 				  <option value="null">User</option>			

@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import controllers.LoginController;
 
 import java.net.URISyntaxException;
 import java.sql.Connection;
@@ -297,8 +298,12 @@ public class QueryTests {
 	}
 	@Test
 	public void Test() throws URISyntaxException{
-		
-		db.insertUser("TESTER", "PASSWORD", "EMAIL",666);
+		String pass;
+		 LoginController controller = new LoginController();
+		 
+		pass = controller.gimmeSalt("PASSWORD");
+        pass = controller.hashBrowns(pass);
+		db.insertUser("TESTER", pass, "EMAIL",666);
 		
 		db.insertBusiness("Test1","Somewhere",7);
 		db.insertBusiness("Test2","Somewhere",8);
