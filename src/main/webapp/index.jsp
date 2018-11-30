@@ -21,7 +21,7 @@
 				<li><a href="${pageContext.servletContext.contextPath}/businessList.jsp">Business List</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/editEvent.jsp">Edit Event</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/newEvent.jsp">New Event</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/feed.jsp">Feed</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/feedServlet">Feed</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/adminServlet">Admin</a></li>
 				
 				
