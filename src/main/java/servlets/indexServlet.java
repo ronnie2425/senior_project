@@ -19,8 +19,8 @@ import database.Databasequeries;
 
 
 
-@WebServlet("/feedServlet")
-public class FeedServlet extends HttpServlet{
+@WebServlet("/indexServlet")
+public class indexServlet extends HttpServlet{
 	
 private static final long serialVersionUID = 1L;
 	

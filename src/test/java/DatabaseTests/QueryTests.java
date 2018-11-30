@@ -297,7 +297,7 @@ public class QueryTests {
 	
 	}
 	@Test
-	public void Test() throws URISyntaxException{
+	public void populatedDB() throws URISyntaxException{
 		String pass;
 		 LoginController controller = new LoginController();
 		 
@@ -316,9 +316,9 @@ public class QueryTests {
 		db.insertEvent("t5","This is a testert",122419,122519,120000,"Test3","Somewhere",12);
 		db.insertEvent("t6","This is a testert",122519,122519,120000,"Test3","Somewhere",1241);
 		
-		db.insertRelation("Test1", "TESTER");
-		db.insertRelation("Test3", "TESTER" );
-		db.insertRelation("Test2","TESTER");
+		db.insertRelation("TESTER","Test1");
+		db.insertRelation( "TESTER","Test2" );
+		db.insertRelation("TESTER","Test3");
 	}
 }
 
