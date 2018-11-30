@@ -48,14 +48,16 @@ public class NewEventServlet extends HttpServlet {
           String description = req.getParameter("Description");
           String start1 = req.getParameter("Start");
           String end1 = req.getParameter("End");
-          String time1 = req.getParameter("Time");
+          String date1 = req.getParameter("Time");
           String businessName = null;
           //req.getParameter("Business");	//May not work
           String location = req.getParameter("Location");
           errorMessage = "falure between time and parameters";
 
-        String array[]=time1.split("-");
-        int time= (Integer.parseInt(array[0])-2000) + (Integer.parseInt(array[2])*100) +(Integer.parseInt(array[0])*10000);
+        String array[]=date1.split("-");
+        //int date= (Integer.parseInt(array[0])-2000) + (Integer.parseInt(array[2])*100) +(Integer.parseInt(array[1])*10000);
+        String date_string = array[1]+array[2]+array[0];
+        int date= Integer.parseInt(date_string);
         String array1[]=start1.split(":");
         int start= (Integer.parseInt(array1[2])) + (Integer.parseInt(array1[1])*100) +(Integer.parseInt(array1[0])*10000);
         String array2[]=end1.split(":");
@@ -96,7 +98,7 @@ public class NewEventServlet extends HttpServlet {
           else { //fields filled
         	  errorMessage = "failed at eventController";
             EventController controller = new EventController();
-            if(controller.AddEvent(name, description, start, end, time, businessName, location)){
+            if(controller.AddEvent(name, description, start, end, date, businessName, location)){
             	//set new attributes to display
             	req.setAttribute("Event name", name);
                 req.setAttribute("Event details", description);
