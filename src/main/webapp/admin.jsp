@@ -10,6 +10,23 @@
 	
 	<body>
 		<div id="background">
+		<div class="navbar">
+			<ul>
+		
+				<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Log in</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/logoutServlet">Logout</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/businessEventList.jsp">Business Event list</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/businessList.jsp">Business List</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/editEvent.jsp">Edit Event</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/newEvent.jsp">New Event</a></li>
+		
+				<li><a href="${pageContext.servletContext.contextPath}/adminServlet">Admin</a></li>
+				
+				
+			</ul>
+			</div>
 			
 			<div>
 				<c>
@@ -33,7 +50,7 @@
 							
 							<input name="post" type="submit" value="View"/>
 						</form>
-						<form action="${pageContext.servletContext.contextPath}/editEvent" method="post">
+						<form action="${pageContext.servletContext.contextPath}/editEventServlet" method="post">
 							<br>Click here to edit the event</br>
 							<input name="eventId" type="text" value="${event.id}" hidden />
 							<input name="post" type="submit" value="Edit"/>

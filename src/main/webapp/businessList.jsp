@@ -15,11 +15,33 @@
     <title>Business List</title>
   </head>
   <body>
+  <div class="navbar">
+			<ul>
+		
+				<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Log in</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/logoutServlet">Logout</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/businessEventList.jsp">Business Event list</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/businessList.jsp">Business List</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/editEvent.jsp">Edit Event</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/newEvent.jsp">New Event</a></li>
+		
+				<li><a href="${pageContext.servletContext.contextPath}/adminServlet">Admin</a></li>
+				
+				
+			</ul>
+			</div>
     <h1>Businesses</h1>
-    <form action="businessListServlet" method="post">
+    <form action="businessListServlet" method="get">
 		<div class="list-group">
 		<c:forEach items="${list}" var = "business">
   			<a href="#" class="list-group-item list-group-item-action">${business.name}</a>
+  			<form action="${pageContext.servletContext.contextPath}/editEvent" method="post">
+							<br>Click here to Subscribe</br>
+							<input name="businessName" type="text" value="${business.name}" hidden />
+							<input name="post" type="submit" value="Subscribe"/>
+						</form>	
 		</c:forEach>
 		</div>
 		<button type="submit" class="btn btn-primary">See Businesses</button>
