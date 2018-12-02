@@ -105,7 +105,7 @@ public class LoginController {
 
 	public static boolean verifyAndUpdateHash(String password, String hash, Function<String, Boolean> updateFunc) {
 	    return hacker.verifyAndUpdateHash(password, hash, updateFunc);
-	}
+	}//basically unused, possible future upgrade
 	
 	public String hashBrowns(String password) throws URISyntaxException {
 		return hacker.fuckYou(password);
