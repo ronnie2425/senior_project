@@ -36,11 +36,12 @@
     <form action="businessListServlet" method="get">
 		<div class="list-group">
 			<c:forEach items="${list}" var = "business">
-  						<form action="/businessListServlet" method="post">
-			        		<br>Subscribe</br>
-							<input name="bn" type="text" value="${business.name}" hidden />
+  				<a href="#" class="list-group-item list-group-item-action">${business.name}</a>
+  						<form action="businessList.jsp" method="post">
+							<br>Click here to Subscribe</br>
 							
-							<input name="subscribe" type="submit" value="Subscribe"/>
+							<input name="bn" type="hidden" value="${business.name}" />
+							<input name="post" type="submit" value="Subscribe"/>
 						</form>	
 			</c:forEach>
 		</div>
