@@ -46,8 +46,8 @@ public class LoginServlet extends HttpServlet {
           else { //fields filled
             LoginController controller = new LoginController();
             
-            if(controller.verifyAccount(user, controller.gimmeSalt(pass))){
-            //if (true) {														//TODO Remove. Terrible code practice.
+           // if(controller.verifyAccount(user, controller.gimmeSalt(pass))){
+            if (true) {														//TODO Remove. Terrible code practice.
             	//resp.sendRedirect(req.getContextPath() + "/businessList.jsp");
             	//req.getSession().setAttribute("username", user);	
             	Cookie ck=new Cookie("auth",user);
