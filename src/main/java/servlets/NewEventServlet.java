@@ -102,7 +102,7 @@ public class NewEventServlet extends HttpServlet {
 
           if (name == null || location == null || start < 1010001 || end < 1010001) { // (01-01-0001) the first day.
             errorMessage = "Please fill in the event's name, start date, and end date.";
-            
+            controller.AddEvent(name, description, Start, end, date, "New event addition", location);
             //save info
             req.setAttribute("Event name", name);
             req.setAttribute("Event details", description);
