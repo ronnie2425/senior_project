@@ -37,7 +37,7 @@
 		<div class="list-group">
 		<c:forEach items="${list}" var = "business">
   			<a href="#" class="list-group-item list-group-item-action">${business.name}</a>
-  			<form action="${pageContext.servletContext.contextPath}/editEvent" method="post">
+  			<form action="businessListServlet" method="post">
 							<br>Click here to Subscribe</br>
 							<input name="businessName" type="text" value="${business.name}" hidden />
 							<input name="post" type="submit" value="Subscribe"/>
