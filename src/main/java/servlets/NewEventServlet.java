@@ -113,7 +113,7 @@ public class NewEventServlet extends HttpServlet {
             req.setAttribute("errorMessage", errorMessage);
             
             //reload
-            req.getRequestDispatcher("editEvent.jsp").forward(req, resp);
+            req.getRequestDispatcher("newEvent.jsp").forward(req, resp);
           }
           
           else { //fields filled
