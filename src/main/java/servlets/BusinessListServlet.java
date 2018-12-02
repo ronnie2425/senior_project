@@ -92,7 +92,7 @@ private static final long serialVersionUID = 1L;
             				}
             			}
             		}
-				String b_name=req.getAttribute("businessName").toString();
+				String b_name=req.getAttribute("bn").toString();
 				if (b_name!=null) {
 					try {
 						queries.insertRelation(username, b_name);

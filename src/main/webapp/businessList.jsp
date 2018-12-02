@@ -35,14 +35,14 @@
     <h1>Businesses</h1>
     <form action="businessListServlet" method="get">
 		<div class="list-group">
-		<c:forEach items="${list}" var = "business">
-  			<a href="#" class="list-group-item list-group-item-action">${business.name}</a>
-  			<form action="businessListServlet" method="post">
+			<c:forEach items="${list}" var = "business">
+  				<a href="#" class="list-group-item list-group-item-action">${business.name}</a>
+  						<form action="businessListServlet" method="post">
 							<br>Click here to Subscribe</br>
-							<input name="businessName" type="text" value="${business.name}" hidden />
+							<input name="bn" type="text" value="${business.name}" hidden />
 							<input name="post" type="submit" value="Subscribe"/>
 						</form>	
-		</c:forEach>
+			</c:forEach>
 		</div>
 		<button type="submit" class="btn btn-primary">See Businesses</button>
 	</form>

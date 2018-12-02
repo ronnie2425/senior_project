@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -70,10 +71,26 @@ public class NewEventServlet extends HttpServlet {
           errorMessage = "DEBUG: failed at first if";
           
           
-          if(req.getSession().getAttribute("user") != null && req.getSession().getAttribute("user") != ""){
-    			String user = (String) req.getSession().getAttribute("user");
-    			businessName = bus_control.findBusinessByUser(user);
-    		  }
+       //   i/f(req.getSession().getAttribute("user") != null && req.getSession().getAttribute("user") != ""){
+    			//String user = (String) req.getSession().getAttribute("user");
+          String username=null;
+  		Cookie[] cks=req.getCookies();
+  		if (cks !=null){
+  			for (int i=0;i<cks.length;i++){
+  				String uname=cks[i].getName();
+  				username = cks[i].getValue();
+  				if (uname.equals("auth")){
+  					break;
+  				}
+  			}
+  		}
+  		businessName = bus_control.findBusinessByUser(username);
+  		//if the user is not logged in send to login page
+  		if (username == null){
+  			req.getRequestDispatcher("login.jsp").forward(req, resp);
+  		}
+    			
+    		  
             else{
             	errorMessage = "failed at else to first if";
             	req.getSession().setAttribute("user", null);
