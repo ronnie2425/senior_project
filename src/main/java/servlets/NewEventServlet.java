@@ -90,32 +90,23 @@ public class NewEventServlet extends HttpServlet {
   			req.getRequestDispatcher("login.jsp").forward(req, resp);
   		}
     			
-    		  
-//            else{
-//            	errorMessage = "failed at else to first if";
-//            	req.getSession().setAttribute("user", null);
-//            	errorMessage = "Session terminated, please log in again.";
-//            	req.setAttribute("errorMessage", errorMessage);
-//            	req.getRequestDispatcher("login.jsp").forward(req, resp);
-//            }//end session data check
 
-
-//          if (name == null || location == null || start < 1010001 || end < 1010001) { // (01-01-0001) the first day.
-//            errorMessage = "Please fill in the event's name, start date, and end date.";
-//            
-//            //save info
-//            req.setAttribute("Event name", name);
-//            req.setAttribute("Event details", description);
-//            req.setAttribute("Start date", start);
-//            req.setAttribute("End date", end);
-//            req.setAttribute("Business", businessName);
-//            req.setAttribute("Location", location);
-//            req.setAttribute("errorMessage", errorMessage);
-//            
-//            //reload
-//            req.getRequestDispatcher("editEvent.jsp").forward(req, resp);
-//          }
-//          
+          if (name == null || location == null || start < 1010001 || end < 1010001) { // (01-01-0001) the first day.
+            errorMessage = "Please fill in the event's name, start date, and end date.";
+            
+            //save info
+            req.setAttribute("Event name", name);
+            req.setAttribute("Event details", description);
+            req.setAttribute("Start date", start);
+            req.setAttribute("End date", end);
+            req.setAttribute("Business", businessName);
+            req.setAttribute("Location", location);
+            req.setAttribute("errorMessage", errorMessage);
+            
+            //reload
+            req.getRequestDispatcher("editEvent.jsp").forward(req, resp);
+          }
+          
           else { //fields filled
         	  errorMessage = "failed at eventController";
             if(controller.AddEvent(name, description, start, end, date, businessName, location)){
