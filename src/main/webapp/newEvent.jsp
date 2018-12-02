@@ -34,7 +34,7 @@
 		</div>
 		<div class="form-group">
     		<label for="InputLocation">Event Location</label>
-    		<input type="text" class="form-control" id="InputLocation" placeholder="Location" name="Location" value="">
+    		<input type="text" class="form-control" id="InputLocation" placeholder="Enter The Location Of The Event" name="Location" value="">
   		</div>
   		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
