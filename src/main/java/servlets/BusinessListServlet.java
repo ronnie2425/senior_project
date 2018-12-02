@@ -95,6 +95,7 @@ private static final long serialVersionUID = 1L;
 				String b_name=req.getParameter("bn");
 				if (b_name!=null) {
 					try {
+						queries.removeRelation(username, b_name);
 						queries.insertRelation(username, b_name);
 					} catch (URISyntaxException e) {
 						// TODO Auto-generated catch block
