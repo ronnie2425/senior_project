@@ -14,7 +14,7 @@
     <form action="editEventServlet" method="post">
   		<div class="form-group">
     		<label for="InputEventName">Event Title</label>
-    		<input type="text" class="form-control" value="${event.name} }" id="InputEventName" placeholder="Enter Name For Event">
+    		<input type="text" class="form-control" placeholder="${event.name} }" id="InputEventName" placeholder="Enter Name For Event">
   		</div>
   		<div class="form-group">
     		<label for="InputEventDetails">Event Details</label>
