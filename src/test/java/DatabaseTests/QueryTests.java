@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import controllers.LoginController;
 
 import java.net.URISyntaxException;
 import java.sql.Connection;
@@ -296,9 +297,13 @@ public class QueryTests {
 	
 	}
 	@Test
-	public void Test() throws URISyntaxException{
-		
-		db.insertUser("TESTER", "PASSWORD", "EMAIL",666);
+	public void populatedDB() throws URISyntaxException{
+		String pass;
+		 LoginController controller = new LoginController();
+		 
+		pass = controller.gimmeSalt("PASSWORD");
+        pass = controller.hashBrowns(pass);
+		db.insertUser("TESTER", pass, "EMAIL",666);
 		
 		db.insertBusiness("Test1","Somewhere",7);
 		db.insertBusiness("Test2","Somewhere",8);
@@ -311,9 +316,9 @@ public class QueryTests {
 		db.insertEvent("t5","This is a testert",122419,122519,120000,"Test3","Somewhere",12);
 		db.insertEvent("t6","This is a testert",122519,122519,120000,"Test3","Somewhere",1241);
 		
-		db.insertRelation("Test1", "TESTER");
-		db.insertRelation("Test3", "TESTER" );
-		db.insertRelation("Test2","TESTER");
+		db.insertRelation("TESTER","Test1");
+		db.insertRelation( "TESTER","Test2" );
+		db.insertRelation("TESTER","Test3");
 	}
 }
 

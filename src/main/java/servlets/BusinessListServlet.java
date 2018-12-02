@@ -26,38 +26,82 @@ private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-//		User user = (User) req.getSession().getAttribute("username");
-//		//if the user is not logged in send to login page
-//		if (user == null){
-//			req.getRequestDispatcher("login.jsp").forward(req, resp);
-//		}
-//		//if the user is logged in send to feed page
-//		else{
-//			req.getRequestDispatcher("feed.jsp").forward(req, resp);
-//	//String username = req.getSession().getAttribute("user").toString();
-//		
-//		}
+		String username=null;
+		Cookie[] cks=req.getCookies();
+		if (cks !=null){
+			for (int i=0;i<cks.length;i++){
+				String name=cks[i].getName();
+				username = cks[i].getValue();
+				if (name.equals("auth")){
+					break;
+				}
+			}
+		}
+		//if the user is not logged in send to login page
+		if (username == null){
+			req.getRequestDispatcher("login.jsp").forward(req, resp);
+		}
+		else {
+			Databasequeries queries = new Databasequeries();
+			
+			
+			List<Business> list=null;
+		
+				try {
+					list = queries.findAllBusinesses();
+				} catch (URISyntaxException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
+				
+			
+			req.setAttribute("list", list);
+			
+			
+			req.getRequestDispatcher("businessList.jsp").forward(req, resp);
+		}
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
             		Databasequeries queries = new Databasequeries();
-			
-			
-				List<Business> list=null;
-			
+//			
+//			
+//				List<Business> list=null;
+//			
+//					try {
+//						list = queries.findAllBusinesses();
+//					} catch (URISyntaxException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//				
+//					
+//				
+//				req.setAttribute("list", list);
+//				
+//				
+            		String username=null;
+            		Cookie[] cks=req.getCookies();
+            		if (cks !=null){
+            			for (int i=0;i<cks.length;i++){
+            				String name=cks[i].getName();
+            				username = cks[i].getValue();
+            				if (name.equals("auth")){
+            					break;
+            				}
+            			}
+            		}
+				String b_name=req.getAttribute("businessName").toString();
+				if (b_name!=null) {
 					try {
-						list = queries.findAllBusinesses();
+						queries.insertRelation(username, b_name);
 					} catch (URISyntaxException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				
-					
-				
-				req.setAttribute("list", list);
-				
-				
-				req.getRequestDispatcher("businessList.jsp").forward(req, resp);
+				}
+				req.getRequestDispatcher("businessListServlet").forward(req, resp);
 				}
 			
 				

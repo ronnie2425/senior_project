@@ -43,25 +43,31 @@ public class NewEventServlet extends HttpServlet {
 		// Decode form parameters and dispatch to controller
         String errorMessage = null;
         try {
-        	errorMessage = "failed at start";
+          errorMessage = "DEBUG: failed at start";
           String name = req.getParameter("Name");
           String description = req.getParameter("Description");
           String start1 = req.getParameter("Start");
           String end1 = req.getParameter("End");
-          String time1 = req.getParameter("Time");
+          String date1 = req.getParameter("Time");
           String businessName = null;
           //req.getParameter("Business");	//May not work
           String location = req.getParameter("Location");
-          errorMessage = "falure between time and parameters";
+          errorMessage = "DEBUG: failure between time and parameters";
 
-        String array[]=time1.split("-");
-        int time= (Integer.parseInt(array[0])-2000) + (Integer.parseInt(array[2])*100) +(Integer.parseInt(array[0])*10000);
+//        String array[]=date1.split("-");
+//        errorMessage = "DEBUG: split works";
+//        //int date= (Integer.parseInt(array[0])-2000) + (Integer.parseInt(array[2])*100) +(Integer.parseInt(array[1])*10000);
+//        String date_string = array[1]+array[2]+array[0];
+//        errorMessage = "DEBUG: datestring " + date_string;
+//        int date= Integer.parseInt(date_string);
+//        errorMessage = "DEBUG: date int " + date;
         String array1[]=start1.split(":");
+        errorMessage = "DEBUG: split works";
         int start= (Integer.parseInt(array1[2])) + (Integer.parseInt(array1[1])*100) +(Integer.parseInt(array1[0])*10000);
         String array2[]=end1.split(":");
         int end= (Integer.parseInt(array2[2])) + (Integer.parseInt(array2[1])*100) +(Integer.parseInt(array2[0])*10000);
 
-          errorMessage = "failed at first if";
+          errorMessage = "DEBUG: failed at first if";
           
           
           if(req.getSession().getAttribute("user") != null && req.getSession().getAttribute("user") != ""){
@@ -96,7 +102,7 @@ public class NewEventServlet extends HttpServlet {
           else { //fields filled
         	  errorMessage = "failed at eventController";
             EventController controller = new EventController();
-            if(controller.AddEvent(name, description, start, end, time, businessName, location)){
+            if(controller.AddEvent(name, description, start, end, date, businessName, location)){
             	//set new attributes to display
             	req.setAttribute("Event name", name);
                 req.setAttribute("Event details", description);

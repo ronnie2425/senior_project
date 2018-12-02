@@ -12,16 +12,15 @@
 			<div class="navbar">
 			<ul>
 		
-				<li><a href="${pageContext.servletContext.contextPath}/index.jsp">Home</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Log in</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
-			
-				<li><a href="${pageContext.servletContext.contextPath}/logout.jsp">Logout</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/logoutServlet">Logout</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/businessEventList.jsp">Business Event list</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/businessList.jsp">Business List</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/editEvent.jsp">Edit Event</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/newEvent.jsp">New Event</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/feed.jsp">Feed</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/feedServlet">Feed</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/adminServlet">Admin</a></li>
 				
 				
@@ -29,16 +28,7 @@
 			</div>
 			<div id="welcome">
 				
-				<form action="feedServlet" method="post">
 				
-				<select name="business">
-				  <option value="null">User</option>			
-				</select>
-				
-				
-				
-				<input name ="submit" type ="submit" value="Search"/>
-			</form>	
 			
 		
 			<c:forEach items="${list}" var="event">
