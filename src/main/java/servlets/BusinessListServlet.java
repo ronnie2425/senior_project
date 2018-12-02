@@ -101,7 +101,7 @@ private static final long serialVersionUID = 1L;
 						e.printStackTrace();
 					}
 				}
-				req.getRequestDispatcher("businessListServlet").forward(req, resp);
+				req.getRequestDispatcher("businessList.jsp").forward(req, resp);
 				}
 			
 				
