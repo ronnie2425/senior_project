@@ -61,9 +61,9 @@ public class NewEventServlet extends HttpServlet {
         String date_string = array[1]+array[2]+array[0];
         errorMessage = "DEBUG: datestring " + date_string;
         int date= Integer.parseInt(date_string);
-//        errorMessage = "DEBUG: date int " + date;
+        errorMessage = "DEBUG: date int " + date;
         String array1[]=start1.split(":");
-//        errorMessage = "DEBUG: split works";
+        errorMessage = "DEBUG: split works";
         int start=(Integer.parseInt(array1[2])) + (Integer.parseInt(array1[1])*100) +(Integer.parseInt(array1[0])*10000);
         String array2[]=end1.split(":");
         int end= (Integer.parseInt(array2[2])) + (Integer.parseInt(array2[1])*100) +(Integer.parseInt(array2[0])*10000);
