@@ -297,28 +297,64 @@ public class QueryTests {
 	
 	}
 	@Test
-	public void populatedDB() throws URISyntaxException{
-		String pass;
-		 LoginController controller = new LoginController();
-		 
-		pass = controller.gimmeSalt("PASSWORD");
-        pass = controller.hashBrowns(pass);
-		db.insertUser("TESTER", pass, "EMAIL",666);
+	public void Testown() throws URISyntaxException{
+		System.out.println("\n*** Testing Owns ***");
+		String user = "ricardon";
+		String pass = "kelly";
+		String email = "iam@tired.rn";
+		int u_id=5;
+		db.removeUser(user);
+		db.insertUser(user, pass, email,u_id);
 		
-		db.insertBusiness("Test1","Somewhere",7);
-		db.insertBusiness("Test2","Somewhere",8);
-		db.insertBusiness("Test3","Somewhere",9);
+		String business = "Shortbus Inc";
+		String location = "Back of the shortbus";
+		int b_id=5;
+		db.removeBusiness(business);
+		db.insertBusiness(business,location,b_id);
 		
-		db.insertEvent("t1","This is a testert",102019,122519,120000,"Test1","Somewhere",1231);
-		db.insertEvent("t2","This is a testert",102119,122519,120000,"Test1","Somewhere",674754);
-		db.insertEvent("t3","This is a testert",112219,122519,120000,"Test2","Somewhere",241254);
-		db.insertEvent("t4","This is a testert",112319,122519,120000,"Test2","Somewhere",5432);
-		db.insertEvent("t5","This is a testert",122419,122519,120000,"Test3","Somewhere",12);
-		db.insertEvent("t6","This is a testert",122519,122519,120000,"Test3","Somewhere",1241);
+		db.insertOwn(user,business);
 		
-		db.insertRelation("TESTER","Test1");
-		db.insertRelation( "TESTER","Test2" );
-		db.insertRelation("TESTER","Test3");
+		
+	
+		businesses = db.findOwnedBusinesssFromAccount(user);
+		db.removeBusiness(business);
+		db.removeUser(user);
+		db.removeRelation(user,business);
+		
+		if (businesses.isEmpty())
+		{
+			System.out.println("Ah fuck, you goofed");
+			fail("No business found with user <" + user + ">");
+		}
+		else
+		{
+			System.out.println("Business <" + business + "> found!");
+		}
+		
 	}
+//	@Test
+//	public void populatedDB() throws URISyntaxException{
+//		String pass;
+//		 LoginController controller = new LoginController();
+//		 
+//		pass = controller.gimmeSalt("PASSWORD");
+//        pass = controller.hashBrowns(pass);
+//		db.insertUser("TESTER", pass, "EMAIL",666);
+//		
+//		db.insertBusiness("Test1","Somewhere",7);
+//		db.insertBusiness("Test2","Somewhere",8);
+//		db.insertBusiness("Test3","Somewhere",9);
+//		
+//		db.insertEvent("t1","This is a testert",102019,122519,120000,"Test1","Somewhere",1231);
+//		db.insertEvent("t2","This is a testert",102119,122519,120000,"Test1","Somewhere",674754);
+//		db.insertEvent("t3","This is a testert",112219,122519,120000,"Test2","Somewhere",241254);
+//		db.insertEvent("t4","This is a testert",112319,122519,120000,"Test2","Somewhere",5432);
+//		db.insertEvent("t5","This is a testert",122419,122519,120000,"Test3","Somewhere",12);
+//		db.insertEvent("t6","This is a testert",122519,122519,120000,"Test3","Somewhere",1241);
+//		
+//		db.insertRelation("TESTER","Test1");
+//		db.insertRelation( "TESTER","Test2" );
+//		db.insertRelation("TESTER","Test3");
+//	}
 }
 
