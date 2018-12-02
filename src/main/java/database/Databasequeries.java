@@ -337,10 +337,11 @@ public List<User> insertUser(final String username,final String password,final S
 				try
 				{
 					stmt = conn.prepareStatement(
-							"insert into relations(business_name, username, TRUE) "
-							+ "values(?,?)");
+							"insert into relations(business_name, username, own?) "
+							+ "values(?,?,?)");
 					stmt.setString(1, b_id);
 					stmt.setString(2, u_id);
+					stmt.setBoolean(3, true);
 			
 					
 					stmt.executeUpdate();
@@ -1025,9 +1026,10 @@ public List<Business> findOwnedBusinesssFromAccount(final String id) throws URIS
 					"FROM Businesses " +
 					"INNER JOIN relations " +
 					"on relations.business_name=businesses.business_name "+
-					"where relations.username = ? AND relations.own? = TRUE"
+					"where relations.username = ? AND relations.own? = ?"
 					);
 			stmt.setString(1, id);
+			stmt.setBoolean(2, true);
 			resultSet = stmt.executeQuery();
 			// for testing that a result was returned
 			Boolean found = false;

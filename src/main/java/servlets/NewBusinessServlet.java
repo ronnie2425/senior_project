@@ -73,7 +73,7 @@ public class NewBusinessServlet extends HttpServlet {
             }
 
           Business error=bc.findBusinessByName(business);
-          if (error.equals(new Business())) {
+          if (error==null) {
         	  errorMessage = "Business Already exists";
               req.setAttribute("errorMessage", errorMessage);
           }
