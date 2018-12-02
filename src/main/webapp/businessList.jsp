@@ -34,7 +34,7 @@
 			</div>
     <h1>Businesses</h1>
     <form action="businessListServlet" method="get">
-		<div class="list-group">
+		
 			<c:forEach items="${list}" var = "business">
   				<a href="#" class="list-group-item list-group-item-action">${business.name}</a>
   						
@@ -45,7 +45,7 @@
 							<input name="post" type="submit" value="Subscribe"/>
 						</form>	
 			</c:forEach>
-		</div>
+		
 		<button type="submit" class="btn btn-primary">See Businesses</button>
 	</form>
 	
