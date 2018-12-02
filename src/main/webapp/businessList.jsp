@@ -37,7 +37,7 @@
 		<div class="list-group">
 			<c:forEach items="${list}" var = "business">
   				<a href="#" class="list-group-item list-group-item-action">${business.name}</a>
-  						<input name="bn" type="hidden" value="Test1" />
+  						<input name="bn" value="Test1" />
   						<form action="businessListServlet" method="post">
 							<br>Click here to Subscribe</br>
 							
