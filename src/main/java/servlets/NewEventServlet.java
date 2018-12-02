@@ -53,19 +53,22 @@ public class NewEventServlet extends HttpServlet {
           //req.getParameter("Business");	//May not work
           String location = req.getParameter("Location");
           errorMessage = "DEBUG: failure between time and parameters";
-
-        String array[]=date1.split("-");
-        errorMessage = "DEBUG: split works";
-        //int date= (Integer.parseInt(array[0])-2000) + (Integer.parseInt(array[2])*100) +(Integer.parseInt(array[1])*10000);
-        String date_string = array[1]+array[2]+array[0];
-        errorMessage = "DEBUG: datestring " + date_string;
-        int date= Integer.parseInt(date_string);
-        errorMessage = "DEBUG: date int " + date;
-        String array1[]=start1.split(":");
-        errorMessage = "DEBUG: split works";
-        int start= (Integer.parseInt(array1[2])) + (Integer.parseInt(array1[1])*100) +(Integer.parseInt(array1[0])*10000);
-        String array2[]=end1.split(":");
-        int end= (Integer.parseInt(array2[2])) + (Integer.parseInt(array2[1])*100) +(Integer.parseInt(array2[0])*10000);
+          errorMessage = date1 + "/n" + end1 + "/n" + start1;
+//        String array[]=date1.split("-");
+//        errorMessage = "DEBUG: split works";
+          int date= 1 ;
+//        		  (Integer.parseInt(array[0])-2000) + (Integer.parseInt(array[2])*100) +(Integer.parseInt(array[1])*10000);
+//        String date_string = array[1]+array[2]+array[0];
+//        errorMessage = "DEBUG: datestring " + date_string;
+//        int date= Integer.parseInt(date_string);
+//        errorMessage = "DEBUG: date int " + date;
+//        String array1[]=start1.split(":");
+//        errorMessage = "DEBUG: split works";
+        int start= 1;
+//        (Integer.parseInt(array1[2])) + (Integer.parseInt(array1[1])*100) +(Integer.parseInt(array1[0])*10000);
+//        String array2[]=end1.split(":");
+        int end= 1;
+//        (Integer.parseInt(array2[2])) + (Integer.parseInt(array2[1])*100) +(Integer.parseInt(array2[0])*10000);
 
           errorMessage = "DEBUG: failed at first if";
           
