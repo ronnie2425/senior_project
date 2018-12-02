@@ -50,7 +50,7 @@ public class AdminServlet extends HttpServlet {
 			
 			try {
 				User user=queries.findAccountByName(username).get(0);
-				List<Business> b=queries.findBusinesssFromAccount(username);
+				List<Business> b=queries.findOwnedBusinesssFromAccount(username);
 				//List<Business> b=queries.findBusinessByName("Test1");
 			
 			EventController controller = new EventController();

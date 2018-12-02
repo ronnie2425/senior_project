@@ -325,7 +325,35 @@ public List<User> insertUser(final String username,final String password,final S
 			}
 		});
 	}
-	
+	public List<User> insertOwn(final String u_id, final String b_id) throws URISyntaxException
+	{
+		return executeTransaction(new Transaction<List<User>>()
+		{
+			public List<User> execute(Connection conn) throws SQLException
+			{
+				PreparedStatement stmt = null;
+				ResultSet res = null;
+				
+				try
+				{
+					stmt = conn.prepareStatement(
+							"insert into relations(business_name, username, TRUE) "
+							+ "values(?,?)");
+					stmt.setString(1, b_id);
+					stmt.setString(2, u_id);
+			
+					
+					stmt.executeUpdate();
+					return null;
+				}
+				finally
+				{
+					DBUtil.closeQuietly(stmt);
+					DBUtil.closeQuietly(res);
+				}
+			}
+		});
+	}
 	
 	public String findRelationsByUser(final String name) throws URISyntaxException{
 		return executeTransaction(new Transaction<String>(){
@@ -980,6 +1008,53 @@ public List<Business> findAllBusinesses() throws URISyntaxException{
 			}
 		}
 	});
+}
+public List<Business> findOwnedBusinesssFromAccount(final String id) throws URISyntaxException{
+
+
+	return executeTransaction(new Transaction<List<Business>>(){
+		public List<Business> execute(Connection conn) throws SQLException{
+		PreparedStatement stmt = null;
+		ResultSet resultSet = null;
+		List <Business> result = new ArrayList<Business>();
+		
+		try {
+
+			stmt = conn.prepareStatement(
+					"Select * "+
+					"FROM Businesses " +
+					"INNER JOIN relations " +
+					"on relations.business_name=businesses.business_name "+
+					"where relations.username = ? AND relations.own? = TRUE"
+					);
+			stmt.setString(1, id);
+			resultSet = stmt.executeQuery();
+			// for testing that a result was returned
+			Boolean found = false;
+			
+			while (resultSet.next()) {
+				found = true;
+				
+				// create new User object
+				// retrieve attributes from resultSet starting with index 1
+				Business b = new Business();
+				loadBusiness(b, resultSet, 1);
+				
+				result.add(b);
+			}
+			
+			// check if the title was found
+			if (!found) {
+				System.out.println("<" + id + "> was not found in the business table");
+			}
+			
+			return result;
+		} finally {
+			DBUtil.closeQuietly(resultSet);
+			DBUtil.closeQuietly(stmt);
+		}
+	}
+});
 }
 }
 //
