@@ -26,6 +26,11 @@ public class EditEventServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 		throws ServletException, IOException {
+		int id = Integer.parseInt(req.getParameter("ID"));
+		EventController controller = new EventController();
+		Event oldInfo = controller.findByID(12);
+
+       req.setAttribute("event", oldInfo);
 		req.getRequestDispatcher("/_view/editEvent.jsp").forward(req, resp);
 	}
 	
@@ -36,7 +41,7 @@ public class EditEventServlet extends HttpServlet {
 		int id = getIntFromParameter(req.getParameter("ID"));
 		
 		EventController controller = new EventController();
-		Event oldInfo = controller.findByID(12);
+		Event oldInfo = controller.findByID(id);
 		
 		String name = oldInfo.getName();
         String description = oldInfo.getDescription();

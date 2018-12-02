@@ -14,27 +14,27 @@
     <form action="editEventServlet" method="post">
   		<div class="form-group">
     		<label for="InputEventName">Event Title</label>
-    		<input type="text" class="form-control" value="Event Name" id="InputEventName" placeholder="Enter Name For Event">
+    		<input type="text" class="form-control" value="${event.name} }" id="InputEventName" placeholder="Enter Name For Event">
   		</div>
   		<div class="form-group">
     		<label for="InputEventDetails">Event Details</label>
-    		<textarea class="form-control" id="InputEventName" placeholder="Describe the Event" rows="3">"Event Details"</textarea>
+    		<textarea class="form-control" id="InputEventName" placeholder="Describe the event" rows="3">${event.description} }</textarea>
   		</div>
   		<div class="form-group">
 		  <label for="example-date-input">Date</label>
-		  <input class="form-control" type="date" value="Date" id="eventDate">
+		  <input class="form-control" type="date" value="${event.time}" id="eventDate">
 		</div>
 		<div class="form-group">
 		  <label for="startTime">Start Time</label>
-		  <input class="form-control" type="time" value="Start Time" id="startTime">
+		  <input class="form-control" type="time" value="${event.start}" id="startTime">
 		</div>
 		<div class="form-group">
 		  <label for="endTime">End Time</label>
-		  <input class="form-control" type="time" value="End Time" id="endTime">
+		  <input class="form-control" type="time" value="${event.end}" id="endTime">
 		</div>
 		<div class="form-group">
     		<label for="InputLocation">Event Location</label>
-    		<input type="text" class="form-control" value="Location" id="InputLocation" placeholder="Location">
+    		<input type="text" class="form-control" value="${event.location}" id="InputLocation" placeholder="Location">
   		</div>
   		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
