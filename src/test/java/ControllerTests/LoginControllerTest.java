@@ -20,7 +20,7 @@ public class LoginControllerTest {
 	public void setUp() throws Exception {
 		user=new User();
 		con = new LoginController();
-		sec = new SecurityController(1);
+		sec = new SecurityController(11);
 		User user = new User();;
 		user.setPassword("tmpPass");
 		user.setUsername("test");
