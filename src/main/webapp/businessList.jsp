@@ -37,10 +37,11 @@
 		<div class="list-group">
 			<c:forEach items="${list}" var = "business">
   				<a href="#" class="list-group-item list-group-item-action">${business.name}</a>
+  						<input name="bn" type="hidden" value="${business.name}" />
   						<form action="businessList.jsp" method="post">
 							<br>Click here to Subscribe</br>
 							
-							<input name="bn" type="hidden" value="${business.name}" />
+							
 							<input name="post" type="submit" value="Subscribe"/>
 						</form>	
 			</c:forEach>
