@@ -52,7 +52,7 @@ public class NewEventServlet extends HttpServlet {
           String date1 = req.getParameter("Date");
           String businessName = null;
           //req.getParameter("Business");	//May not work
-          String location = req.getParameter("location");
+          String location = req.getParameter("Location");
           errorMessage = "DEBUG: failure between time and parameters";
           errorMessage = date1 + "/n" + end1 + "/n" + start1;
           String array[]=date1.split("-");
