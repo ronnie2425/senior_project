@@ -43,31 +43,40 @@ public class NewEventServlet extends HttpServlet {
 		
 		// Decode form parameters and dispatch to controller
         String errorMessage = null;
+        errorMessage = "DEBUG: failed at start";
+	    String name = req.getParameter("Name");
+	    String description = req.getParameter("Description");
+	    String start1 = req.getParameter("Start");
+	    String end1 = req.getParameter("End");
+	    String date1 = req.getParameter("Date");
+	    String businessName = null;
+	    //req.getParameter("Business");	//May not work
+	    String location = req.getParameter("Location");
+        errorMessage = "DEBUG: failure between time and parameters";
+        
         try {
-          errorMessage = "DEBUG: failed at start";
-          String name = req.getParameter("Name");
-          String description = req.getParameter("Description");
-          String start1 = req.getParameter("Start");
-          String end1 = req.getParameter("End");
-          String date1 = req.getParameter("Date");
-          String businessName = null;
-          //req.getParameter("Business");	//May not work
-          String location = req.getParameter("Location");
-          errorMessage = "DEBUG: failure between time and parameters";
-          errorMessage = date1 + "/n" + end1 + "/n" + start1;
+          errorMessage = date1 + "\n" + end1 + "\n" + start1;
           String array[]=date1.split("-");
 //        errorMessage = "DEBUG: split works";
           //int date= (Integer.parseInt(array[0])-2000) + (Integer.parseInt(array[2])*100) +(Integer.parseInt(array[1])*10000);
-        String date_string = array[1]+array[2]+array[0];
-        errorMessage = "DEBUG: datestring " + date_string;
-        int date= Integer.parseInt(date_string);
-        errorMessage = "DEBUG: date int " + date;
-        String array1[]=start1.split(":");
-        errorMessage = "DEBUG: split works";
-        int start=(Integer.parseInt(array1[2])) + (Integer.parseInt(array1[1])*100) +(Integer.parseInt(array1[0])*10000);
-        String array2[]=end1.split(":");
-        int end= (Integer.parseInt(array2[2])) + (Integer.parseInt(array2[1])*100) +(Integer.parseInt(array2[0])*10000);
-
+          String date_string = array[1]+array[2]+array[0];
+		  errorMessage = "DEBUG: datestring " + date_string;
+		  int date= Integer.parseInt(date_string);
+		  errorMessage = "DEBUG: date int " + date;
+		  
+		  String array1[]=start1.split(":");
+		  errorMessage = "DEBUG: split works";
+//		  int start=(Integer.parseInt(array1[2])) + (Integer.parseInt(array1[1])*100) +(Integer.parseInt(array1[0])*10000);
+		  String start_string = array1[0]+array1[1];
+		  errorMessage = "DEBUG: startstring " + start_string;
+		  int start= Integer.parseInt(start_string);
+		  
+		  String array2[]=end1.split(":");
+//		  int end= (Integer.parseInt(array2[2])) + (Integer.parseInt(array2[1])*100) +(Integer.parseInt(array2[0])*10000);
+		  String end_string = array2[0]+array2[1];
+		  errorMessage = "DEBUG: endstring " + end_string;
+		  int end= Integer.parseInt(end_string);
+		  
           errorMessage = "DEBUG: failed at first if";
           
           
