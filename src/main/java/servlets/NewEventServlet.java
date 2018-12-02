@@ -91,13 +91,13 @@ public class NewEventServlet extends HttpServlet {
   		}
     			
     		  
-            else{
-            	errorMessage = "failed at else to first if";
-            	req.getSession().setAttribute("user", null);
-            	errorMessage = "Session terminated, please log in again.";
-            	req.setAttribute("errorMessage", errorMessage);
-            	req.getRequestDispatcher("login.jsp").forward(req, resp);
-            }//end session data check
+//            else{
+//            	errorMessage = "failed at else to first if";
+//            	req.getSession().setAttribute("user", null);
+//            	errorMessage = "Session terminated, please log in again.";
+//            	req.setAttribute("errorMessage", errorMessage);
+//            	req.getRequestDispatcher("login.jsp").forward(req, resp);
+//            }//end session data check
 
 
           if (name == null || location == null || start < 1010001 || end < 1010001) { // (01-01-0001) the first day.
