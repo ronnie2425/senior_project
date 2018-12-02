@@ -118,7 +118,6 @@ public class NewEventServlet extends HttpServlet {
 //          
           else { //fields filled
         	  errorMessage = "failed at eventController";
-            EventController controller = new EventController();
             if(controller.AddEvent(name, description, start, end, date, businessName, location)){
             	//set new attributes to display
             	req.setAttribute("Event name", name);
