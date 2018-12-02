@@ -114,6 +114,7 @@ private static final long serialVersionUID = 1L;
 				try {
 					b = queries.findBusinesssFromAccount(username);
 					//b=queries.findBusinessByName("Test1");
+					if (!b.isEmpty()) {
 					List<Event> list=controller.findEventByBusiness(b.get(0).getName());
 				for(int i=1; i< (b.size());i++) {
 					list.addAll(controller.findEventByBusiness(b.get(0).getName()));
@@ -121,6 +122,7 @@ private static final long serialVersionUID = 1L;
 					Collections.sort(list);
 				
 				req.setAttribute("list", list);
+					}
 				
 				
 				//req.getRequestDispatcher("feed.jsp").forward(req, resp);
