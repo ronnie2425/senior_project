@@ -14,7 +14,7 @@ public class SecurityController {
         this.logRounds = logRounds;
     }
 
-    public String fuckYou(String password) {
+    public String applyHash(String password) {
         return BCrypt.hashpw(password, BCrypt.gensalt(logRounds));
     }
 
@@ -29,7 +29,7 @@ public class SecurityController {
             // If someone makes a mistake the ability to undo it would be nice though.
             if (rounds != logRounds) {
                 //log.debug("Updating password from {} rounds to {}", rounds, logRounds);
-                String newHash = fuckYou(password);
+                String newHash = applyHash(password);
                 return updateFunc.apply(newHash);
             }
             return true;

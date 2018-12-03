@@ -87,7 +87,7 @@ public class LoginController {
 	}//basically unused, possible future upgrade
 	
 	public String hashBrowns(String password) throws URISyntaxException {
-		return hacker.fuckYou(password);
+		return hacker.applyHash(password);
 	}
 	
 	

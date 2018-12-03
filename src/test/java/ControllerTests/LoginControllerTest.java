@@ -44,7 +44,7 @@ public class LoginControllerTest {
 	
 	@Test
 	public void testVerifyExtensive() throws SQLException, URISyntaxException {
-		String temp = sec.fuckYou("password");
+		String temp = sec.applyHash("password");
 		System.out.println(temp);
 		String temp2 = con.hashBrowns("password");
 		System.out.println(temp2);
