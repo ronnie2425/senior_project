@@ -1,4 +1,6 @@
 <!doctype html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -16,6 +18,12 @@
     		<label for="InputEventName">Event Title</label>
     		<input type="text" class="form-control" id="InputEventName" placeholder="Enter Name For Event" name="Name" value="">
   		</div>
+  		<select class="form-control">
+  			<option>Select a business from this list</option>
+  			<c:forEach items="${businessList}" var = "business">
+  				<option> ${business.name} </option>
+  			</c:forEach>
+  		</select>
   		<div class="form-group">
     		<label for="InputEventDetails">Event Details</label>
     		<textarea class="form-control" id="InputEventName" placeholder="Describe the Event" rows="3" name="Description" value=""></textarea>
