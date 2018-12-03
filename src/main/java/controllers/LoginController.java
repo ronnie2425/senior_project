@@ -25,7 +25,7 @@ public class LoginController {
 		return login;
 	}
 
-	public List<User> findAccountByName(String name) throws SQLException{
+	public List<User> findAccountByName(String name) {
 		try {
 			return info.findAccountByName(name);
 		}

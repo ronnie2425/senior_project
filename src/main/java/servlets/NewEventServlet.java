@@ -93,7 +93,7 @@ public class NewEventServlet extends HttpServlet {
   				}
   			}
   		}
-  		businessName = bus_control.findBusinessByUser(username);
+  		//businessName = bus_control.findBusinessByUser(username);
   		//if the user is not logged in send to login page
   		if (username == null){
   			req.getRequestDispatcher("login.jsp").forward(req, resp);

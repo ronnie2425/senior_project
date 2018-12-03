@@ -1,8 +1,7 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +28,7 @@ public class UserServlet extends HttpServlet {
 		
 		// Decode form parameters and dispatch to controller
         String errorMessage = null;
-        Boolean result = null;
+
         try {
         	if(req.getSession().getAttribute("username") != null){
       			String username = (String) req.getSession().getAttribute("username");

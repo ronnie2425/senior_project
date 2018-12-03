@@ -40,12 +40,49 @@ public class BusinessController {
 		
 	} 
 	
-	public List<Business> findBusinessByUser(String name){
+	public List<Business> findBusinessByOwnedUser(String name){
 		try{
 			return queries.findOwnedBusinesssFromAccount(name);
 		}
 		catch (Exception e){
 			return null;
+		}
+	
+	}
+	
+	public List<Business> findSubscribedBusiness(String name){
+		try{
+			return queries.findBusinesssFromAccount(name);
+		}
+		catch (Exception e){
+			return null;
+		}
+	
+	}
+	public void unsubscribe(String u_id,String b_id){
+		try{
+			queries.removeRelation(u_id, b_id);
+		}
+		catch (Exception e){
+
+		}
+	
+	}
+	public void subscribe(String u_id,String b_id){
+		try{
+			queries.insertRelation(u_id, b_id);
+		}
+		catch (Exception e){
+
+		}
+	
+	}
+	public void insertOwned(String u_id,String b_id){
+		try{
+			queries.insertOwn(u_id, b_id);
+		}
+		catch (Exception e){
+
 		}
 	
 	}
@@ -59,7 +96,15 @@ public class BusinessController {
 		}
 		return true;
 	}
+	public List<Business> findAllBusinesses(){
+		try{
+			return queries.findAllBusinesses();
+		}
+		catch (Exception e){
+			return null;
+		}
 	
+	}
 
 }
 

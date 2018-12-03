@@ -41,17 +41,13 @@ public class AdminServlet extends HttpServlet {
 		if (username == null){
 			req.getRequestDispatcher("login.jsp").forward(req, resp);
 		}
-		//if the user is logged in send to user info page
 		else{
 			//grab all of the events of the user's business
-		
-			Databasequeries queries = new Databasequeries();
+			LoginController lc=new LoginController();
+			BusinessController bc=new BusinessController();
 			
-			
-			try {
-				User user=queries.findAccountByName(username).get(0);
-				List<Business> b=queries.findOwnedBusinesssFromAccount(username);
-				//List<Business> b=queries.findBusinessByName("Test1");
+			User user=lc.findAccountByName(username).get(0);
+			List<Business> b=bc.findBusinessByOwnedUser(username);
 			
 			EventController controller = new EventController();
 			List<Event> list=new ArrayList<Event>();
@@ -63,10 +59,6 @@ public class AdminServlet extends HttpServlet {
 			req.setAttribute("user", user);
 			
 			
-			} catch (URISyntaxException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			req.getRequestDispatcher("admin.jsp").forward(req, resp);
 
 		}

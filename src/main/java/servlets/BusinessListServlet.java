@@ -1,9 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.sql.SQLException;
-import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.*;
 import controllers.*;
-import database.Databasequeries;
+
 
 
 
@@ -42,45 +39,16 @@ private static final long serialVersionUID = 1L;
 			req.getRequestDispatcher("login.jsp").forward(req, resp);
 		}
 		else {
-			Databasequeries queries = new Databasequeries();
-			
+			BusinessController bc=new BusinessController();
 			
 			List<Business> list=null;
-		
-				try {
-					list = queries.findAllBusinesses();
-				} catch (URISyntaxException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			
-				
-			
+			list = bc.findAllBusinesses();
 			req.setAttribute("list", list);
-			
-			
 			req.getRequestDispatcher("businessList.jsp").forward(req, resp);
 		}
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-            		Databasequeries queries = new Databasequeries();
-//			
-//			
-//				List<Business> list=null;
-//			
-//					try {
-//						list = queries.findAllBusinesses();
-//					} catch (URISyntaxException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//				
-//					
-//				
-//				req.setAttribute("list", list);
-//				
-//				
             		String username=null;
             		Cookie[] cks=req.getCookies();
             		if (cks !=null){
@@ -92,15 +60,12 @@ private static final long serialVersionUID = 1L;
             				}
             			}
             		}
+            		BusinessController bc= new BusinessController();
 				String b_name=req.getParameter("bn");
 				if (b_name!=null) {
-					try {
-						queries.removeRelation(username, b_name);
-						queries.insertRelation(username, b_name);
-					} catch (URISyntaxException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					bc.unsubscribe(username, b_name);
+					bc.subscribe(username, b_name);
+					
 				}
 				req.getRequestDispatcher("businessList.jsp").forward(req, resp);
 				}

@@ -1,13 +1,8 @@
 package servlets;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
 
 import controllers.BusinessController;
-import controllers.LoginController;
-import database.Databasequeries;
 import model.Business;
 
 import javax.servlet.ServletException;
@@ -78,19 +73,9 @@ public class NewBusinessServlet extends HttpServlet {
               req.setAttribute("errorMessage", errorMessage);
           }
         	  bc.insertBusiness(business, location);
-        	  Databasequeries db = new Databasequeries();
-        	  try {
-				db.removeRelation(username, business);
-			} catch (URISyntaxException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-        	  try {
-				db.insertOwn(username,business);
-			} catch (URISyntaxException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+        	  bc.unsubscribe(username, business);
+        	  bc.insertOwned(username,business);
+		
 			
 			req.getRequestDispatcher("indexServlet").forward(req, resp);
 			}
