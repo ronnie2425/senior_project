@@ -1,4 +1,6 @@
 <!doctype html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -14,11 +16,17 @@
     <form action="editEventServlet" method="post">
   		<div class="form-group">
     		<label for="InputEventName">Event Title</label>
-    		<input type="text" class="form-control" placeholder="${event.name} }" id="InputEventName" placeholder="Enter Name For Event">
+    		<input type="text" class="form-control" placeholder="${event.name}" id="InputEventName" placeholder="Enter Name For Event">
   		</div>
+  		<select class="custom-select">
+  			<option>Select a business from this list</option>
+  			<c:forEach items="${businessList}" var = "business">
+  				<option> ${business} </option>
+  			</c:forEach>
+  		</select>
   		<div class="form-group">
     		<label for="InputEventDetails">Event Details</label>
-    		<textarea class="form-control" id="InputEventName" placeholder="Describe the event" rows="3">${event.description} }</textarea>
+    		<textarea class="form-control" id="InputEventName" placeholder="Describe the event" rows="3">${event.description}</textarea>
   		</div>
   		<div class="form-group">
 		  <label for="example-date-input">Date</label>
