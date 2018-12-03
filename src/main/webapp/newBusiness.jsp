@@ -13,6 +13,17 @@
     <title>New Business</title>
   </head>
   <body>
+  		<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Log in</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/logoutServlet">Logout</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/businessEventList.jsp">Business Event list</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/businessList.jsp">Business List</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/editEvent.jsp">Edit Event</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/newEvent.jsp">New Event</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/feedServlet">Feed</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/adminServlet">Admin</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/newBusinessServlet">New Business</a></li>
     <form action = "newBusinessServlet" method = "POST">
   		<div class="form-group">
     		<label for="bname">Business Name</label>
@@ -20,7 +31,7 @@
   		</div>
  		 <div class="form-group">
     		<label for="blocation">Location</label>
-    		<input type="blocation" class="form-control" id="blocation" placeholder="blocation" name="blocation" value="">
+    		<input type="blocation" class="form-control" id="blocation" placeholder="Location" name="blocation" value="">
   		</div>
   		
   		<c:if test="${! empty errorMessage}">

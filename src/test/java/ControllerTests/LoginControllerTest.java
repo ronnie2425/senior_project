@@ -55,8 +55,7 @@ public class LoginControllerTest {
 				System.out.println("Verified!");
 				
 				System.out.println("Insert: " + con.addNewAccount("user", "tmpPass", "something", "none"));
-				//assertTrue(con.verifyAccount("user", "tmpPass"));
-				//assertFalse(con.verifyAccount("user", "falure"));
+	
 				con.removeAccount("user");
 			}
 			else{

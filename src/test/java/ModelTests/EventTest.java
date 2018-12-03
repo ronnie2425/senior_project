@@ -21,13 +21,6 @@ public class EventTest {
 		con.setEvent(event);
 		assertEquals("Event of Funness",con.getEvent().getName());
 	}
-//	@Test
-//	public void testgetByStart() {		
-//		assertEquals("fake",con.findEventByStartDate(1).getBusiness());
-//	}
-//	@Test
-//	public void testgetByEnd() {		
-//		assertEquals("fake",con.findEventByEndDate(2).getBusiness());
-//	}
+
 	
 }

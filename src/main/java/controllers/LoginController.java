@@ -26,8 +26,7 @@ public class LoginController {
 	}
 
 	public List<User> findAccountByName(String name) throws SQLException{
-		try{
-			//TODO make this
+		try {
 			return info.findAccountByName(name);
 		}
 		catch (Exception e) {
@@ -39,8 +38,6 @@ public class LoginController {
 	public boolean verifyAccount(String name, String password) throws SQLException, URISyntaxException{
 		if(!info.findAccountByName(name).isEmpty()){//shell isEmpty check, empty list may store a value in string?
 			String test = info.findAccountByName(name).get(0).getPassword();
-			//String pass = hashBrowns(gimmeSalt(password));		//REDUNDANT, remove from final project
-			
 			if(test.isEmpty() || test.equals("")){
 			//if(test == password){
 				return false;
@@ -63,25 +60,7 @@ public class LoginController {
 	
 	public boolean addNewAccount(String name, String password, String email, String business) throws SQLException, URISyntaxException{			
 		int id =(int) (Math.random()*10000);
-		boolean exist=true;
 		List<User> users = null;
-		int count=1;
-/*				
-		while(exist==true) {
-			users = info.findAccountById(id);
-			if (!users.isEmpty())
-			{
-				exist=false;
-				break;
-			
-			}
-			else {
-				id=((id^count)%10000);
-				count++;
-			}
-		}
-*/
-		//password =  hashBrowns(gimmeSalt(password));		//REDUNDANT, remove from final project
 		users = info.findAccountByName(name);
 		if (!users.isEmpty()){
 			return false;

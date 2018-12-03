@@ -169,7 +169,7 @@ public class QueryTests {
 		
 	}
 	
-//
+
 	@Test
 	public void TestfindEventByEndDate() throws URISyntaxException{
 		System.out.println("\n*** Testing findEventByEndDate ***");
@@ -197,7 +197,7 @@ public class QueryTests {
 			System.out.println("Event with end date <" + date + "> found!");
 		}
 	}
-//
+
 	@Test
 	public void TestfindEventByID() throws URISyntaxException{
 		System.out.println("\n*** Testing findEventById ***");
@@ -226,33 +226,6 @@ public class QueryTests {
 		}
 	}
 
-//	@Test
-//	public void TesteditEvent() throws URISyntaxException{
-//		System.out.println("\n*** Testing EditEvent ***");
-//		
-//		String name="Event of Fun";
-//		String description="You WILL enjoy the event";
-//		int start=12418;
-//		int end=12518;
-//		int time=1800;
-//		int business=5;
-//		String location="Nowhere";
-//		int id=5;
-//		
-//		events = db.findEventByName(name);
-//		if (!events.isEmpty())
-//		{
-//			System.out.println("Failed to insert Event");
-//			fail("Event already exists");
-//		}
-//		else
-//		{
-//			db.editEvent(name,description,start,end,time,business,location,id);
-//			System.out.println("Event successfully edited");
-//		}
-//	}
-//
-//
 	@Test
 	public void TestgetBusinesssFromAccount() throws URISyntaxException{
 		System.out.println("\n*** Testing FindBusinesssFromAccount ***");
@@ -288,13 +261,6 @@ public class QueryTests {
 			System.out.println("Business <" + business + "> found!");
 		}
 		
-	}
-	@Test
-	public void Testhash() throws URISyntaxException{
-	String test=db.hashword("password");
-	System.out.println(test);
-	
-	
 	}
 	@Test
 	public void Testown() throws URISyntaxException{
@@ -334,6 +300,7 @@ public class QueryTests {
 	}
 //	@Test
 //	public void populatedDB() throws URISyntaxException{
+//	    //populates some values to the db for front end testing
 //		String pass;
 //		 LoginController controller = new LoginController();
 //		 

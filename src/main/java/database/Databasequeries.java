@@ -15,13 +15,6 @@ import model.*;
 import database.DBUtil;
 
 public class Databasequeries {
-
-
-
-	
-
-	
-	
 	
 	private interface Transaction<ResultType> {
 		public ResultType execute(Connection conn) throws SQLException;
@@ -75,10 +68,6 @@ public class Databasequeries {
 	}
 	
 
-//	
-//
-//	private static final int MAX_ATTEMPTS = 10;
-//
 	private Connection connect() throws SQLException, URISyntaxException {
 		Connection conn = DatabaseConnector.getConnection();
 		
@@ -92,7 +81,7 @@ public class Databasequeries {
 
 
 	private void loadEvent(Event result, ResultSet resultSet, int index) throws SQLException {
-		// TODO assign an event the proper values
+		//assign an event the proper values
 		result.setId(resultSet.getInt(index++));
 		result.setDescription(resultSet.getString(index++));
 		result.setStartDate(resultSet.getInt(index++));
@@ -103,6 +92,7 @@ public class Databasequeries {
 		result.setBusiness(resultSet.getString(index++));
 	}
 private void loadUser(User user, ResultSet resultSet, int index) throws SQLException {
+		//assign user in proper order
 		user.setUserId(resultSet.getInt(index++));
 		user.setUsername(resultSet.getString(index++));
 		user.setPassword(resultSet.getString(index++));
@@ -111,6 +101,7 @@ private void loadUser(User user, ResultSet resultSet, int index) throws SQLExcep
 	}
 	
 	private void loadBusiness(Business result, ResultSet resultSet, int index) throws SQLException{
+		//assign business in proper order
 		result.setID(resultSet.getInt(index++));
 		result.setName(resultSet.getString(index++));
 		result.setLocation(resultSet.getString(index++));
@@ -355,49 +346,6 @@ public List<User> insertUser(final String username,final String password,final S
 			}
 		});
 	}
-	
-	public String findRelationsByUser(final String name) throws URISyntaxException{
-		return executeTransaction(new Transaction<String>(){
-			public String execute(Connection conn) throws SQLException{
-			PreparedStatement stmt = null;
-			ResultSet resultSet = null;
-			String result = null;
-			
-			try {
-
-				stmt = conn.prepareStatement(
-						"select relations.business_name " +
-						"  from relations " +
-						" where relations.username = ? AND relations.own? = true "
-						);
-				stmt.setString(1, name);
-				resultSet = stmt.executeQuery();
-				// for testing that a result was returned
-				Boolean found = false;
-				
-				while (resultSet.next()) {
-					found = true;
-					
-					// create new User object
-					// retrieve attributes from resultSet starting with index 1
-					result = resultSet.getString(0);
-				}
-				
-				// check if the title was found
-				if (!found) {
-					System.out.println("<" + name + "> owns no businesses");
-				}
-				
-				return result;
-			} finally {
-				DBUtil.closeQuietly(resultSet);
-				DBUtil.closeQuietly(stmt);
-			}
-		}
-	});
-}
-
-	
 		public List<User> removeRelation(final String u_id,final String b_id) throws URISyntaxException
 		{
 			return executeTransaction(new Transaction<List<User>>()
@@ -446,21 +394,15 @@ public List<User> insertUser(final String username,final String password,final S
 						);
 				stmt.setInt(1, date);
 				resultSet = stmt.executeQuery();
-				// for testing that a result was returned
 				Boolean found = false;
 				
 				while (resultSet.next()) {
 					found = true;
-					
-					// create new User object
-					// retrieve attributes from resultSet starting with index 1
 					Event event = new Event();
 					loadEvent(event, resultSet, 1);
 					
 					result.add(event);
 				}
-				
-				// check if the title was found
 				if (!found) {
 					System.out.println("<" + date + "> was not found in the event table");
 				}
@@ -490,21 +432,16 @@ public List<Event> findEventByEndDate(final int date) throws URISyntaxException{
 					);
 			stmt.setInt(1, date);
 			resultSet = stmt.executeQuery();
-			// for testing that a result was returned
 			Boolean found = false;
 			
 			while (resultSet.next()) {
 				found = true;
-				
-				// create new User object
-				// retrieve attributes from resultSet starting with index 1
 				Event event = new Event();
 				loadEvent(event, resultSet, 1);
 				
 				result.add(event);
 			}
-			
-			// check if the title was found
+
 			if (!found) {
 				System.out.println("<" + date + "> was not found in the event table");
 			}
@@ -517,16 +454,13 @@ public List<Event> findEventByEndDate(final int date) throws URISyntaxException{
 	}
 });
 }
-//
 public List<Event> findEventByBusiness(final String business) throws URISyntaxException{
 	return executeTransaction(new Transaction<List<Event>>() {
-		//@Override
 		public List<Event> execute(Connection conn) throws SQLException {
 			PreparedStatement stmt = null;
 			ResultSet resultSet = null;
 			
 			try {
-				// retreive all attributes from both Books and Authors tables
 				stmt = conn.prepareStatement(
 						"select Events.* " +
 						"  from Events " +
@@ -544,15 +478,11 @@ public List<Event> findEventByBusiness(final String business) throws URISyntaxEx
 				while (resultSet.next()) {
 					found = true;
 					
-					// create new User object
-					// retrieve attributes from resultSet starting with index 1
 					Event event = new Event();
 					loadEvent(event, resultSet, 1);
 					
 					result.add(event);
 				}
-				
-				// check if the title was found
 				if (!found) {
 					System.out.println("<" + business + "> was not found in the event table");
 				}
@@ -567,13 +497,12 @@ public List<Event> findEventByBusiness(final String business) throws URISyntaxEx
 	}
 public List<Event> findEventByName(final String name) throws URISyntaxException{
 	return executeTransaction(new Transaction<List<Event>>() {
-		//@Override
 		public List<Event> execute(Connection conn) throws SQLException {
 			PreparedStatement stmt = null;
 			ResultSet resultSet = null;
 			
 			try {
-				// retreive all attributes from both Books and Authors tables
+
 				stmt = conn.prepareStatement(
 						"select Events.* " +
 						"  from Events " +
@@ -584,22 +513,18 @@ public List<Event> findEventByName(final String name) throws URISyntaxException{
 				List <Event> result = new ArrayList<Event>();
 				
 				resultSet = stmt.executeQuery();
-				
-				// for testing that a result was returned
+
 				Boolean found = false;
 				
 				while (resultSet.next()) {
 					found = true;
-					
-					// create new User object
-					// retrieve attributes from resultSet starting with index 1
+
 					Event event = new Event();
 					loadEvent(event, resultSet, 1);
 					
 					result.add(event);
 				}
-				
-				// check if the title was found
+
 				if (!found) {
 					System.out.println("<" + name + "> was not found in the event table");
 				}
@@ -613,43 +538,28 @@ public List<Event> findEventByName(final String name) throws URISyntaxException{
 	});
 	}
 
-//
-//
 public List<Event> findEventByID(final int id) throws URISyntaxException{
 	return executeTransaction(new Transaction<List<Event>>() {
-		//@Override
 		public List<Event> execute(Connection conn) throws SQLException {
 			PreparedStatement stmt = null;
 			ResultSet resultSet = null;
 			
 			try {
-				// retreive all attributes from both Books and Authors tables
 				stmt = conn.prepareStatement(
 						"select Events.* " +
 						"  from Events " +
 						" where Events.event_id = ? " 
 				);
 				stmt.setInt(1, id);
-				
 				List <Event> result = new ArrayList<Event>();
-				
 				resultSet = stmt.executeQuery();
-				
-				// for testing that a result was returned
 				Boolean found = false;
-				
 				while (resultSet.next()) {
 					found = true;
-					
-					// create new User object
-					// retrieve attributes from resultSet starting with index 1
 					Event event = new Event();
 					loadEvent(event, resultSet, 1);
-					
 					result.add(event);
 				}
-				
-				// check if the title was found
 				if (!found) {
 					System.out.println("<" + id + "> was not found in the event table");
 				}
@@ -662,82 +572,32 @@ public List<Event> findEventByID(final int id) throws URISyntaxException{
 		}
 	});
 	}
-//
-//
-//public List<Event> editEvent(final String name,final String description,final int start, final int end, final int time, final String business, final String location,final int id) throws URISyntaxException
-//{
-//	return executeTransaction(new Transaction<List<Event>>()
-//	{
-//		public List<Event> execute(Connection conn) throws SQLException
-//		{
-//			PreparedStatement stmt = null;
-//			ResultSet res = null;
-//			
-//			try
-//			{
-//				stmt = conn.prepareStatement(
-//						"insert into events(name, event_description, start_date, end_date, time, business, location, event_id)"
-//						+ "values(?,?,?,?,?,?,?,?)");
-//				stmt.setString(1, name);
-//				stmt.setString(2, description);
-//				stmt.setInt(3, start);
-//				stmt.setInt(4, end);
-//				stmt.setInt(5, time);
-//				stmt.setString(6, business);
-//				stmt.setString(7, location);
-//				stmt.setInt(8, id);
-//				
-//				
-//				stmt.executeUpdate();
-//				return null;
-//			}
-//			finally
-//			{
-//				DBUtil.closeQuietly(stmt);
-//				DBUtil.closeQuietly(res);
-//			}
-//		}
-//	});
-//}
 public List<User> findAccountByName(final String name) throws URISyntaxException{
 	return executeTransaction(new Transaction<List<User>>() {
-		//@Override
 		public List<User> execute(Connection conn) throws SQLException {
 			PreparedStatement stmt = null;
 			ResultSet resultSet = null;
 			
 			try {
-				// retreive all attributes from both Books and Authors tables
 				stmt = conn.prepareStatement(
 						"select Accounts.* " +
 						"  from Accounts " +
 						" where Accounts.username = ? " 
 				);
 				stmt.setString(1, name);
-				
 				List <User> result = new ArrayList<User>();
-				
 				resultSet = stmt.executeQuery();
-				
-				// for testing that a result was returned
 				Boolean found = false;
-				
 				while (resultSet.next()) {
 					found = true;
-					
-					// create new User object
-					// retrieve attributes from resultSet starting with index 1
 					User user = new User();
 					loadUser(user, resultSet, 1);
-					
 					result.add(user);
 				}
-				
-				// check if the title was found
 				if (!found) {
 					System.out.println("<" + name + "> was not found in the users table");
 				}
-				
+
 				return result;
 			} finally {
 				DBUtil.closeQuietly(resultSet);
@@ -749,13 +609,11 @@ public List<User> findAccountByName(final String name) throws URISyntaxException
 
 public List<User> findAccountById(final int id) throws URISyntaxException{
 	return executeTransaction(new Transaction<List<User>>() {
-		//@Override
 		public List<User> execute(Connection conn) throws SQLException {
 			PreparedStatement stmt = null;
 			ResultSet resultSet = null;
 			
 			try {
-				// retreive all attributes from both Books and Authors tables
 				stmt = conn.prepareStatement(
 						"select Accounts.* " +
 						"  from Accounts " +
@@ -764,24 +622,15 @@ public List<User> findAccountById(final int id) throws URISyntaxException{
 				stmt.setInt(1, id);
 				
 				List <User> result = new ArrayList<User>();
-				
 				resultSet = stmt.executeQuery();
-				
-				// for testing that a result was returned
 				Boolean found = false;
 				
 				while (resultSet.next()) {
 					found = true;
-					
-					// create new User object
-					// retrieve attributes from resultSet starting with index 1
 					User user = new User();
-					loadUser(user, resultSet, 1);
-					
+					loadUser(user, resultSet, 1);	
 					result.add(user);
 				}
-				
-				// check if the title was found
 				if (!found) {
 					System.out.println("<" + id + "> was not found in the users table");
 				}
@@ -802,13 +651,11 @@ public List<User> findAccountById(final int id) throws URISyntaxException{
 
 public List<Business> findBusinessByName(final String name) throws URISyntaxException{
 	return executeTransaction(new Transaction<List<Business>>() {
-		//@Override
 		public List<Business> execute(Connection conn) throws SQLException {
 			PreparedStatement stmt = null;
 			ResultSet resultSet = null;
 			
 			try {
-				// retreive all attributes from both Books and Authors tables
 				stmt = conn.prepareStatement(
 						"select businesses.* " +
 						"  from businesses " +
@@ -817,24 +664,16 @@ public List<Business> findBusinessByName(final String name) throws URISyntaxExce
 				stmt.setString(1, name);
 				
 				List <Business> result = new ArrayList<Business>();
-				
 				resultSet = stmt.executeQuery();
-				
-				// for testing that a result was returned
 				Boolean found = false;
 				
 				while (resultSet.next()) {
 					found = true;
-					
-					// create new User object
-					// retrieve attributes from resultSet starting with index 1
 					Business b = new Business();
 					loadBusiness(b, resultSet, 1);
 					
 					result.add(b);
 				}
-				
-				// check if the title was found
 				if (!found) {
 					System.out.println("<" + name + "> was not found in the business table");
 				}
@@ -849,13 +688,11 @@ public List<Business> findBusinessByName(final String name) throws URISyntaxExce
 }
 public List<Business> findBusinessById(final int id) throws URISyntaxException{
 	return executeTransaction(new Transaction<List<Business>>() {
-		//@Override
 		public List<Business> execute(Connection conn) throws SQLException {
 			PreparedStatement stmt = null;
 			ResultSet resultSet = null;
 			
 			try {
-				// retreive all attributes from both Books and Authors tables
 				stmt = conn.prepareStatement(
 						"select businesses.* " +
 						"  from businesses " +
@@ -864,28 +701,18 @@ public List<Business> findBusinessById(final int id) throws URISyntaxException{
 				stmt.setInt(1, id);
 				
 				List <Business> result = new ArrayList<Business>();
-				
 				resultSet = stmt.executeQuery();
-				
-				// for testing that a result was returned
 				Boolean found = false;
 				
 				while (resultSet.next()) {
 					found = true;
-					
-					// create new User object
-					// retrieve attributes from resultSet starting with index 1
 					Business b = new Business();
 					loadBusiness(b, resultSet, 1);
-					
 					result.add(b);
 				}
-				
-				// check if the title was found
 				if (!found) {
 					System.out.println("<" + id + "> was not found in the business table");
 				}
-				
 				return result;
 			} finally {
 				DBUtil.closeQuietly(resultSet);
@@ -914,21 +741,14 @@ public List<Business> findBusinesssFromAccount(final String id) throws URISyntax
 					);
 			stmt.setString(1, id);
 			resultSet = stmt.executeQuery();
-			// for testing that a result was returned
 			Boolean found = false;
 			
 			while (resultSet.next()) {
 				found = true;
-				
-				// create new User object
-				// retrieve attributes from resultSet starting with index 1
 				Business b = new Business();
-				loadBusiness(b, resultSet, 1);
-				
+				loadBusiness(b, resultSet, 1);	
 				result.add(b);
 			}
-			
-			// check if the title was found
 			if (!found) {
 				System.out.println("<" + id + "> was not found in the business table");
 			}
@@ -941,37 +761,9 @@ public List<Business> findBusinesssFromAccount(final String id) throws URISyntax
 	}
 });
 }
-//
-public String hashword(final String password) throws URISyntaxException{
-	return executeTransaction(new Transaction<String>(){
-		public String execute(Connection conn) throws SQLException{
-			PreparedStatement stmt = null;
-			ResultSet resultSet = null;
-			String result = null;
-			
-			try {
-				stmt = conn.prepareStatement(
-						"crypt(?, gen_salt(bf,8))"
-						);
-				stmt.setString(1, password);
-				resultSet = stmt.executeQuery();
-				result = resultSet.getString(0);
-				return result;
-			}
-			finally{
-				DBUtil.closeQuietly(conn);
-
-			}
-		}
-		
-	});
-}
-//
-
 
 public List<Business> findAllBusinesses() throws URISyntaxException{
 	return executeTransaction(new Transaction<List<Business>>() {
-		//@Override
 		public List<Business> execute(Connection conn) throws SQLException {
 			PreparedStatement stmt = null;
 			ResultSet resultSet = null;
@@ -986,15 +778,9 @@ public List<Business> findAllBusinesses() throws URISyntaxException{
 				List <Business> result = new ArrayList<Business>();
 				
 				resultSet = stmt.executeQuery();
-				
-				// for testing that a result was returned
-				Boolean found = false;
-				
+				Boolean found = false;	
 				while (resultSet.next()) {
 					found = true;
-					
-					// create new User object
-					// retrieve attributes from resultSet starting with index 1
 					Business b = new Business();
 					loadBusiness(b, resultSet, 1);
 					
@@ -1031,21 +817,15 @@ public List<Business> findOwnedBusinesssFromAccount(final String id) throws URIS
 			stmt.setString(1, id);
 			stmt.setBoolean(2, true);
 			resultSet = stmt.executeQuery();
-			// for testing that a result was returned
 			Boolean found = false;
 			
 			while (resultSet.next()) {
 				found = true;
-				
-				// create new User object
-				// retrieve attributes from resultSet starting with index 1
 				Business b = new Business();
 				loadBusiness(b, resultSet, 1);
 				
 				result.add(b);
 			}
-			
-			// check if the title was found
 			if (!found) {
 				System.out.println("<" + id + "> was not found in the business table");
 			}
@@ -1059,6 +839,4 @@ public List<Business> findOwnedBusinesssFromAccount(final String id) throws URIS
 });
 }
 }
-//
-////verifyAccount not sure where to go about this one
-//
+
