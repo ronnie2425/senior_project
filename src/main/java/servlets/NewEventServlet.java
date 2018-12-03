@@ -29,9 +29,32 @@ public class NewEventServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-		throws ServletException, IOException {
-		req.getRequestDispatcher("newEvent.jsp").forward(req, resp);
-	}
+			throws ServletException, IOException {
+
+			//get username from cookie
+			String username=null;
+			Cookie[] cks=req.getCookies();
+			if (cks !=null){
+				for (int i=0;i<cks.length;i++){
+					String name=cks[i].getName();
+					username = cks[i].getValue();
+					if (name.equals("auth")){
+						break;
+					}
+				}
+			}//end cookie authentication
+			
+			//retrieve list of bussiness options to pick from
+			List<String> businessNames = bus_control.findBusinessByOwnedUser(username);
+			
+			//TODO: transmute data format?
+			
+			//set attribute to jsp
+			req.setAttribute("BusinessList", businessNames);
+			
+			
+			req.getRequestDispatcher("newEvent.jsp").forward(req, resp);
+		}//end doGet
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -108,7 +131,7 @@ public class NewEventServlet extends HttpServlet {
             req.setAttribute("Event details", description);
             req.setAttribute("Start date", start);
             req.setAttribute("End date", end);
-            req.setAttribute("Business", businessName);
+//            req.setAttribute("Business", businessName);		//TODO: Check all of these lines, type mismatch?
             req.setAttribute("Location", location);
             req.setAttribute("errorMessage", errorMessage);
             

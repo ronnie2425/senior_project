@@ -40,10 +40,18 @@ public class BusinessController {
 		
 	} 
 	
-	public List<Business> findBusinessByOwnedUser(String name){
+	public List<String> findBusinessByOwnedUser(String name){
 		try{
-			return queries.findOwnedBusinesssFromAccount(name);
-		}
+			List<Business> temp = queries.findOwnedBusinesssFromAccount(name);
+			List<String> names = null;
+			if(temp.isEmpty()) return null;
+			else {
+				for(Business bus : temp){
+					names.add(bus.getName());		//TODO: check threat on this warning
+				}
+				return names;
+				}
+			}//end else
 		catch (Exception e){
 			return null;
 		}
