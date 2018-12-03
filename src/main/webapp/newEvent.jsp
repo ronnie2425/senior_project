@@ -18,10 +18,10 @@
     		<label for="InputEventName">Event Title</label>
     		<input type="text" class="form-control" id="InputEventName" placeholder="Enter Name For Event" name="Name" value="">
   		</div>
-  		<select class="form-control">
+  		<select class="custom-select">
   			<option>Select a business from this list</option>
   			<c:forEach items="${businessList}" var = "business">
-  				<option> ${business.name} </option>
+  				<option> ${business} </option>
   			</c:forEach>
   		</select>
   		<div class="form-group">
