@@ -29,12 +29,16 @@
     		<textarea class="form-control" id="InputEventName" placeholder="Describe the event" rows="3">${event.description}</textarea>
   		</div>
   		<div class="form-group">
-		  <label for="example-date-input">Date</label>
-		  <input class="form-control" type="date" value="${event.time}" id="eventDate">
+		  <label for="startDate">Start Date</label>
+		  <input class="form-control" type="date" value="${event.startDate}" id="startDate" name="Start Date" value="">
 		</div>
 		<div class="form-group">
 		  <label for="startTime">Start Time</label>
 		  <input class="form-control" type="time" value="${event.start}" id="startTime">
+		</div>
+		<div class="form-group">
+		  <label for="endDate">End Date</label>
+		  <input class="form-control" type="date" value="${event.endDate}" id="endDate" name="End Date" value="">
 		</div>
 		<div class="form-group">
 		  <label for="endTime">End Time</label>
