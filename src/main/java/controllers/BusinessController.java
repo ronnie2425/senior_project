@@ -40,7 +40,7 @@ public class BusinessController {
 		
 	} 
 	
-	public List<Business> findBusinessByOwnedUser(String name){
+	public List<Business> findBusinessByOwner(String name){
 		try{
 			return queries.findOwnedBusinesssFromAccount(name);
 		}
