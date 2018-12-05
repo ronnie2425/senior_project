@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -56,6 +57,7 @@ public class NewEventServlet extends HttpServlet {
 			req.getRequestDispatcher("newEvent.jsp").forward(req, resp);
 		}//end doGet
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 		throws ServletException, IOException {
@@ -71,34 +73,31 @@ public class NewEventServlet extends HttpServlet {
 	    String description = req.getParameter("Description");
 	    String start1 = req.getParameter("Start");
 	    String end1 = req.getParameter("End");
-	    String date1 = req.getParameter("Date");
+	    String datestart1 = req.getParameter("StartDate");
+	    String dateEnd1 = req.getParameter("EndDate");
 	    String businessName = null;
 	    //req.getParameter("Business");	//May not work
 	    String location = req.getParameter("Location");
         errorMessage = "DEBUG: failure between time and parameters";
         
         try {
-          errorMessage = date1 + "\n" + end1 + "\n" + start1;
-          String array[]=date1.split("-");
-//        errorMessage = "DEBUG: split works";
-          //int date= (Integer.parseInt(array[0])-2000) + (Integer.parseInt(array[2])*100) +(Integer.parseInt(array[1])*10000);
-          String date_string = array[1]+array[2]+array[0];
-		  errorMessage = "DEBUG: datestring " + date_string;
-		  int date= Integer.parseInt(date_string);
-		  errorMessage = "DEBUG: date int " + date;
-		  
+          errorMessage = datestart1 + "\n" + end1 + "\n" + start1;
+          String array[]=datestart1.split("-");
 		  String array1[]=start1.split(":");
 		  errorMessage = "DEBUG: split works";
 //		  int start=(Integer.parseInt(array1[2])) + (Integer.parseInt(array1[1])*100) +(Integer.parseInt(array1[0])*10000);
-		  String start_string = array1[0]+array1[1];
-		  errorMessage = "DEBUG: startstring " + start_string;
-		  int start= Integer.parseInt(start_string);
-		  
-		  String array2[]=end1.split(":");
+		  Date start = new Date(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]));
+		  start.setHours(Integer.parseInt(array1[0]));
+		  start.setMinutes(Integer.parseInt(array1[1]));
+		  start.setSeconds(Integer.parseInt(array1[2]));
+		  errorMessage = datestart1 + "\n" + end1 + "\n" + start1;
+          String array2[]=datestart1.split("-");
+		  String array3[]=end1.split(":");
 //		  int end= (Integer.parseInt(array2[2])) + (Integer.parseInt(array2[1])*100) +(Integer.parseInt(array2[0])*10000);
-		  String end_string = array2[0]+array2[1];
-		  errorMessage = "DEBUG: endstring " + end_string;
-		  int end= Integer.parseInt(end_string);
+		  Date end = new Date(Integer.parseInt(array2[0]), Integer.parseInt(array2[1]), Integer.parseInt(array2[2]));
+		  end.setHours(Integer.parseInt(array3[0]));
+		  end.setMinutes(Integer.parseInt(array3[1]));
+		  end.setSeconds(Integer.parseInt(array3[2]));
 		  
           errorMessage = "DEBUG: failed at first if";
           
@@ -123,7 +122,7 @@ public class NewEventServlet extends HttpServlet {
   		}
     			
 
-          if (name == null || location == null || start < 1010001 || end < 1010001) { // (01-01-0001) the first day.
+          if (name == null || location == null || start == null || end == null) { // (01-01-0001) the first day.
             errorMessage = "Please fill in the event's name, start date, and end date.";
             
             //save info
@@ -141,7 +140,7 @@ public class NewEventServlet extends HttpServlet {
           
           else { //fields filled
         	  errorMessage = "failed at eventController";
-            if(controller.AddEvent(name, description, start, end, date, businessName, location)){
+            if(controller.AddEvent(name, description, start.getTime(), end.getTime(), businessName, location)){
             	//set new attributes to display
             	req.setAttribute("Event name", name);
                 req.setAttribute("Event details", description);

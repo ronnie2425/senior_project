@@ -84,10 +84,9 @@ public class Databasequeries {
 		//assign an event the proper values
 		result.setId(resultSet.getInt(index++));
 		result.setDescription(resultSet.getString(index++));
-		result.setStartDate(resultSet.getInt(index++));
-		result.setEndDate(resultSet.getInt(index++));
+		result.setStartDate(resultSet.getLong(index++));
+		result.setEndDate(resultSet.getLong(index++));
 		result.setName(resultSet.getString(index++));
-		result.setTime(resultSet.getInt(index++));
 		result.setLocation(resultSet.getString(index++));
 		result.setBusiness(resultSet.getString(index++));
 	}

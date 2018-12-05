@@ -24,7 +24,7 @@ public class EventController {
 	
 	
 
-	public List<Event> findEventByStartDate(int date){
+	public List<Event> findEventByStartDate(long date){
 		try{
 			return queries.findEventByStartDate(date);
 		}
@@ -35,7 +35,7 @@ public class EventController {
 		
 	}
 	
-	public List<Event> findEventByEndDate(int date){
+	public List<Event> findEventByEndDate(long date){
 		try{
 			return queries.findEventByEndDate(date);
 		}
@@ -62,10 +62,10 @@ public class EventController {
 		
 	}
 	}
-	public boolean editEvent(int id, String name, String description, int start_date, int end_date,int time,String business,String location){
+	public boolean editEvent(int id, String name, String description, long start_date, long end_date,String business,String location){
 		try{
 			queries.removeEvent(name,business);
-			queries.insertEvent(name, description, start_date, end_date, time, business, location, id);
+			queries.insertEvent(name, description, start_date, end_date, business, location, id);
 			return true;
 		}
 		
@@ -74,7 +74,7 @@ public class EventController {
 		}
 		
 	}
-	public boolean AddEvent(String name, String description, int start_date, int end_date, int time, String business, String location) throws URISyntaxException{
+	public boolean AddEvent(String name, String description, long start_date, long end_date, String business, String location) throws URISyntaxException{
 			int id =(int) (Math.random()*10000);
 			List<Event> events = null;
 
@@ -82,14 +82,14 @@ public class EventController {
 	
 			if (events.isEmpty()) {
 				
-				queries.insertEvent(name, description, start_date, end_date, time, business, location,id);
+				queries.insertEvent(name, description, start_date, end_date, business, location,id);
 			return true;
 			}
 			return false;
 	}	
 	
 	
-	public boolean removeEvent(String name, String description, int start_date, int end_date,int time,String business,String location){
+	public boolean removeEvent(String name, String description, long start_date, long end_date,String business,String location){
 		try{
 			queries.removeEvent(name, business);
 		}
