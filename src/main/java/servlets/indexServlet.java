@@ -42,15 +42,15 @@ private static final long serialVersionUID = 1L;
 		
 		if (username!=null){
 			EventController controller = new EventController();
-			List<Business> b;
+			List<String> b;
 			BusinessController bc = new BusinessController();
 				b = bc.findSubscribedBusiness(username);
 				if(b.isEmpty()) {
 					req.getRequestDispatcher("index.jsp").forward(req, resp);
 				}
-				List<Event> list=controller.findEventByBusiness(b.get(0).getName());
+				List<Event> list=controller.findEventByBusiness(b.get(0));
 			for(int i=1; i< (b.size());i++) {
-				list.addAll(controller.findEventByBusiness(b.get(0).getName()));
+				list.addAll(controller.findEventByBusiness(b.get(0)));
 			}
 				Collections.sort(list);
 			
