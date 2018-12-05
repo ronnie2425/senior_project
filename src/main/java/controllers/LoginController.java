@@ -35,37 +35,52 @@ public class LoginController {
 		
 	}
 	
-	public boolean verifyAccount(String name, String password) throws SQLException, URISyntaxException{
-		if(!info.findAccountByName(name).isEmpty()){//shell isEmpty check, empty list may store a value in string?
-			String test = info.findAccountByName(name).get(0).getPassword();
-			if(test.isEmpty() || test.equals("")){
-			//if(test == password){
-				return false;
+	public boolean verifyAccount(String name, String password) {
+		try {
+			if(!info.findAccountByName(name).isEmpty()){//shell isEmpty check, empty list may store a value in string?
+				String test = info.findAccountByName(name).get(0).getPassword();
+				if(test.isEmpty() || test.equals("")){
+				//if(test == password){
+					return false;
+				}
+				//System.out.println("<" + test + "> testing");
+				//System.out.println("<" + test + "> testing");
+					//System.out.println("<" + password + "> testing");
+//		Function<String, Boolean> update = new Function<String, Boolean>() {
+//			public Boolean apply(String hash) { String[] mutableHash = {""};
+//			mutableHash[0] = hash; return true; }
+//		};
+				if (hacker.verifyHash(password, test)) {
+					return true;
+				}
 			}
-			//System.out.println("<" + test + "> testing");
-			//System.out.println("<" + test + "> testing");
-				//System.out.println("<" + password + "> testing");
-	//		Function<String, Boolean> update = new Function<String, Boolean>() {
-	//			public Boolean apply(String hash) { String[] mutableHash = {""};
-	//			mutableHash[0] = hash; return true; }
-	//		};
-			if (hacker.verifyHash(password, test)) {
-				return true;
-			}
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}//end if has results
 		
 		return false;
 	}
 	
 	
-	public boolean addNewAccount(String name, String password, String email, String business) throws SQLException, URISyntaxException{			
+	public boolean addNewAccount(String name, String password, String email, String business){			
 		int id =(int) (Math.random()*10000);
 		List<User> users = null;
-		users = info.findAccountByName(name);
+		try {
+			users = info.findAccountByName(name);
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if (!users.isEmpty()){
 			return false;
 		}
-		info.insertUser(name, password, email, id);
+		try {
+			info.insertUser(name, password, email, id);
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return true;
 	
@@ -86,7 +101,7 @@ public class LoginController {
 	    return hacker.verifyAndUpdateHash(password, hash, updateFunc);
 	}//basically unused, possible future upgrade
 	
-	public String hashBrowns(String password) throws URISyntaxException {
+	public String hashBrowns(String password)  {
 		return hacker.applyHash(password);
 	}
 	

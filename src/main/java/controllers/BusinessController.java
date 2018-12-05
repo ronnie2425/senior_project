@@ -50,9 +50,14 @@ public class BusinessController {
 	
 	}
 	
-	public List<Business> findSubscribedBusiness(String name){
+	public List<String> findSubscribedBusiness(String name){
 		try{
-			return queries.findBusinesssFromAccount(name);
+			List <Business> b=queries.findBusinesssFromAccount(name);
+			List <String> s=null;
+			for (int i=0; i<b.size();i++) {
+				s.add(b.get(i).getName());
+			}
+			return s;
 		}
 		catch (Exception e){
 			return null;
