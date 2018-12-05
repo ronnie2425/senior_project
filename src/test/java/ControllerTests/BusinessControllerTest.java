@@ -75,8 +75,8 @@ public class BusinessControllerTest {
 		con.insertBusiness("business2", "a place2");
 		con.subscribe("username", "business");
 		con.subscribe("username", "business2");
-		assertEquals(con.findSubscribedBusiness("username").get(0), business.getName());
-		assertEquals(con.findSubscribedBusiness("username").get(1), "business2");
+		assertEquals(con.findSubscribedBusiness("username").get(0).getName(), business.getName());
+		assertEquals(con.findSubscribedBusiness("username").get(1).getName(), "business2");
 		assertEquals(con.findSubscribedBusiness("username").size(),2);
 		assertTrue(con.unsubscribe("username", "business"));
 		assertTrue(con.unsubscribe("username", "business2"));
