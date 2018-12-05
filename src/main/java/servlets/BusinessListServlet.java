@@ -63,8 +63,9 @@ private static final long serialVersionUID = 1L;
             		BusinessController bc= new BusinessController();
 				String b_name=req.getParameter("bn");
 				if (b_name!=null) {
-					bc.unsubscribe(username, b_name);
-					bc.subscribe(username, b_name);
+					if (bc.findSubscribedBusiness(b_name) == null) {
+						bc.subscribe(username, b_name);
+					}
 					
 				}
 				req.getRequestDispatcher("businessList.jsp").forward(req, resp);
