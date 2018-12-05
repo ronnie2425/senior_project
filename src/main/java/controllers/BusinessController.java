@@ -40,18 +40,10 @@ public class BusinessController {
 		
 	} 
 	
-	public List<String> findBusinessByOwnedUser(String name){
+	public List<Business> findBusinessByOwnedUser(String name){
 		try{
-			List<Business> temp = queries.findOwnedBusinesssFromAccount(name);
-			List<String> names = null;
-			if(temp.isEmpty()) return null;
-			else {
-				for(Business bus : temp){
-					names.add(bus.getName());		//TODO: check threat on this warning
-				}
-				return names;
-				}
-			}//end else
+			return queries.findOwnedBusinesssFromAccount(name);
+		}
 		catch (Exception e){
 			return null;
 		}
@@ -67,12 +59,13 @@ public class BusinessController {
 		}
 	
 	}
-	public void unsubscribe(String u_id,String b_id){
+	public boolean unsubscribe(String u_id,String b_id){
 		try{
 			queries.removeRelation(u_id, b_id);
+			return true;
 		}
 		catch (Exception e){
-
+			return false;
 		}
 	
 	}
