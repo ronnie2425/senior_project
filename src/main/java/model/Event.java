@@ -72,7 +72,7 @@ public class Event implements Comparable<Event>
 	}
 	//@Override
 	public int compareTo(Event e) {
-		return (int) (start_date - e.getStart());
+		return  (Math.toIntExact(start_date) - Math.toIntExact(e.getStart()));
 	}
 	
 	
