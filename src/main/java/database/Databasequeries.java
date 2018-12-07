@@ -221,7 +221,7 @@ public List<User> insertUser(final String username,final String password,final S
 			}
 		});
 	}
-	public List<Event> insertEvent(final String name,final String description,final int start, final int end, final int time, final String business, final String location,final int id) throws URISyntaxException
+	public List<Event> insertEvent(final String name,final String description,final Long start, final Long end, final String business, final String location,final int id) throws URISyntaxException
 	{
 		return executeTransaction(new Transaction<List<Event>>()
 		{
@@ -232,6 +232,8 @@ public List<User> insertUser(final String username,final String password,final S
 				
 				try
 				{
+					int startTime = Math.toIntExact(start);
+					int endTime = Math.toIntExact(end);
 					stmt = conn.prepareStatement(
 							"insert into events(name, event_description, start_date, end_date, time, business, location, event_id)"
 							+ "values(?,?,?,?,?,?,?,?)");
@@ -239,7 +241,6 @@ public List<User> insertUser(final String username,final String password,final S
 					stmt.setString(2, description);
 					stmt.setInt(3, start);
 					stmt.setInt(4, end);
-					stmt.setInt(5, time);
 					stmt.setString(6, business);
 					stmt.setString(7, location);
 					stmt.setInt(8, id);
@@ -377,7 +378,7 @@ public List<User> insertUser(final String username,final String password,final S
 	
 	
 	
-	public List<Event> findEventByStartDate(final int date) throws URISyntaxException{
+	public List<Event> findEventByStartDate(final Long date) throws URISyntaxException{
 		return executeTransaction(new Transaction<List<Event>>(){
 			public List<Event> execute(Connection conn) throws SQLException{
 			PreparedStatement stmt = null;
@@ -385,13 +386,13 @@ public List<User> insertUser(final String username,final String password,final S
 			List <Event> result = new ArrayList<Event>();
 			
 			try {
-
+				int start = Math.toIntExact(date);
 				stmt = conn.prepareStatement(
 						"select Events.* " +
 						"  from Events " +
 						" where Events.start_date = ? "
 						);
-				stmt.setInt(1, date);
+				stmt.setInt(1, start);
 				resultSet = stmt.executeQuery();
 				Boolean found = false;
 				
@@ -415,7 +416,7 @@ public List<User> insertUser(final String username,final String password,final S
 	});
 }
 //
-public List<Event> findEventByEndDate(final int date) throws URISyntaxException{
+public List<Event> findEventByEndDate(final Long date) throws URISyntaxException{
 	return executeTransaction(new Transaction<List<Event>>(){
 		public List<Event> execute(Connection conn) throws SQLException{
 		PreparedStatement stmt = null;
@@ -423,13 +424,13 @@ public List<Event> findEventByEndDate(final int date) throws URISyntaxException{
 		List <Event> result = new ArrayList<Event>();
 		
 		try {
-
+			int end = Math.toIntExact(date);
 			stmt = conn.prepareStatement(
 					"select Events.* " +
 					"  from Events " +
 					" where Events.end_date = ? "
 					);
-			stmt.setInt(1, date);
+			stmt.setInt(1, end);
 			resultSet = stmt.executeQuery();
 			Boolean found = false;
 			
