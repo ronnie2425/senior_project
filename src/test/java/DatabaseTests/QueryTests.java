@@ -120,9 +120,8 @@ public class QueryTests {
 		
 		String name="Event of Fun";
 		String description="You WILL enjoy the event";
-		int start=12418;
-		int end=12518;
-		int time=1800;
+		long start=12418;
+		long end=12518;
 		String business="Shortbus Inc";
 		String location="Nowhere";
 		int id=5;
@@ -135,7 +134,7 @@ public class QueryTests {
 		}
 		else
 		{
-			db.insertEvent(name,description,start,end,time,business,location,id);
+			db.insertEvent(name,description,start,end,business,location,id);
 			System.out.println("Event successfully inserted");
 			db.removeEvent(name,business);
 		}
@@ -146,15 +145,14 @@ public class QueryTests {
 		System.out.println("\n*** Testing findEventByStartDate ***");
 		String name="Event of Fun";
 		String description="You WILL enjoy the event";
-		int start=12418;
-		int end=12518;
-		int time=1800;
+		long start=12418;
+		long end=12518;
 		String business="Shortbus Inc";
 		String location="Nowhere";
 		int id=5;
-		db.insertEvent(name,description,start,end,time,business,location,id);
+		db.insertEvent(name,description,start,end,business,location,id);
 		
-		events = db.findEventByStartDate(12418);
+		events = db.findEventByStartDate((long) 12418);
 		db.removeEvent(name,business);
 		if (events.isEmpty())
 		{
@@ -176,16 +174,15 @@ public class QueryTests {
 		
 		String name="Event of Fun";
 		String description="You WILL enjoy the event";
-		int start=12418;
-		int end=12518;
-		int time=1800;
+		long start=12418;
+		long end=12518;
 		String business="Shortbus Inc";
 		String location="Nowhere";
 		int id=5;
-		db.insertEvent(name,description,start,end,time,business,location,id);
+		db.insertEvent(name,description,start,end,business,location,id);
 		
 		int date = 12518;
-		events = db.findEventByEndDate(12518);
+		events = db.findEventByEndDate((long)12518);
 		db.removeEvent(name,business);
 		if (events.isEmpty())
 		{
@@ -203,14 +200,13 @@ public class QueryTests {
 		System.out.println("\n*** Testing findEventById ***");
 		String name="Event of Fun";
 		String description="You WILL enjoy the event";
-		int start=12418;
-		int end=12518;
-		int time=1800;
+		long start=12418;
+		long end=12518;
 		String business="Shortbus Inc";
 		String location="Nowhere";
 		int id=5;
 	
-		db.insertEvent(name,description,start,end,time,business,location,id);
+		db.insertEvent(name,description,start,end,business,location,id);
 		
 		events = db.findEventByID(5);
 		db.removeEvent(name,business);

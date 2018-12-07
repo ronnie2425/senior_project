@@ -45,9 +45,8 @@ public class EditEventServlet extends HttpServlet {
 		
 		String name = oldInfo.getName();
         String description = oldInfo.getDescription();
-        int start = oldInfo.getStart();
-        int end = oldInfo.getEndDate();
-        int time = oldInfo.getTime();
+        long start = oldInfo.getStart();
+        long end = oldInfo.getEndDate();
         String businessName = oldInfo.getBusiness();
         String location = oldInfo.getLocation();
         String errorMessage = "";
@@ -56,7 +55,6 @@ public class EditEventServlet extends HttpServlet {
         req.setAttribute("Event details", description);
         req.setAttribute("Start time", start);
         req.setAttribute("End time", end);
-        req.setAttribute("date", time);
         req.setAttribute("Business", businessName);
         req.setAttribute("Location", location);
         req.setAttribute("errorMessage", errorMessage);
@@ -83,7 +81,6 @@ public class EditEventServlet extends HttpServlet {
           String description = getStringFromParameter(req.getParameter("Event details"));
           int start = getIntFromParameter(req.getParameter("Start date"));
           int end = getIntFromParameter(req.getParameter("End date"));
-          int time = getIntFromParameter(req.getParameter("Time"));
           String businessName = getStringFromParameter(req.getParameter("Business"));	//May not work
           String location = getStringFromParameter(req.getParameter("Location"));
           int id = getIntFromParameter(req.getParameter("ID"));
@@ -115,7 +112,7 @@ public class EditEventServlet extends HttpServlet {
           
           else { //fields filled
             EventController controller = new EventController();
-            if(controller.editEvent(id, name, description, start, end, time, businessName, location)){
+            if(controller.editEvent(id, name, description, start, end, businessName, location)){
             	//set new attributes to display
             	req.setAttribute("Event name", name);
                 req.setAttribute("Event details", description);

@@ -239,8 +239,8 @@ public List<User> insertUser(final String username,final String password,final S
 							+ "values(?,?,?,?,?,?,?,?)");
 					stmt.setString(1, name);
 					stmt.setString(2, description);
-					stmt.setInt(3, start);
-					stmt.setInt(4, end);
+					stmt.setInt(3, startTime);
+					stmt.setInt(4, endTime);
 					stmt.setString(6, business);
 					stmt.setString(7, location);
 					stmt.setInt(8, id);

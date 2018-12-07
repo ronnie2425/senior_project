@@ -25,7 +25,7 @@ public class EventControllerTest {
 	}
 	@Test
 	public void testInsert() throws URISyntaxException{
-		assertTrue(con.AddEvent("test", "fun stuff", 1, 2, 3, "fake", "a place"));
+		assertTrue(con.AddEvent("test", "fun stuff", 1, 2, "fake", "a place"));
 	}
 	@Test
 	public void testgetByStart() {		
@@ -40,6 +40,6 @@ public class EventControllerTest {
 	}
 	@Test
 	public void testRemove(){
-		assertTrue(con.removeEvent("test", "fun stuff", 1, 2, 3, "fake", "a place"));
+		assertTrue(con.removeEvent("test", "fun stuff", 1, 2, "fake", "a place"));
 	}
 }
