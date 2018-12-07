@@ -1,6 +1,8 @@
 
 package model;
 
+import java.util.Date;
+
 public class Event implements Comparable<Event>
 {
 	private String name;
@@ -9,6 +11,7 @@ public class Event implements Comparable<Event>
 	private Long end_date;
 	private String business;
 	private String location;
+	private String time;
 	private int id;
 	
 	public Event(String name, String description, Long start_date,
@@ -20,6 +23,7 @@ public class Event implements Comparable<Event>
 		this.end_date=end_date;
 		this.business=business;
 		this.location=location;
+		this.time = time;
 		this.id=id;
 	
 	}
@@ -66,6 +70,10 @@ public class Event implements Comparable<Event>
 	}
 	public String getLocation(){
 		return location;
+	}
+	public String getTime(){
+		Date begin = new Date(start_date);
+		return begin.toString();
 	}
 	public int getId(){
 		return id;

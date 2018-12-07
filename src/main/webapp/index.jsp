@@ -36,14 +36,12 @@
 					
 			        	Event is: ${event.name}
 			        	Starts at: ${event.time}
-			        	On: ${event.start}
 			        	At: ${event.location}
 			        	Description: ${event.description}
 			        	<form action="${pageContext.servletContext.contextPath}/event.jsp" method="get">
 							<br>Click here to view info about the event</br>
 							<input name="name" type="text" value="${event.name}" hidden />
 							<input name="time" type="text" value="${event.time}" hidden />
-							<input name="start" type="text" value="${event.start}" hidden />
 							<input name="location" type="text" value="${event.location}" hidden />
 							<input name="description" type="text" value="${event.description}" hidden />
 							
