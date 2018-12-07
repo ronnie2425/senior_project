@@ -47,7 +47,7 @@ public class AdminServlet extends HttpServlet {
 			BusinessController bc=new BusinessController();
 			
 			User user=lc.findAccountByName(username).get(0);
-			List<Business> b=bc.findBusinessByOwnedUser(username);
+			List<Business> b=bc.findBusinessByOwner(username);
 			
 			EventController controller = new EventController();
 			List<Event> list=new ArrayList<Event>();

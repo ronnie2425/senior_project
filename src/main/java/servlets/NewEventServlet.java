@@ -46,7 +46,7 @@ public class NewEventServlet extends HttpServlet {
 			}//end cookie authentication
 			
 			//retrieve list of bussiness options to pick from
-			List<Business> businessNames = bus_control.findSubscribedBusiness(username);
+			List<Business> businessNames = bus_control.findBusinessByOwner(username);
 			
 			//TODO: transmute data format?
 			

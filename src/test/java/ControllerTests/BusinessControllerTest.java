@@ -54,8 +54,8 @@ public class BusinessControllerTest {
 		con.insertBusiness("business", "a place");
 		con.insertOwned("username", "business");
 		
-		assertEquals(con.findBusinessByOwnedUser("username").get(0).getLocation(), business.getLocation());
-		assertEquals(con.findBusinessByOwnedUser("username").size(),1);
+		assertEquals(con.findBusinessByOwner("username").get(0).getLocation(), business.getLocation());
+		assertEquals(con.findBusinessByOwner("username").size(),1);
 		assertTrue(con.unsubscribe("username", "business"));
 		assertTrue(con.removeBusiness("business"));
 		assertTrue(lc.removeAccount("username"));
