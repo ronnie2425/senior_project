@@ -63,7 +63,7 @@ public class LoginServlet extends HttpServlet {
           }//end fields filled else
           
         } catch(Exception e) {
-          errorMessage = "There was a problem in the LoginServlet. check verifyaccount's isEmpty return val.";
+          errorMessage = "There was a problem logging in, please retry.";
           req.setAttribute("errorMessage", errorMessage);
         }
         
