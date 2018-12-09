@@ -45,6 +45,10 @@ public class NewEventServlet extends HttpServlet {
 					}
 				}
 			}//end cookie authentication
+			//if the user is not logged in send to login page
+			if (username == null){
+				req.getRequestDispatcher("login.jsp").forward(req, resp);
+			}
 			
 			//retrieve list of bussiness options to pick from
 			List<Business> businessNames = bus_control.findBusinessByOwner(username);
