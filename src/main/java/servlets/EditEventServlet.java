@@ -60,7 +60,7 @@ public class EditEventServlet extends HttpServlet {
             req.setAttribute("End date", eventData.getEndDate());
             req.setAttribute("Location", eventData.getLocation());
 			req.setAttribute("BusinessList", businessNames);
-			req.getRequestDispatcher("newEvent.jsp").forward(req, resp);
+			req.getRequestDispatcher("editEvent.jsp").forward(req, resp);
 		}
 	
 	
