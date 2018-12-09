@@ -13,7 +13,7 @@
 			<ul>
 		
 				<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>		
-				<li><a href="${pageContext.servletContext.contextPath}/businessList.jsp">Business List</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/businessListServlet">Business List</a></li>
 			
 
 	
