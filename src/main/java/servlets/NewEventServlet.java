@@ -88,9 +88,13 @@ public class NewEventServlet extends HttpServlet {
 		  errorMessage = "DEBUG: "+ array[0] + "  "+ array[1] + "  "+ array[2] + "  "+ array1[0] + "  "+ array1[1] + "  "+ array1[2];
 //		  int start=(Integer.parseInt(array1[2])) + (Integer.parseInt(array1[1])*100) +(Integer.parseInt(array1[0])*10000);
 		  Date start = new Date(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]));
+		  errorMessage = "DEBUG: 1";
 		  start.setHours(Integer.parseInt(array1[0]));
+		  errorMessage = "DEBUG: 2";
 		  start.setMinutes(Integer.parseInt(array1[1]));
+		  errorMessage = "DEBUG: 3";
 		  start.setSeconds(Integer.parseInt(array1[2]));
+		  errorMessage = "DEBUG: 4";
 		  errorMessage = dateEnd1 + "\n" + end1 + "\n" + start1;
           String array2[]=dateEnd1.split("-");
 		  String array3[]=end1.split(":");
