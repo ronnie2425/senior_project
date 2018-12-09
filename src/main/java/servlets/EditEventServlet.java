@@ -56,7 +56,7 @@ public class EditEventServlet extends HttpServlet {
 			//set attributes to jsp
 			req.setAttribute("Event name", eventData.getName());
             req.setAttribute("Event details", eventData.getDescription());
-            req.setAttribute("Start date", eventData.getStartDate());
+            req.setAttribute("Start date", eventData.getStart());
             req.setAttribute("End date", eventData.getEndDate());
             req.setAttribute("Location", eventData.getLocation());
 			req.setAttribute("BusinessList", businessNames);
