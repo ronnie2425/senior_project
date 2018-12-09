@@ -21,7 +21,7 @@
   		<select class="custom-select" name="business">
   			<option>Select a business from this list</option>
   			<c:forEach items="${BusinessList}" var = "business">
-  				<option> ${business.name} </option>
+  				<option value="${business.name}"></option>
   			</c:forEach>
   		</select>
   		<div class="form-group">
