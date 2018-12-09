@@ -4,6 +4,8 @@ package model;
 import java.util.Calendar;
 import java.util.Date;
 
+import edu.ycp.cs340.jsonparser.$missing$;
+
 public class Event implements Comparable<Event>
 {
 	private String name;
@@ -76,6 +78,34 @@ public class Event implements Comparable<Event>
 		Calendar begin = Calendar.getInstance();
 		begin.setTimeInMillis(start_date);
 		return begin.getTime().toString();
+	}
+	@SuppressWarnings("deprecation")
+	public String getSTime(){
+		Calendar begin = Calendar.getInstance();
+		begin.setTimeInMillis(start_date);
+		String STime = ""+begin.getTime().getHours()+":"+begin.getTime().getMinutes();
+		return STime;
+	}
+	@SuppressWarnings("deprecation")
+	public String getETime(){
+		Calendar begin = Calendar.getInstance();
+		begin.setTimeInMillis(end_date);
+		String ETime = ""+begin.getTime().getHours()+":"+begin.getTime().getMinutes();
+		return ETime;
+	}
+	@SuppressWarnings("deprecation")
+	public String getSDate(){
+		Calendar begin = Calendar.getInstance();
+		begin.setTimeInMillis(start_date);
+		String SDate = ""+begin.getTime().getYear()+"-"+begin.getTime().getDay()+"-"+begin.getTime().getDay();
+		return SDate;
+	}
+	@SuppressWarnings("deprecation")
+	public String getEDate(){
+		Calendar begin = Calendar.getInstance();
+		begin.setTimeInMillis(end_date);
+		String EDate = ""+begin.getTime().getYear()+"-"+begin.getTime().getDay()+"-"+begin.getTime().getDay();
+		return EDate;
 	}
 	public int getId(){
 		return id;
