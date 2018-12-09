@@ -45,13 +45,13 @@ private static final long serialVersionUID = 1L;
 			List<Business> b;
 			BusinessController bc = new BusinessController();
 				b = bc.findSubscribedBusiness(username);
-				b.addAll(bc.findSubscribedBusiness(username));
+				//b.addAll(bc.findBusinessByOwner(username));
 				if(b.isEmpty()) {
 					req.getRequestDispatcher("index.jsp").forward(req, resp);
 				}
 				List<Event> list=controller.findEventByBusiness(b.get(0).getName());
 			for(int i=1; i< (b.size());i++) {
-				list.addAll(controller.findEventByBusiness(b.get(0).getName()));
+				list.addAll(controller.findEventByBusiness(b.get(i).getName()));
 			}
 				Collections.sort(list);
 			
