@@ -84,8 +84,8 @@ public class Databasequeries {
 		//assign an event the proper values
 		result.setId(resultSet.getInt(index++));
 		result.setDescription(resultSet.getString(index++));
-		result.setStartDate(resultSet.getLong(index++));
-		result.setEndDate(resultSet.getLong(index++));
+		result.setStartDate(resultSet.getLong(index++)*60*1000);
+		result.setEndDate(resultSet.getLong(index++)*60*1000);
 		result.setName(resultSet.getString(index++));
 		result.setLocation(resultSet.getString(index++));
 		result.setBusiness(resultSet.getString(index++));
@@ -232,8 +232,8 @@ public List<User> insertUser(final String username,final String password,final S
 				
 				try
 				{
-					int startTime = Math.toIntExact(start);
-					int endTime = Math.toIntExact(end);
+					int startTime = Math.toIntExact((start/1000)/60);
+					int endTime = Math.toIntExact((end/1000)/60);
 					stmt = conn.prepareStatement(
 							"insert into events(name, event_description, start_date, end_date, business, location, event_id)"
 							+ "values(?,?,?,?,?,?,?)");
