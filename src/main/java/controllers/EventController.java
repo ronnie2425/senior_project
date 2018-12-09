@@ -21,29 +21,6 @@ public class EventController {
 	public Event getEvent(){
 		return event;
 	}
-	
-	
-
-	public List<Event> findEventByStartDate(long date){
-		try{
-			return queries.findEventByStartDate(date);
-		}
-		catch (Exception e) {
-			
-			return null;
-		}
-		
-	}
-	
-	public List<Event> findEventByEndDate(long date){
-		try{
-			return queries.findEventByEndDate(date);
-		}
-		catch (Exception e) {
-			return null;
-		}
-
-	}
 	public List<Event> findEventByBusiness(String business){
 		try{
 			return queries.findEventByBusiness(business);
