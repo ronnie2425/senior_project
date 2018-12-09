@@ -235,15 +235,15 @@ public List<User> insertUser(final String username,final String password,final S
 					int startTime = Math.toIntExact(start);
 					int endTime = Math.toIntExact(end);
 					stmt = conn.prepareStatement(
-							"insert into events(name, event_description, start_date, end_date, time, business, location, event_id)"
-							+ "values(?,?,?,?,?,?,?,?)");
+							"insert into events(name, event_description, start_date, end_date, business, location, event_id)"
+							+ "values(?,?,?,?,?,?,?)");
 					stmt.setString(1, name);
 					stmt.setString(2, description);
 					stmt.setInt(3, startTime);
 					stmt.setInt(4, endTime);
-					stmt.setString(6, business);
-					stmt.setString(7, location);
-					stmt.setInt(8, id);
+					stmt.setString(5, business);
+					stmt.setString(6, location);
+					stmt.setInt(7, id);
 					
 					
 					stmt.executeUpdate();
