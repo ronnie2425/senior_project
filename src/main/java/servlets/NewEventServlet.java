@@ -143,14 +143,7 @@ public class NewEventServlet extends HttpServlet {
         	  errorMessage = "failed at eventController";
             if(controller.AddEvent(name, description, start.getTime(), end.getTime(), businessName, location)){
             	//set new attributes to display
-            	req.setAttribute("Event name", name);
-                req.setAttribute("Event details", description);
-                req.setAttribute("Start date", start);
-                req.setAttribute("End date", end);
-                req.setAttribute("Business", businessName);
-                req.setAttribute("Location", location);
-                req.setAttribute("errorMessage", errorMessage);
-                            
+            	
             	//display the event
             	req.getRequestDispatcher("index.jsp").forward(req, resp); //TODO Change to event.jsp
             
