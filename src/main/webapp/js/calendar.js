@@ -1,5 +1,4 @@
 	$(document).ready(function() {
-		
 		$('#calendar').fullCalendar({
 			header: {
 				left: 'prev,next today',
@@ -8,9 +7,14 @@
 			},
 			defaultDate: '2018-12-14',
 			navLinks: true, // can click day/week names to navigate views
-			editable: true,
+			editable: false,
 			eventLimit: true, // allow "more" link when too many events
 			events: [
+				for(int i = 0; i < eventList.length; i++){
+					title: eventList[i].name,
+					start: eventList[i].start_date,
+					end: eventList[i].end_date
+				}
 				{
 					title: 'All Day Event',
 					start: '2018-12-01'
