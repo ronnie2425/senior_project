@@ -77,7 +77,8 @@ public class NewEventServlet extends HttpServlet {
 	    String dateEnd1 = req.getParameter("EndDate");
 	    String businessName = null;
 	    //req.getParameter("Business");	//May not work
-	    String location = req.getParameter("Location");
+	    String location = "tetsiaskdfjahfioa";
+	    		//req.getParameter("Location");
         errorMessage = "DEBUG: failure between time and parameters";
         
         try {
@@ -102,8 +103,7 @@ public class NewEventServlet extends HttpServlet {
           errorMessage = "DEBUG: failed at first if";
           
           
-       //   i/f(req.getSession().getAttribute("user") != null && req.getSession().getAttribute("user") != ""){
-    			//String user = (String) req.getSession().getAttribute("user");
+
           String username=null;
   		Cookie[] cks=req.getCookies();
   		if (cks !=null){
