@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -87,20 +88,16 @@ public class NewEventServlet extends HttpServlet {
 		  String array1[]=start1.split(":");
 		  errorMessage = "DEBUG: "+ array[0] + "  "+ array[1] + "  "+ array[2] + "  "+ array1[0] + "  "+ array1[1] + "  "+ array1[2];
 //		  int start=(Integer.parseInt(array1[2])) + (Integer.parseInt(array1[1])*100) +(Integer.parseInt(array1[0])*10000);
-		  Date start = new Date(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]));
-		  start.setHours(Integer.parseInt(array1[0]));
-		  start.setMinutes(Integer.parseInt(array1[1]));
-		  start.setSeconds(Integer.parseInt(array1[2]));
+		  Calendar start = Calendar.getInstance();
+		  start.set(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]), Integer.parseInt(array1[0]), Integer.parseInt(array1[1]), Integer.parseInt(array1[2]));
 		  errorMessage = dateEnd1 + "\n" + end1 + "\n" + start1;
           String array2[]=dateEnd1.split("-");
 		  String array3[]=end1.split(":");
 		  errorMessage =  "DEBUG: "+ array2[0] + "  "+ array2[1] + "  "+ array2[2] + "  "+ array3[0] + "  "+ array3[1] + "  "+ array3[2];
 //		  int end= (Integer.parseInt(array2[2])) + (Integer.parseInt(array2[1])*100) +(Integer.parseInt(array2[0])*10000);
-		  Date end = new Date(Integer.parseInt(array2[0]), Integer.parseInt(array2[1]), Integer.parseInt(array2[2]));
-		  end.setHours(Integer.parseInt(array3[0]));
-		  end.setMinutes(Integer.parseInt(array3[1]));
-		  end.setSeconds(Integer.parseInt(array3[2]));
-		  
+		  Calendar end = Calendar.getInstance();
+		  end.set(Integer.parseInt(array2[0]), Integer.parseInt(array2[1]), Integer.parseInt(array2[2]), Integer.parseInt(array3[0]), Integer.parseInt(array3[1]), Integer.parseInt(array3[2]));
+		 
           errorMessage = "DEBUG: failed at first if";
           
           
@@ -141,7 +138,7 @@ public class NewEventServlet extends HttpServlet {
           
           else { //fields filled
         	  errorMessage = "failed at eventController";
-            if(controller.AddEvent(name, description, start.getTime(), end.getTime(), businessName, location)){
+            if(controller.AddEvent(name, description, start.getTimeInMillis(), end.getTimeInMillis(), businessName, location)){
             	//set new attributes to display
             	
             	//display the event

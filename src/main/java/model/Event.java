@@ -1,6 +1,7 @@
 
 package model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Event implements Comparable<Event>
@@ -72,8 +73,9 @@ public class Event implements Comparable<Event>
 		return location;
 	}
 	public String getTime(){
-		Date begin = new Date(start_date);
-		return begin.toString();
+		Calendar begin = Calendar.getInstance();
+		begin.setTimeInMillis(start_date);
+		return begin.getTime().toString();
 	}
 	public int getId(){
 		return id;
