@@ -60,7 +60,7 @@ public class Event implements Comparable<Event>
 	public String getDescription(){
 		return description;
 	}
-	public Long getStart(){
+	public Long getStartDate(){
 		return start_date;
 	}
 	public Long getEndDate(){
