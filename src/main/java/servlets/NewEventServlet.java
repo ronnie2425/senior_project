@@ -88,17 +88,22 @@ public class NewEventServlet extends HttpServlet {
 		  String array1[]=start1.split(":");
 		  errorMessage = "DEBUG: "+ array[0] + "  "+ array[1] + "  "+ array[2] + "  "+ array1[0] + "  "+ array1[1] + "  "+ array1[2];
 //		  int start=(Integer.parseInt(array1[2])) + (Integer.parseInt(array1[1])*100) +(Integer.parseInt(array1[0])*10000);
+		  errorMessage = "DEBUG: 1";
 		  Calendar start = Calendar.getInstance();
+		  errorMessage = "DEBUG: 2";
 		  start.set(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]), Integer.parseInt(array1[0]), Integer.parseInt(array1[1]), Integer.parseInt(array1[2]));
-
+		  errorMessage = "DEBUG: 3";
 		  errorMessage = dateEnd1 + "\n" + end1 + "\n" + start1;
           String array2[]=dateEnd1.split("-");
+          errorMessage = "DEBUG: 4";
 		  String array3[]=end1.split(":");
+		  errorMessage = "DEBUG: 5";
 		  errorMessage =  "DEBUG: "+ array2[0] + "  "+ array2[1] + "  "+ array2[2] + "  "+ array3[0] + "  "+ array3[1] + "  "+ array3[2];
 //		  int end= (Integer.parseInt(array2[2])) + (Integer.parseInt(array2[1])*100) +(Integer.parseInt(array2[0])*10000);
 		  Calendar end = Calendar.getInstance();
+		  errorMessage = "DEBUG: 6";
 		  end.set(Integer.parseInt(array2[0]), Integer.parseInt(array2[1]), Integer.parseInt(array2[2]), Integer.parseInt(array3[0]), Integer.parseInt(array3[1]), Integer.parseInt(array3[2]));
-		 
+		  errorMessage = "DEBUG: 7";
           errorMessage = "DEBUG: failed at first if";
           
           
