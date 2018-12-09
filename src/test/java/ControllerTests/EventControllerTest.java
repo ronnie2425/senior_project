@@ -26,6 +26,7 @@ public class EventControllerTest {
 	@Test
 	public void testInsert() throws URISyntaxException{
 		assertTrue(con.AddEvent("test", "fun stuff", 1, 2, "fake", "a place"));
+		assertEquals(con.findByName("test").get(0).getLocation(),"a place" );
 	}
 	@Test
 	public void testgetByStart() {		
