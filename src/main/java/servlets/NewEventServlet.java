@@ -73,8 +73,8 @@ public class NewEventServlet extends HttpServlet {
 	    String description = req.getParameter("Description");
 	    String start1 = req.getParameter("Start");
 	    String end1 = req.getParameter("End");
-	    String datestart1 = req.getParameter("StartDate");
-	    String dateEnd1 = req.getParameter("EndDate");
+	    String datestart1 = req.getParameter("Start Date");
+	    String dateEnd1 = req.getParameter("End Date");
 	    String businessName = null;
 	    //req.getParameter("Business");	//May not work
 	    String location = "tetsiaskdfjahfioa";
