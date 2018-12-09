@@ -14,7 +14,7 @@
   </head>
   <body>
   		<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Log in</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Login</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/logoutServlet">Logout</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/businessEventList.jsp">Business Event list</a></li>
