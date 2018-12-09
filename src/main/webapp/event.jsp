@@ -29,11 +29,13 @@
 			
 			<div>
 				<c>
-	
-			        	Event is: <input type= "text" value="<%=session.getAttribute("name")%>" />
-			        	Starts at: <input type= "text" value="<%=session.getAttribute("time") %>" />
-			        	At: <input type= "text" value="<%=session.getAttribute("location") %>" />
-			        	Description: <input type= "text" value="<%=session.getAttribute("description") %>"/>         
+						Event is:<%=request.getParameter("name")%>
+			        	Starts at: <%=request.getParameter("time") %>
+			        	At:<%=request.getParameter("location") %>
+			        	Description: <%=request.getParameter("description") %>       
+			        	
+			        	
+   
 			  
 					
 						<br />	            
