@@ -14,7 +14,7 @@
   </head>
   <body>
     <form action="editEventServlet" method="post">
-
+		<c:forEach items="${list}" var="event">
   		<div class="form-group">
     		<label for="InputEventName">Event Title</label>
     		<input type="text" class="form-control" placeholder="${event.name}" id="InputEventName" placeholder="Enter Name For Event">
@@ -50,7 +50,7 @@
     		<input type="text" class="form-control" value="${event.location}" id="InputLocation" placeholder="Location">
   		</div>
   		<button type="submit" class="btn btn-primary">Submit</button>
-  		
+  		</c:forEach>
 	</form>
 	
 

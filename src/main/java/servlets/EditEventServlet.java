@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -54,12 +55,9 @@ public class EditEventServlet extends HttpServlet {
 			Event eventData = event_controller.findByID(getIntFromParameter(req.getParameter("eventId")));
 
 			//set attributes to jsp
-			req.setAttribute("Event name", eventData.getName());
-            req.setAttribute("Event details", eventData.getDescription());
-            req.setAttribute("Start date", eventData.getStart());
-            req.setAttribute("End date", eventData.getEndDate());
-            req.setAttribute("Location", eventData.getLocation());
-			req.setAttribute("BusinessList", businessNames);
+			List<Event> list=new ArrayList<Event>();
+			list.add(eventData);
+			req.setAttribute("list", list);
 			req.getRequestDispatcher("editEvent.jsp").forward(req, resp);
 		}
 	
