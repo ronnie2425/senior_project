@@ -14,6 +14,7 @@
 		
 				<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>		
 				<li><a href="${pageContext.servletContext.contextPath}/businessList.jsp">Business List</a></li>
+			
 
 	
 				<li><a href="${pageContext.servletContext.contextPath}/adminServlet">Admin</a></li>

@@ -36,7 +36,6 @@
 				<c:forEach items="${list}" var="event">
 			        	Event is: ${event.name}
 			        	Starts at: ${event.time}
-			        	On: ${event.start}
 			        	At: ${event.location}
 			          
 			        	<form action="${pageContext.servletContext.contextPath}/event.jsp" method="get">
