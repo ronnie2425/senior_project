@@ -80,8 +80,8 @@ public class NewEventServlet extends HttpServlet {
 	    String end1 = req.getParameter("End");
 	    String datestart1 = req.getParameter("Start Date");
 	    String dateEnd1 = req.getParameter("End Date");
-	    String businessName = null;
-	    //req.getParameter("Business");	//May not work
+	    String businessName = //null;
+	    req.getParameter("Business");	//May not work
 	    String location = req.getParameter("Location");
         errorMessage = "DEBUG: failure between time and parameters";
         
