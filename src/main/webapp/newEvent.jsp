@@ -21,12 +21,9 @@
   		<select class="custom-select" name="business">
   			<option>Select a business from this list</option>
   			<c:forEach items="${BusinessList}" var = "business">
-  				<option value="${business.name}"></option>
+  				<option value="${business.name}">${business.name}</option>
   			</c:forEach>
   		</select>
-  		<c:forEach items="${BusinessList}" var = "business">
-  			<div>${business.name}</div>
-  		</c:forEach>
   		<div class="form-group">
     		<label for="InputEventDetails">Event Details</label>
     		<textarea class="form-control" id="InputEventName" placeholder="Describe the Event" rows="3" name="Description" value=""></textarea>
