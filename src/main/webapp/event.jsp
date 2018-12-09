@@ -30,11 +30,10 @@
 			<div>
 				<c>
 	
-			        	Event is: ${event.name}
-			        	Starts at: ${event.time}
-			        	On: ${event.start}
-			        	At: ${event.location}
-			        	Description: ${event.description}         
+			        	Event is: <%session.getAttribute("name"); %>
+			        	Starts at: <%session.getAttribute("time"); %>
+			        	At: <%session.getAttribute("location"); %>
+			        	Description: <%session.getAttribute("description"); %>         
 			  
 					
 						<br />	            
