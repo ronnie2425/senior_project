@@ -90,6 +90,7 @@ public class NewEventServlet extends HttpServlet {
 //		  int start=(Integer.parseInt(array1[2])) + (Integer.parseInt(array1[1])*100) +(Integer.parseInt(array1[0])*10000);
 		  Calendar start = Calendar.getInstance();
 		  start.set(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]), Integer.parseInt(array1[0]), Integer.parseInt(array1[1]), Integer.parseInt(array1[2]));
+
 		  errorMessage = dateEnd1 + "\n" + end1 + "\n" + start1;
           String array2[]=dateEnd1.split("-");
 		  String array3[]=end1.split(":");

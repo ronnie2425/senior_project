@@ -23,7 +23,7 @@
 				<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/logoutServlet">Logout</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/businessEventList.jsp">Business Event list</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/businessList.jsp">Business List</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/businessListServlet">Business List</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/editEvent.jsp">Edit Event</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/newEvent.jsp">New Event</a></li>
 		
@@ -33,7 +33,6 @@
 			</ul>
 			</div>
     <h1>Businesses</h1>
-    <form action="businessListServlet" method="get">
 		
 			<c:forEach items="${list}" var = "business">
   				<a href="#" class="list-group-item list-group-item-action">${business.name}</a>
@@ -46,8 +45,7 @@
 						</form>	
 			</c:forEach>
 		
-		<button type="submit" class="btn btn-primary">See Businesses</button>
-	</form>
+	
 	
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

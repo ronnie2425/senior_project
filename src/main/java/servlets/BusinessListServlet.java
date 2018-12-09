@@ -68,6 +68,19 @@ private static final long serialVersionUID = 1L;
 					}
 					
 				}
+				
+				
+				
+				
+				
+				
+				
+				
+				List<Business> list=null;
+				list = bc.findAllBusinesses();
+				req.setAttribute("list", list);
+				req.getRequestDispatcher("businessList.jsp").forward(req, resp);
+				
 				req.getRequestDispatcher("businessList.jsp").forward(req, resp);
 				}
 			
