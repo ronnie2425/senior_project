@@ -58,7 +58,9 @@ public class EditEventServlet extends HttpServlet {
 			List<Event> list=new ArrayList<Event>();
 			list.add(eventData);
 			req.setAttribute("list", list);
+			req.setAttribute("BusinessList", businessNames);
 			req.getRequestDispatcher("editEvent.jsp").forward(req, resp);
+			
 		}
 	
 	
