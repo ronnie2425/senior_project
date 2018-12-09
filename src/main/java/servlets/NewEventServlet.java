@@ -92,7 +92,7 @@ public class NewEventServlet extends HttpServlet {
 		  start.setMinutes(Integer.parseInt(array1[1]));
 		  start.setSeconds(Integer.parseInt(array1[2]));
 		  errorMessage = datestart1 + "\n" + end1 + "\n" + start1;
-          String array2[]=datestart1.split("-");
+          String array2[]=dateEnd1.split("-");
 		  String array3[]=end1.split(":");
 		  errorMessage =  "DEBUG: "+ array2[0] + "  "+ array2[1] + "  "+ array2[2] + "  "+ array3[0] + "  "+ array3[1] + "  "+ array3[2];
 //		  int end= (Integer.parseInt(array2[2])) + (Integer.parseInt(array2[1])*100) +(Integer.parseInt(array2[0])*10000);
