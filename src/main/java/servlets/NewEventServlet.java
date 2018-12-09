@@ -91,8 +91,8 @@ public class NewEventServlet extends HttpServlet {
 		  start.setHours(Integer.parseInt(array1[0]));
 		  start.setMinutes(Integer.parseInt(array1[1]));
 		  start.setSeconds(Integer.parseInt(array1[2]));
-		  errorMessage = datestart1 + "\n" + end1 + "\n" + start1;
-          String array2[]=datestart1.split("-");
+		  errorMessage = dateEnd1 + "\n" + end1 + "\n" + start1;
+          String array2[]=dateEnd1.split("-");
 		  String array3[]=end1.split(":");
 		  errorMessage =  "DEBUG: "+ array2[0] + "  "+ array2[1] + "  "+ array2[2] + "  "+ array3[0] + "  "+ array3[1] + "  "+ array3[2];
 //		  int end= (Integer.parseInt(array2[2])) + (Integer.parseInt(array2[1])*100) +(Integer.parseInt(array2[0])*10000);
@@ -143,14 +143,7 @@ public class NewEventServlet extends HttpServlet {
         	  errorMessage = "failed at eventController";
             if(controller.AddEvent(name, description, start.getTime(), end.getTime(), businessName, location)){
             	//set new attributes to display
-            	req.setAttribute("Event name", name);
-                req.setAttribute("Event details", description);
-                req.setAttribute("Start date", start);
-                req.setAttribute("End date", end);
-                req.setAttribute("Business", businessName);
-                req.setAttribute("Location", location);
-                req.setAttribute("errorMessage", errorMessage);
-                            
+            	
             	//display the event
             	req.getRequestDispatcher("index.jsp").forward(req, resp); //TODO Change to event.jsp
             

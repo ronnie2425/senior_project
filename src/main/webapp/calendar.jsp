@@ -62,8 +62,9 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
 
   
-
-    <script  src="js/calendar.js"></script>
+    <script src="js/calendar.js">
+    var eventList = ${EventList};
+    </script>
 
 
 
