@@ -1,9 +1,7 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -16,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import controllers.BusinessController;
 import controllers.EventController;
 import model.Business;
-import model.User;
 
 
 //Quarantine for errors
@@ -57,10 +54,12 @@ public class NewEventServlet extends HttpServlet {
 			req.setAttribute("BusinessList", businessNames);
 			req.getRequestDispatcher("newEvent.jsp").forward(req, resp);
 		}
+	
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 		throws ServletException, IOException {
-		// Decode form parameters and dispatch to controller
+		// Decode form parameters and dispatch to event_controller
         String errorMessage = null;
         errorMessage = "DEBUG: failed at start";
 	    String name = req.getParameter("Name");
@@ -140,7 +139,4 @@ public class NewEventServlet extends HttpServlet {
 	}//end doPost
 	
 }//end class
-
-
-//end quarantine
 
