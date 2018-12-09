@@ -82,8 +82,7 @@ public class NewEventServlet extends HttpServlet {
 	    String dateEnd1 = req.getParameter("End Date");
 	    String businessName = null;
 	    //req.getParameter("Business");	//May not work
-	    String location = "tetsiaskdfjahfioa";
-	    		//req.getParameter("Location");
+	    String location = req.getParameter("Location");
         errorMessage = "DEBUG: failure between time and parameters";
         
         try {
@@ -148,8 +147,8 @@ public class NewEventServlet extends HttpServlet {
           
           else { //fields filled
         	  errorMessage = "failed at eventController";
-           // if(controller.AddEvent(name, description, start.getTimeInMillis(), end.getTimeInMillis(), businessName, location)){
-        	  if(controller.AddEvent(name, description, 10, 10, businessName, location)){	
+            if(controller.AddEvent(name, description, start.getTimeInMillis(), end.getTimeInMillis(), businessName, location)){
+        	  //if(controller.AddEvent(name, description, 10, 10, businessName, location)){	
             	//set new attributes to display
             	
             	//display the event
