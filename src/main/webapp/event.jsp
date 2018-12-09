@@ -29,7 +29,13 @@
 			
 			<div>
 				<c>
-	
+						Event is: <input type= "text" value="<%=request.getParameter("name")%>" />
+			        	Starts at: <input type= "text" value="<%=request.getParameter("time") %>" />
+			        	At: <input type= "text" value="<%=request.getParameter("location") %>" />
+			        	Description: <input type= "text" value="<%=request.getParameter("description") %>"/>         
+			        	
+			        	
+			        	
 			        	Event is: <input type= "text" value="<%=session.getAttribute("name")%>" />
 			        	Starts at: <input type= "text" value="<%=session.getAttribute("time") %>" />
 			        	At: <input type= "text" value="<%=session.getAttribute("location") %>" />
