@@ -51,7 +51,7 @@ public class EditEventServlet extends HttpServlet {
 			//retrieve list of bussiness options to pick from
 			List<Business> businessNames = bus_control.findBusinessByOwner(username);
 			
-			Event eventData = event_controller.findByID(getIntFromParameter(req.getParameter("Id")));
+			Event eventData = event_controller.findByID(getIntFromParameter(req.getParameter("eventId")));
 
 			//set attributes to jsp
 			req.setAttribute("Event name", eventData.getName());
