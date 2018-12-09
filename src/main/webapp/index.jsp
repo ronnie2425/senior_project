@@ -12,17 +12,15 @@
 			<div class="navbar">
 			<ul>
 		
-				<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Log in</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>		
+				<li><a href="${pageContext.servletContext.contextPath}/businessList.jsp">Business List</a></li>
+
+	
+				<li><a href="${pageContext.servletContext.contextPath}/adminServlet">Admin</a></li>
+					<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Log in</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/logoutServlet">Logout</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/businessEventList.jsp">Business Event list</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/businessList.jsp">Business List</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/editEvent.jsp">Edit Event</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/newEvent.jsp">New Event</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/feedServlet">Feed</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/adminServlet">Admin</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/newBusiness.jsp">New Business</a></li>
+	
 				
 				
 			</ul>
