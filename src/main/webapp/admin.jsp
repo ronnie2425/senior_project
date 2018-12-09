@@ -49,7 +49,7 @@
 							
 							<input name="post" type="submit" value="View"/>
 						</form>
-						<form action="${pageContext.servletContext.contextPath}/editEventServlet" method="post">
+						<form action="${pageContext.servletContext.contextPath}/editEventServlet" method="get">
 							<br>Click here to edit the event</br>
 							<input name="eventId" type="text" value="${event.id}" hidden />
 							<input name="post" type="submit" value="Edit"/>
