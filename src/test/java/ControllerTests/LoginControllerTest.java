@@ -38,7 +38,7 @@ public class LoginControllerTest {
 		assertTrue(con.addNewAccount("user", "tmpPass", "something", "none"));
 		assertEquals("user",con.findAccountByName("user").get(0).getUsername());
 		assertTrue(con.removeAccount("user"));
-		assertFalse("user" == con.findAccountByName("user").get(0).getUsername());
+		assertTrue(con.findAccountByName("user").isEmpty());
 	}
 
 	

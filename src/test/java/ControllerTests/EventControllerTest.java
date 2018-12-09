@@ -28,14 +28,6 @@ public class EventControllerTest {
 		assertTrue(con.AddEvent("test2526", "fun stuff", 1, 2, "fake", "a place"));
 		assertEquals(con.findByName("test2526").get(0).getLocation(),"a place" );
 	}
-	@Test
-	public void testgetByStart() {		
-		assertEquals("fake",con.findEventByStartDate(1).get(0).getBusiness());
-	}
-	@Test
-	public void testgetByEnd() {		
-		assertEquals("fake",con.findEventByEndDate(2).get(0).getBusiness());
-	}
 	public void testFindByBusiness(){
 		assertEquals("test", con.findEventByBusiness("fake").get(0).getName());
 	}

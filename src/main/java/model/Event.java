@@ -4,7 +4,7 @@ package model;
 import java.util.Calendar;
 import java.util.Date;
 
-import edu.ycp.cs340.jsonparser.$missing$;
+
 
 public class Event implements Comparable<Event>
 {
