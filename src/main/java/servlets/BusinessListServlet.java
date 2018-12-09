@@ -49,36 +49,36 @@ private static final long serialVersionUID = 1L;
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-            		String username=null;
-            		Cookie[] cks=req.getCookies();
-            		if (cks !=null){
-            			for (int i=0;i<cks.length;i++){
-            				String name=cks[i].getName();
-            				username = cks[i].getValue();
-            				if (name.equals("auth")){
-            					break;
-            				}
-            			}
-            		}
-            		BusinessController bc= new BusinessController();
-				String b_name=req.getParameter("bn");
-				if (b_name!=null) {
-					if (bc.findSubscribedBusiness(b_name) == null) {
-						bc.subscribe(username, b_name);
-					}
-					
+		String username=null;
+		Cookie[] cks=req.getCookies();
+		if (cks !=null){
+			for (int i=0;i<cks.length;i++){
+				String name=cks[i].getName();
+				username = cks[i].getValue();
+				if (name.equals("auth")){
+					break;
 				}
-				req.getRequestDispatcher("businessList.jsp").forward(req, resp);
-				}
+			}
+		}
+		//if the user is not logged in send to login page
+		if (username == null){
+			req.getRequestDispatcher("login.jsp").forward(req, resp);
+		}
+		else {
+			BusinessController bc=new BusinessController();
 			
-				
+			List<Business> list=null;
+			list = bc.findAllBusinesses();
+			req.setAttribute("list", list);
+			req.getRequestDispatcher("businessList.jsp").forward(req, resp);
+		}
 				
 				
 				
 
 
 		
-	}
+	}}
 	
 
 

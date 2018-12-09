@@ -41,7 +41,7 @@
 							<br>Click here to Subscribe</br>
 							<input name="bn" type="hidden" value="${business.name}" />
 							
-							<input name="get" type="submit" value="Subscribe"/>
+							<input name="post" type="submit" value="Subscribe"/>
 						</form>	
 			</c:forEach>
 		
