@@ -30,19 +30,19 @@
   		</div>
   		<div class="form-group">
 		  <label for="startDate">Start Date</label>
-		  <input class="form-control" type="date" value="${event.startDate}" id="startDate" name="Start Date" value="">
+		  <input class="form-control" type="date" value="${event.SDate}" id="startDate" name="Start Date" value="">
 		</div>
 		<div class="form-group">
 		  <label for="startTime">Start Time</label>
-		  <input class="form-control" type="time" value="${event.start}" id="startTime">
+		  <input class="form-control" type="time" value="${event.STime}" id="startTime">
 		</div>
 		<div class="form-group">
 		  <label for="endDate">End Date</label>
-		  <input class="form-control" type="date" value="${event.endDate}" id="endDate" name="End Date" value="">
+		  <input class="form-control" type="date" value="${event.EDate}" id="endDate" name="End Date" value="">
 		</div>
 		<div class="form-group">
 		  <label for="endTime">End Time</label>
-		  <input class="form-control" type="time" value="${event.end}" id="endTime">
+		  <input class="form-control" type="time" value="${event.ETime}" id="endTime">
 		</div>
 		<div class="form-group">
     		<label for="InputLocation">Event Location</label>
