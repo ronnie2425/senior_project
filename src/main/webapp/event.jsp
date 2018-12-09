@@ -30,10 +30,10 @@
 			<div>
 				<c>
 	
-			        	Event is: <%session.getAttribute("name"); %>
-			        	Starts at: <%session.getAttribute("time"); %>
-			        	At: <%session.getAttribute("location"); %>
-			        	Description: <%session.getAttribute("description"); %>         
+			        	Event is: <input type= "text" value="<%=session.getAttribute("name")%>" />
+			        	Starts at: <input type= "text" value="<%=session.getAttribute("time") %>" />
+			        	At: <input type= "text" value="<%=session.getAttribute("location") %>" />
+			        	Description: <input type= "text" value="<%=session.getAttribute("description") %>"/>         
 			  
 					
 						<br />	            

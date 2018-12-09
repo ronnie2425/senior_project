@@ -43,6 +43,10 @@
 							<input name="time" type="text" value="${event.time}" hidden />
 							<input name="location" type="text" value="${event.location}" hidden />
 							<input name="description" type="text" value="${event.description}" hidden />
+							<%session.setAttribute("name", "name"); %>
+							<%session.setAttribute("time", "time"); %>
+							<%session.setAttribute("location", "location"); %>
+							<%session.setAttribute("description", "description"); %>
 							
 							
 							<input name="post" type="submit" value="View"/>
