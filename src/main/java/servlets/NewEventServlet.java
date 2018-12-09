@@ -91,7 +91,7 @@ public class NewEventServlet extends HttpServlet {
 		  start.setHours(Integer.parseInt(array1[0]));
 		  start.setMinutes(Integer.parseInt(array1[1]));
 		  start.setSeconds(Integer.parseInt(array1[2]));
-		  errorMessage = datestart1 + "\n" + end1 + "\n" + start1;
+		  errorMessage = dateEnd1 + "\n" + end1 + "\n" + start1;
           String array2[]=dateEnd1.split("-");
 		  String array3[]=end1.split(":");
 		  errorMessage =  "DEBUG: "+ array2[0] + "  "+ array2[1] + "  "+ array2[2] + "  "+ array3[0] + "  "+ array3[1] + "  "+ array3[2];
