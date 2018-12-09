@@ -74,17 +74,22 @@ public class EventController {
 		}
 		
 	}
-	public boolean AddEvent(String name, String description, long start_date, long end_date, String business, String location) throws URISyntaxException{
+	public boolean AddEvent(String name, String description, long start_date, long end_date, String business, String location) {
 			int id =(int) (Math.random()*10000);
-			List<Event> events = null;
-
-			events = queries.findEventByName(name);
-	
-			if (events.isEmpty()) {
+			List<Event> events;
+			try {
+				events = queries.findEventByName(name);
+				if (events.isEmpty()) {
 				
-				queries.insertEvent(name, description, start_date, end_date, business, location,id);
-			return true;
+					queries.insertEvent(name, description, start_date, end_date, business, location,id);
+					return true;
+				}
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+	
+			
 			return false;
 	}	
 	
