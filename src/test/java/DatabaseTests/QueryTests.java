@@ -145,8 +145,8 @@ public class QueryTests {
 		System.out.println("\n*** Testing findEventByStartDate ***");
 		String name="Event of Fun";
 		String description="You WILL enjoy the event";
-		long start=12418;
-		long end=12518;
+		long start=12418*1000*60;
+		long end=12518*1000*60;
 		String business="Shortbus Inc";
 		String location="Nowhere";
 		int id=5;
@@ -174,8 +174,8 @@ public class QueryTests {
 		
 		String name="Event of Fun";
 		String description="You WILL enjoy the event";
-		long start=12418;
-		long end=12518;
+		long start=12418*1000*60;
+		long end=12518*1000*60;
 		String business="Shortbus Inc";
 		String location="Nowhere";
 		int id=5;
@@ -307,13 +307,13 @@ public class QueryTests {
 //		db.insertBusiness("Test1","Somewhere",7);
 //		db.insertBusiness("Test2","Somewhere",8);
 //		db.insertBusiness("Test3","Somewhere",9);
-//		
-//		db.insertEvent("t1","This is a testert",102019,122519,120000,"Test1","Somewhere",1231);
-//		db.insertEvent("t2","This is a testert",102119,122519,120000,"Test1","Somewhere",674754);
-//		db.insertEvent("t3","This is a testert",112219,122519,120000,"Test2","Somewhere",241254);
-//		db.insertEvent("t4","This is a testert",112319,122519,120000,"Test2","Somewhere",5432);
-//		db.insertEvent("t5","This is a testert",122419,122519,120000,"Test3","Somewhere",12);
-//		db.insertEvent("t6","This is a testert",122519,122519,120000,"Test3","Somewhere",1241);
+//		long test=102019000000;
+//		db.insertEvent("t1","This is a testert",,122519000000,"Test1","Somewhere",1231);
+//		db.insertEvent("t2","This is a testert",102119000000,122519000000,"Test1","Somewhere",674754);
+//		db.insertEvent("t3","This is a testert",112219000000,122519000000,"Test2","Somewhere",241254);
+//		db.insertEvent("t4","This is a testert",112319000000,122519000000,"Test2","Somewhere",5432);
+//		db.insertEvent("t5","This is a testert",122419000000,122519000000,"Test3","Somewhere",12);
+//		db.insertEvent("t6","This is a testert",122519000000,122519000000,"Test3","Somewhere",1241);
 //		
 //		db.insertRelation("TESTER","Test1");
 //		db.insertRelation( "TESTER","Test2" );
