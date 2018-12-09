@@ -45,6 +45,7 @@ private static final long serialVersionUID = 1L;
 			List<Business> b;
 			BusinessController bc = new BusinessController();
 				b = bc.findSubscribedBusiness(username);
+				b.addAll(bc.findSubscribedBusiness(username));
 				if(b.isEmpty()) {
 					req.getRequestDispatcher("index.jsp").forward(req, resp);
 				}
