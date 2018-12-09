@@ -116,7 +116,7 @@ public class NewEventServlet extends HttpServlet {
           else { //fields filled
             if(controller.AddEvent(name, description, start.getTimeInMillis(), end.getTimeInMillis(), businessName, location)){
         
-            	req.getRequestDispatcher("index.jsp").forward(req, resp); //TODO Change to event.jsp
+            	req.getRequestDispatcher("adminServlet").forward(req, resp); //TODO Change to event.jsp
             
             }//end saves properly
             else{
