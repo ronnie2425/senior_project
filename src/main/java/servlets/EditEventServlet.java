@@ -52,6 +52,10 @@ public class EditEventServlet extends HttpServlet {
 			//retrieve list of bussiness options to pick from
 			List<Business> businessNames = bus_control.findBusinessByOwner(username);
 			
+			String error=req.getParameter("eventId");
+			req.setAttribute("errorMessage", error);
+			req.getRequestDispatcher("login.jsp").forward(req, resp);
+			
 			Event eventData = event_controller.findByID(getIntFromParameter(req.getParameter("eventId")));
 
 			//set attributes to jsp

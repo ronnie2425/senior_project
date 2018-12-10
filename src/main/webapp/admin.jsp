@@ -18,7 +18,6 @@
 				<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/logoutServlet">Logout</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/businessListServlet">Business List</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/editEvent.jsp">Edit Event</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/newEventServlet">New Event</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/newBusiness.jsp">New Business</a></li>
 		
@@ -30,8 +29,7 @@
 			
 			<div>
 				<c>
-					<li>Username is: ${user.username}</li><br />
-					<li>Password is: ${user.password}</li><br />
+
 				
 				<c:forEach items="${list}" var="event">
 			        	Event is: ${event.name}
