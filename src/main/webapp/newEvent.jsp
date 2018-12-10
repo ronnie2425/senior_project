@@ -13,6 +13,16 @@
     <title>New Event</title>
   </head>
   <body>
+  	<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Login</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/logoutServlet">Logout</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/businessListServlet">Business List</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/newEventServlet">New Event</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/newBusiness.jsp">New Business</a></li>
+		
+				<li><a href="${pageContext.servletContext.contextPath}/adminServlet">Admin</a></li>
+  
     <form action="newEventServlet" method="post">
   		<div class="form-group">
     		<label for="InputEventName">Event Title</label>
