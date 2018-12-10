@@ -54,10 +54,12 @@ public class EditEventServlet extends HttpServlet {
 			
 			
 			
-			Event eventData = event_controller.findByID(getIntFromParameter(req.getParameter("eventId")));
+			Event eventData = event_controller.findByID(Integer.parseInt(req.getParameter("eventId")));
+			
 			String error=eventData.getName();
 			req.setAttribute("errorMessage", error);
 			req.getRequestDispatcher("login.jsp").forward(req, resp);
+			
 			//set attributes to jsp
 			List<Event> list=new ArrayList<Event>();
 			list.add(eventData);
