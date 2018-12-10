@@ -32,7 +32,7 @@ public class EventController {
 	}
 	public Event findByID(int id){
 		try{
-			return (Event) queries.findEventByID(id);
+			return queries.findEventByID(id).get(0);
 		}
 		catch (Exception e) {
 			return null;

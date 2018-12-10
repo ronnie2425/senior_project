@@ -54,8 +54,8 @@ public class EditEventServlet extends HttpServlet {
 			
 			
 			
-			//Event eventData = event_controller.findByID(req.getParameter("eventId"));
-			Event eventData = event_controller.findByID(4024);
+			Event eventData = event_controller.findByID(Integer.parseInt(req.getParameter("eventId")));
+			//Event eventData = event_controller.findByID(4024);
 			
 			String error=eventData.getName();
 			req.setAttribute("errorMessage", error);
