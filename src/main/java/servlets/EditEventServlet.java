@@ -147,14 +147,6 @@ public class EditEventServlet extends HttpServlet {
 	}//end doPost
 	
 	
-	private String getStringFromParameter(String s) {
-		if (s == null || s.equals("")) {
-			return null;
-		} else {
-			return s;
-		}
-	}//end parse string args
-	
 	private int getIntFromParameter(String s) {
 		if (s == null || s.equals("")) {
 			return -1;

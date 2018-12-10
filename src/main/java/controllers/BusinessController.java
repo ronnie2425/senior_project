@@ -1,10 +1,8 @@
 package controllers;
-import java.sql.SQLException;
-import java.util.List;
 
+import java.util.List;
 import database.DatabaseConnector;
 import model.Business;
-import model.Event;
 import database.Databasequeries;
 
 
