@@ -97,14 +97,14 @@ public class Event implements Comparable<Event>
 	public String getSDate(){
 		Calendar begin = Calendar.getInstance();
 		begin.setTimeInMillis(start_date);
-		String SDate = ""+begin.getTime().getYear()+"-"+begin.getTime().getDay()+"-"+begin.getTime().getDay();
+		String SDate = ""+begin.getTime().getMonth()+"-"+begin.getTime().getDay()+"-"+begin.getTime().getYear();
 		return SDate;
 	}
 	@SuppressWarnings("deprecation")
 	public String getEDate(){
 		Calendar begin = Calendar.getInstance();
 		begin.setTimeInMillis(end_date);
-		String EDate = ""+begin.getTime().getYear()+"-"+begin.getTime().getDay()+"-"+begin.getTime().getDay();
+		String EDate = ""+begin.getTime().getMonth()+"-"+begin.getTime().getDay()+"-"+begin.getTime().getYear();
 		return EDate;
 	}
 	public int getId(){
