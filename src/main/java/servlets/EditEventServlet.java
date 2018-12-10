@@ -129,7 +129,7 @@ public class EditEventServlet extends HttpServlet {
           }
           
           else { //fields filled
-            if(event_controller.AddEvent(name, description, start.getTimeInMillis(), end.getTimeInMillis(), businessName, location)){
+            if(event_controller.editEvent(name, description, start.getTimeInMillis(), end.getTimeInMillis(), businessName, location)){
         
             	req.getRequestDispatcher("index.jsp").forward(req, resp); //TODO Change to event.jsp
             

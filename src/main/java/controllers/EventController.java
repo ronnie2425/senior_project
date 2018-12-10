@@ -39,8 +39,9 @@ public class EventController {
 		
 	}
 	}
-	public boolean editEvent(int id, String name, String description, long start_date, long end_date,String business,String location){
+	public boolean editEvent(String name, String description, long start_date, long end_date, String business, String location){
 		try{
+			int id=queries.findEventByName(name).get(0).getId();
 			queries.removeEvent(name,business);
 			queries.insertEvent(name, description, start_date, end_date, business, location, id);
 			return true;
