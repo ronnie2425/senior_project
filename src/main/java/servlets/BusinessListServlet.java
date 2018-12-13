@@ -62,12 +62,12 @@ private static final long serialVersionUID = 1L;
             		}
             		BusinessController bc= new BusinessController();
 				String b_name=req.getParameter("bn");
-				if (b_name!=null) {
-					if (bc.findSubscribedBusiness(b_name) == null) {
+				//if (b_name!=null) {
+					//if (bc.findSubscribedBusiness(b_name) == null) {
 						bc.subscribe(username, b_name);
-					}
+					//}
 					
-				}
+				//}
 				
 				
 				
