@@ -56,12 +56,12 @@ public class EventController {
 			int id =(int) (Math.random()*10000);
 			List<Event> events;
 			try {
-				events = queries.findEventByName(name);
-				if (events.isEmpty()) {
+				//events = queries.findEventByName(name);
+				//if (events.isEmpty()) {
 				
 					queries.insertEvent(name, description, start_date, end_date, business, location,id);
 					return true;
-				}
+				//}
 			} catch (URISyntaxException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
