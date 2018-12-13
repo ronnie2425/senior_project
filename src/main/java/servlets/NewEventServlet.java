@@ -82,6 +82,7 @@ public class NewEventServlet extends HttpServlet {
 		  Calendar end = Calendar.getInstance();
 		  end.set(Integer.parseInt(array2[0]), Integer.parseInt(array2[1]), Integer.parseInt(array2[2]), Integer.parseInt(array3[0]), Integer.parseInt(array3[1]), Integer.parseInt(array3[2]));
    
+		  errorMessage = "DEBUG: cookie";
           String username=null;
   		Cookie[] cks=req.getCookies();
   		if (cks !=null){
@@ -114,6 +115,7 @@ public class NewEventServlet extends HttpServlet {
           }
           
           else { //fields filled
+        	  errorMessage = "DEBUG: add event";
             if(controller.AddEvent(name, description, start.getTimeInMillis(), end.getTimeInMillis(), businessName, location)){
         
             	req.getRequestDispatcher("adminServlet").forward(req, resp); //TODO Change to event.jsp
