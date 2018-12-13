@@ -77,7 +77,7 @@ public class NewBusinessServlet extends HttpServlet {
         	  bc.insertOwned(username,business);
 		
 			
-			req.getRequestDispatcher("adminServlet").forward(req, resp);
+			req.getRequestDispatcher("businessListServlet").forward(req, resp);
 			}
       
 		}
