@@ -118,7 +118,7 @@ public class NewEventServlet extends HttpServlet {
         	  errorMessage = "DEBUG: add event";
             if(controller.AddEvent(name, description, start.getTimeInMillis(), end.getTimeInMillis(), businessName, location)){
         
-            	req.getRequestDispatcher("adminServlet").forward(req, resp); //TODO Change to event.jsp
+            	req.getRequestDispatcher("indexServlet").forward(req, resp); //TODO Change to event.jsp
             
             }//end saves properly
             else{
