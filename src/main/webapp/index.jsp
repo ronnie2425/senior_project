@@ -17,7 +17,7 @@
 				<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>		
 					<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Login</a></li>
 				<c:if test="${not empty user}">
-					
+					<li><a href="${pageContext.servletContext.contextPath}/adminServlet">Admin</a></li>
 				</c:if>
 				<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/logoutServlet">Logout</a></li>
