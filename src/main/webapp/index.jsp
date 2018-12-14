@@ -16,6 +16,9 @@
 		
 				<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>		
 					<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Login</a></li>
+				<c:if test="${not empty cks}">
+					
+				</c:if>
 				<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/logoutServlet">Logout</a></li>
 	
