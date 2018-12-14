@@ -8,45 +8,44 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+	<link href="indexstyle.css" rel="stylesheet" type="text/css" ></link>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <title>Business List</title>
   </head>
   <body>
-  <div class="navbar">
+  <div id="background">
+		<div class="navbar">
 			<ul>
-		
-				<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Login</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/logoutServlet">Logout</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/businessEventList.jsp">Business Event list</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/businessListServlet">Business List</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/editEvent.jsp">Edit Event</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/newEvent.jsp">New Event</a></li>
-		
-				<li><a href="${pageContext.servletContext.contextPath}/adminServlet">Admin</a></li>
+		  		<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>
+						<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Login</a></li>
+						<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
+						<li><a href="${pageContext.servletContext.contextPath}/logoutServlet">Logout</a></li>
+						<li><a href="${pageContext.servletContext.contextPath}/businessListServlet">Business List</a></li>
+						<li><a href="${pageContext.servletContext.contextPath}/newEventServlet">New Event</a></li>
+						<li><a href="${pageContext.servletContext.contextPath}/newBusiness.jsp">New Business</a></li>
 				
-				
-			</ul>
-			</div>
+						<li><a href="${pageContext.servletContext.contextPath}/adminServlet">Admin</a></li>
+		  	</ul>
+		</div>	
     <h1>Businesses</h1>
 		
 			<c:forEach items="${list}" var = "business">
   				<a href="#" class="list-group-item list-group-item-action">${business.name}</a>
   						
   						<form action="businessListServlet" method="post">
-							<br>Click here to Subscribe</br>
+							Click here to Subscribe
 							<input name="bn" type="hidden" value="${business.name}" />
 							
 							<input name="post" type="submit" value="Subscribe"/>
+
+							<hr class="my-4">
 						</form>	
 			</c:forEach>
 		
 	
-	
+	</div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

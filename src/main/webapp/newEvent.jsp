@@ -6,61 +6,68 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+	<link href="indexstyle.css" rel="stylesheet" type="text/css" ></link>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <title>New Event</title>
   </head>
   <body>
-  	<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Login</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/logoutServlet">Logout</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/businessListServlet">Business List</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/newEventServlet">New Event</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/newBusiness.jsp">New Business</a></li>
-		
-				<li><a href="${pageContext.servletContext.contextPath}/adminServlet">Admin</a></li>
-  
+  <div id="background">
+		<div class="navbar">
+			<ul>
+		  		<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>
+						<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Login</a></li>
+						<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
+						<li><a href="${pageContext.servletContext.contextPath}/logoutServlet">Logout</a></li>
+						<li><a href="${pageContext.servletContext.contextPath}/businessListServlet">Business List</a></li>
+						<li><a href="${pageContext.servletContext.contextPath}/newEventServlet">New Event</a></li>
+						<li><a href="${pageContext.servletContext.contextPath}/newBusiness.jsp">New Business</a></li>
+				
+						<li><a href="${pageContext.servletContext.contextPath}/adminServlet">Admin</a></li>
+		  	</ul>
+		</div>	
+	
     <form action="newEventServlet" method="post">
-  		<div class="form-group">
+  		<div class="mx-auto w-50 form-group">
     		<label for="InputEventName">Event Title</label>
     		<input type="text" class="form-control" id="InputEventName" placeholder="Enter Name For Event" name="Name" value="">
   		</div>
-  		<select class="custom-select" name="business">
+  		<select class="mx-auto w-50 form-control" name="business">
   			<option>Select a business from this list</option>
   			<c:forEach items="${BusinessList}" var = "business">
   				<option value="${business.name}">${business.name}</option>
   			</c:forEach>
   		</select>
-  		<div class="form-group">
+  		<div class="mx-auto w-50 form-group">
     		<label for="InputEventDetails">Event Details</label>
     		<textarea class="form-control" id="InputEventName" placeholder="Describe the Event" rows="3" name="Description" value=""></textarea>
   		</div>
-  		<div class="form-group">
+  		<div class="mx-auto w-50 form-group">
 		  <label for="startDate">Start Date</label>
 		  <input class="form-control" type="date" value="2018-10-22" id="startDate" name="Start Date" value="">
 		</div>
-		<div class="form-group">
+		<div class="mx-auto w-50 form-group">
 		  <label for="startTime">Start Time</label>
 		  <input class="form-control" type="time" value="12:15:00" id="startTime" name="Start" value="">
 		</div>
-		<div class="form-group">
+		<div class="mx-auto w-50 form-group">
 		  <label for="endDate">End Date</label>
 		  <input class="form-control" type="date" value="2018-12-22" id="endDate" name="End Date" value="">
 		</div>
-		<div class="form-group">
+		<div class="mx-auto w-50 form-group">
 		  <label for="endTime">End Time</label>
 		  <input class="form-control" type="time" value="12:15:00" id="endTime" name="End" value="">
 		</div>
-		<div class="form-group">
+		<div class="mx-auto w-50 form-group">
     		<label for="InputLocation">Event Location</label>
     		<input type="text" class="form-control" id="InputLocation" placeholder="Enter The Location Of The Event" name="Location" value="">
   		</div>
-  		<button type="submit" class="btn btn-primary">Submit</button>
+  		<div class="mx-auto w-50">
+  		<button type="submit" class="btn btn-block btn-dark">Submit</button>
+  		</div>
 	</form>
-
+	</div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
