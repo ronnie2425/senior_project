@@ -74,14 +74,19 @@ public class NewEventServlet extends HttpServlet {
         
         try {
           String array[]=datestart1.split("-");
+          errorMessage = "DEBUG: breaks at start date";
 		  String array1[]=start1.split(":");
+		  errorMessage = "DEBUG: breaks at start time";
 		  Calendar start = Calendar.getInstance();
 		  start.set(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]), Integer.parseInt(array1[0]), Integer.parseInt(array1[1]), Integer.parseInt(array1[2]));
-          String array2[]=dateEnd1.split("-");
+		  errorMessage = "DEBUG: breaks at start set";
+		  String array2[]=dateEnd1.split("-");
+          errorMessage = "DEBUG: breaks at end date";
 		  String array3[]=end1.split(":");
+		  errorMessage = "DEBUG: breaks at end time";
 		  Calendar end = Calendar.getInstance();
 		  end.set(Integer.parseInt(array2[0]), Integer.parseInt(array2[1]), Integer.parseInt(array2[2]), Integer.parseInt(array3[0]), Integer.parseInt(array3[1]), Integer.parseInt(array3[2]));
-   
+		  
 		  errorMessage = "DEBUG: cookie";
           String username=null;
   		Cookie[] cks=req.getCookies();
