@@ -15,19 +15,18 @@
   </head>
   <body>
   <div id="background">
-		<div class="navbar">
+			<div class="navbar">
 			<ul>
-		  		<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>
-						<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Login</a></li>
-						<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
-						<li><a href="${pageContext.servletContext.contextPath}/logoutServlet">Logout</a></li>
-						<li><a href="${pageContext.servletContext.contextPath}/businessListServlet">Business List</a></li>
-						<li><a href="${pageContext.servletContext.contextPath}/newEventServlet">New Event</a></li>
-						<li><a href="${pageContext.servletContext.contextPath}/newBusiness.jsp">New Business</a></li>
+		
+				<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>		
+					<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Login</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
+				<li><a href="${pageContext.servletContext.contextPath}/logoutServlet">Logout</a></li>
+	
 				
-						<li><a href="${pageContext.servletContext.contextPath}/adminServlet">Admin</a></li>
-		  	</ul>
-		</div>	
+				
+			</ul>
+		</div>
     <form action = "signUpServlet" method = "POST">
     	<div class="mx-auto w-50 form-group">
 		    <label for="Email address">Email address</label>

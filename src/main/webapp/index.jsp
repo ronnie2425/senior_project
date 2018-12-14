@@ -15,11 +15,6 @@
 			<ul>
 		
 				<li><a href="${pageContext.servletContext.contextPath}/indexServlet">Home</a></li>		
-				<li><a href="${pageContext.servletContext.contextPath}/businessListServlet">Business List</a></li>
-			
-
-	
-				<li><a href="${pageContext.servletContext.contextPath}/adminServlet">Admin</a></li>
 					<li><a href="${pageContext.servletContext.contextPath}/login.jsp">Login</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/signup.jsp">Register</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/logoutServlet">Logout</a></li>
