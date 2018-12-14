@@ -35,6 +35,7 @@ private static final long serialVersionUID = 1L;
 				}
 			}
 		}
+		req.setAttribute("user", username);
 		//if the user is not logged in send to login page
 		if (username == null){
 			req.getRequestDispatcher("login.jsp").forward(req, resp);
@@ -73,6 +74,7 @@ private static final long serialVersionUID = 1L;
 						}
 					}
 				}
+				req.setAttribute("user", username);
             	if (username!=null){			
 				EventController controller = new EventController();
 				List<Business> b;
