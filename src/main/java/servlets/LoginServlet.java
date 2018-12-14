@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
             	//resp.sendRedirect(req.getContextPath() + "/businessList.jsp");
             	//req.getSession().setAttribute("username", user);	
             	Cookie ck=new Cookie("auth",user);
-            	ck.setMaxAge(6000);
+            	ck.setMaxAge(3600);
             	resp.addCookie(ck);
             	req.getRequestDispatcher("indexServlet").forward(req, resp);	//TODO UserHome.jsp
             }//end good login
