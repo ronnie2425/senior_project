@@ -1,7 +1,7 @@
 
 package model;
 
-public class Business{
+public class Business implements Comparable<Business>{
 	private String name;
 	private int id;
 	private String location;
@@ -18,7 +18,6 @@ public class Business{
 	
 	public Business(String name) {
 		this.name=name;
-		location = "Gallifrey";
 	}
 	
 	public void setName(String name) {
@@ -40,5 +39,7 @@ public class Business{
 	public String getLocation() {
 		return location;
 	}
-	
+	public int compareTo(Business e) {
+		return  this.name.compareTo(e.getName());
+	}
 } 

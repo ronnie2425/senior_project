@@ -91,11 +91,11 @@ public class EditEventServlet extends HttpServlet {
           String array[]=datestart1.split("-");
 		  String array1[]=start1.split(":");
 		  Calendar start = Calendar.getInstance();
-		  start.set(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]), Integer.parseInt(array1[0]), Integer.parseInt(array1[1]), Integer.parseInt(array1[2]));
+		  start.set(Integer.parseInt(array[0]), Integer.parseInt(array[1]), Integer.parseInt(array[2]), Integer.parseInt(array1[0]), Integer.parseInt(array1[1]));
           String array2[]=dateEnd1.split("-");
 		  String array3[]=end1.split(":");
 		  Calendar end = Calendar.getInstance();
-		  end.set(Integer.parseInt(array2[0]), Integer.parseInt(array2[1]), Integer.parseInt(array2[2]), Integer.parseInt(array3[0]), Integer.parseInt(array3[1]), Integer.parseInt(array3[2]));
+		  end.set(Integer.parseInt(array2[0]), Integer.parseInt(array2[1]), Integer.parseInt(array2[2]), Integer.parseInt(array3[0]), Integer.parseInt(array3[1]));
    
           String username=null;
   		Cookie[] cks=req.getCookies();
