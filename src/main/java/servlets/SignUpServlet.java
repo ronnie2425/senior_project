@@ -65,6 +65,7 @@ public class SignUpServlet extends HttpServlet {
             else {
             	errorMessage = "Username already in use";
                 req.setAttribute("errorMessage", errorMessage);
+                req.getRequestDispatcher("signup.jsp").forward(req, resp);
             }
           }
         } catch(Exception e) {
